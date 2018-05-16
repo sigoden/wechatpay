@@ -91,7 +91,7 @@ pay.unifiedorder({
   console.log(pay.tidyOrderResult(result)); 
 })
 ```
-`tidyOrderResult` 打印
+
 ```
  { appId: 'wxb80e5bddb2d804f3',
         timeStamp: 1526470270,
@@ -117,7 +117,7 @@ pay.unifiedorder({
   console.log(pay.tidyOrderResult(result)); 
 })
 ```
-`tidyOrderResult` 打印
+
 ```
 { code_url: 'weixin://wxpay/s/An4baqw' }
 ```
@@ -137,7 +137,7 @@ pay.unifiedorder({
   console.log(pay.tidyOrderResult(result)); 
 })
 ```
-`tidyOrderResult` 打印
+
 ```
 { appid: 'wxb80e5bddb2d804f3',
         partnerid: '1424712502',
@@ -164,7 +164,7 @@ pay.unifiedorder({
   console.log(pay.tidyOrderResult(result)); 
 })
 ```
-`tidyOrderResult` 打印
+
 ```
 { mweb_url: 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2016121516420242444321ca0631331346&package=1405458241' }
 ```
@@ -418,14 +418,14 @@ pay.pay_bank({
 
 ## 帮助函数
 
-### Pay.helper.nonceStr 生成随机字符串
+### Pay.helper.nonceStr -- 生成随机字符串
 
 ```js
 Pay.helper.nonceStr() # KB29VVVPR2zJWPTqO7Kisr18CMOuCvu8
 Pay.helper.nonceStr() # VLCoEJ70B68R3P8pRo82klegXSmavq3x
 ```
 
-### Pay.helper.toXML JS转XML
+### Pay.helper.toXML -- JS转XML
 
 ```js
 var obj = {
@@ -446,7 +446,7 @@ var result = [
 Pay.helper.toXML(obj) === result;
 ```
 
-### Pay.helper.fromXML XML转JS
+### Pay.helper.fromXML -- XML转JS
 
 ```js
 var xml = [
@@ -470,7 +470,7 @@ Pay.helper.fromXML(xml, function(err, obj) {
 }) ;
 ```
 
-### Pay.helper.sign 签名
+### Pay.helper.sign -- 签名
 
 ```js
 var obj = { a: 3, b: 4 };
@@ -478,7 +478,7 @@ Pay.helper.sign('MD5', obj, 'abc') === '85566166DABF8B84307C0AF0A7699366'
 Pay.helper.sign('HMAC-SHA256', obj, 'abc') === 'AAF907CA1B2239E0187A4BD73331DCD840F84748C6905B7FD857688BED84ACF7'
 ```
 
-### Pay.helper.aes256Decode 用于退款通知数据 req_info 的解码
+### Pay.helper.aes256Decode -- 用于退款通知数据 req_info 的解码
 
 ```js
 var data = '/Pe2X0sgRcndZWNJQQmcPw==';
