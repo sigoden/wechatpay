@@ -1,0 +1,7 @@
+node_modules
+
+.tern-*
+*.log
+package-lock.json
+/coverage
+/dist

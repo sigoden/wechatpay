@@ -1,0 +1,49 @@
+{
+  "name": "@sigoden/wechatpay",
+  "version": "0.1.0",
+  "description": "微信支付",
+  "keywords": [
+    "wechat",
+    "wechatpay",
+    "weixin",
+    "wx",
+    "pay"
+  ],
+  "main": "src/pay.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "lint": "eslint --ext=.js src test",
+    "lint:fix": "eslint --fix --ext=.js src test",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigoden/wechatpay.git"
+  },
+  "author": "sigoden huang <sigoden@gmail.com> (https://sigoden.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sigoden/wechatpay/issues"
+  },
+  "homepage": "https://github.com/sigoden/wechatpay#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1"
+  },
+  "files": [
+    "src"
+  ],
+  "engine": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "merge": "^1.2.0",
+    "request": "^2.85.0",
+    "xml2js": "^0.4.19"
+  }
+}
