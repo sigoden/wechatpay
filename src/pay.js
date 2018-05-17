@@ -371,7 +371,7 @@ Pay.prototype.refundQuery = Pay.prototype.refundquery;
 Pay.prototype.downloadbill = function(options, callback) {
   var requireFields = ["bill_date", "bill_type"];
 
-  var missFields = helper.missFields(options, requireFields);
+  var missFields = helper.checkFields(options, requireFields);
   if (missFields.length > 0) {
     var err = helper.createError(
       "ArgumentError",
@@ -763,7 +763,7 @@ Pay.prototype.addCert = function(options) {
  * 必须字段校验
  */
 Pay.prototype.mustHaveFields = function(options, requireFields) {
-  var missFields = helper.missFields(options, requireFields);
+  var missFields = helper.checkFields(options, requireFields);
   if (missFields.length > 0) {
     throw helper.createError(
       "ArgumentError",

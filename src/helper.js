@@ -31,7 +31,7 @@ exports.fromXML = function(str, callback) {
   parser.parseString(str, callback);
 };
 
-exports.missFields = function(obj, requireFields) {
+exports.checkFields = function(obj, requireFields) {
   var missFields = [];
   for (var i = 0; i < requireFields.length; i++) {
     var field = requireFields[i];

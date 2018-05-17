@@ -10,9 +10,6 @@
     "pay"
   ],
   "main": "src/pay.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint --ext=.js src test",

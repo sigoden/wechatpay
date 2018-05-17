@@ -6,12 +6,25 @@
 [![dependencies Status](https://david-dm.org/sigoden/wechatpay/status.svg)](https://david-dm.org/sigoden/wechatpay)
 [![Known Vulnerabilities](https://snyk.io/test/github/sigoden/wechatpay/badge.svg?targetFile=package.json)](https://snyk.io/test/github/sigoden/wechatpay?targetFile=package.json)
 
-## 初始化
+## 开始使用
 
 ```js
 var Pay = require('@sigoden/wechatpay');
 var pfxContent = fs.readFileSync("<location-of-your-apiclient-cert.p12>")
 var pay = new Pay(appid, mch_id, key, pfxContent);
+
+pay.unifiedorder({
+  body: '腾讯充值中心-QQ会员充值',
+  out_trade_no: '1217752501201407033233368018',
+  total_fee: 888,
+  spbill_create_ip: '8.8.8.8',
+  notify_url: 'https://example.com/wechatpay/notify',
+  trade_type: 'JSAPI',
+  openid: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o'
+}, function(err, result) {
+  if (err) return callback(err);
+  console.log(pay.tidyOrderResult(result)); 
+})
 ```
 
 ## 接口
@@ -93,13 +106,14 @@ pay.unifiedorder({
 ```
 
 ```
- { appId: 'wxb80e5bddb2d804f3',
-        timeStamp: 1526470270,
-        nonceStr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
-        package: 'prepare_id=wx201411101639507cbf6ffd8b0779950874',
-        signType: 'MD5',
-        paySign: 'B8EE9BEF040D445275AE937CB93DAA8B' }
-
+{
+  appId: 'wxb80e5bddb2d804f3',
+  timeStamp: 1526470270,
+  nonceStr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
+  package: 'prepare_id=wx201411101639507cbf6ffd8b0779950874',
+  signType: 'MD5',
+  paySign: 'B8EE9BEF040D445275AE937CB93DAA8B'
+}
 ```
 ####  扫码 [&#128279;](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1)
 
@@ -139,13 +153,15 @@ pay.unifiedorder({
 ```
 
 ```
-{ appid: 'wxb80e5bddb2d804f3',
-        partnerid: '1424712502',
-        prepareid: 'wx201411101639507cbf6ffd8b0779950874',
-        package: 'Sign=WXPay',
-        noncestr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
-        timestamp: 1526470270,
-        sign: '4B9580464280084A33C31546F65CAC9F' }
+{ 
+  appid: 'wxb80e5bddb2d804f3',
+  partnerid: '1424712502',
+  prepareid: 'wx201411101639507cbf6ffd8b0779950874',
+  package: 'Sign=WXPay',
+  noncestr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
+  timestamp: 1526470270,
+  sign: '4B9580464280084A33C31546F65CAC9F'
+}
 ```
 
 #### H5 [&#128279;](https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1)

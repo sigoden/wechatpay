@@ -55,7 +55,7 @@ describe("missFields", function() {
   test("find missed fields", function() {
     var obj = { a: 3, b: 4, c: 5 };
     var requireFields = ["a", "e"];
-    expect(helper.missFields(obj, requireFields)).toEqual(["e"]);
+    expect(helper.checkFields(obj, requireFields)).toEqual(["e"]);
   });
 });
 
