@@ -1,9 +1,15 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 6
+  "env": {
+    "node": true
   },
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier",
+    "jest"
+  ],
   "rules": {
     "prettier/prettier": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
   }
 }

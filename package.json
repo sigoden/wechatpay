@@ -1,6 +1,6 @@
 {
   "name": "@sigoden/wechatpay",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "微信支付",
   "keywords": [
     "wechat",
@@ -14,7 +14,12 @@
     "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint --ext=.js src test",
     "lint:fix": "eslint --fix --ext=.js src test",
+    "pretest": "npm run lint",
     "test": "jest --coverage"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
   },
   "repository": {
     "type": "git",
@@ -29,6 +34,7 @@
   "devDependencies": {
     "coveralls": "^3.0.1",
     "eslint": "^5.2.0",
+    "eslint-plugin-jest": "^21.18.0",
     "eslint-plugin-prettier": "^2.6.0",
     "jest": "^23.4.1",
     "prettier": "^1.12.1"
@@ -42,6 +48,7 @@
   "dependencies": {
     "merge": "^1.2.0",
     "request": "^2.85.0",
+    "universalify": "^0.1.2",
     "xml2js": "^0.4.19"
   }
 }

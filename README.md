@@ -11,30 +11,30 @@
 - [微信支付 node.js](#微信支付-nodejs)
     - [开始使用](#开始使用)
     - [接口](#接口)
-        - [micropay -- 提交刷卡支付](#micropay----提交刷卡支付)
+        - [microPay -- 提交刷卡支付](#micropay----提交刷卡支付)
         - [reverse -- 撤销订单(仅限刷卡支付)](#reverse----撤销订单仅限刷卡支付)
-        - [shorturl -- 转换短链接(仅限刷卡支付)](#shorturl----转换短链接仅限刷卡支付)
-        - [authcodetoopenid -- 授权码查询openid](#authcodetoopenid----授权码查询openid)
-        - [unifiedorder -- 统一下单](#unifiedorder----统一下单)
-        - [orderquery -- 查询订单](#orderquery----查询订单)
-        - [closeorder -- 关闭订单](#closeorder----关闭订单)
+        - [shortUrl -- 转换短链接(仅限刷卡支付)](#shorturl----转换短链接仅限刷卡支付)
+        - [authCodeToOpenId -- 授权码查询openid](#authcodetoopenid----授权码查询openid)
+        - [unifiedOrder -- 统一下单](#unifiedorder----统一下单)
+        - [orderQuery -- 查询订单](#orderquery----查询订单)
+        - [closeOrder -- 关闭订单](#closeorder----关闭订单)
         - [refund -- 申请退款](#refund----申请退款)
-        - [refundquery -- 查询退款](#refundquery----查询退款)
-        - [downloadbill -- 下载对账单](#downloadbill----下载对账单)
-        - [downloadfundflow  -- 下载资金账单](#downloadfundflow-----下载资金账单)
+        - [refundQuery -- 查询退款](#refundquery----查询退款)
+        - [downloadBill -- 下载对账单](#downloadbill----下载对账单)
+        - [downloadFundFlow  -- 下载资金账单](#downloadfundflow-----下载资金账单)
         - [report -- 交易保障](#report----交易保障)
-        - [batchquerycomment -- 拉取订单评价数据](#batchquerycomment----拉取订单评价数据)
-        - [send_coupon -- 发放代金券](#send_coupon----发放代金券)
-        - [query_coupon_stock -- 查询代金券批次](#query_coupon_stock----查询代金券批次)
-        - [querycouponsinfo -- 查询代金券信息](#querycouponsinfo----查询代金券信息)
-        - [sendredpack -- 发放普通红包](#sendredpack----发放普通红包)
-        - [sendgroupredpack -- 发放裂变红包](#sendgroupredpack----发放裂变红包)
-        - [gethbinfo -- 查询红包记录](#gethbinfo----查询红包记录)
+        - [batchQueryComment -- 拉取订单评价数据](#batchquerycomment----拉取订单评价数据)
+        - [sendCoupon -- 发放代金券](#sendcoupon----发放代金券)
+        - [queryCouponStock -- 查询代金券批次](#querycouponstock----查询代金券批次)
+        - [queryCouponsInfo -- 查询代金券信息](#querycouponsinfo----查询代金券信息)
+        - [sendRedPack -- 发放普通红包](#sendredpack----发放普通红包)
+        - [sendGroupRedPack -- 发放裂变红包](#sendgroupredpack----发放裂变红包)
+        - [getHbInfo -- 查询红包记录](#gethbinfo----查询红包记录)
         - [transfers -- 企业付款到零钱](#transfers----企业付款到零钱)
-        - [gettransferinfo -- 查询企业付款到零钱](#gettransferinfo----查询企业付款到零钱)
-        - [getpublickey -- 获取RSA加密公钥](#getpublickey----获取rsa加密公钥)
-        - [query_bank -- 查询企业付款银行卡](#query_bank----查询企业付款银行卡)
-        - [pay_bank -- 企业付款银行卡](#pay_bank----企业付款银行卡)
+        - [getTransferInfo -- 查询企业付款到零钱](#gettransferinfo----查询企业付款到零钱)
+        - [getPublicKey -- 获取RSA加密公钥](#getpublickey----获取rsa加密公钥)
+        - [queryBank -- 查询企业付款银行卡](#querybank----查询企业付款银行卡)
+        - [payBank -- 企业付款银行卡](#paybank----企业付款银行卡)
     - [帮助函数](#帮助函数)
         - [Pay.helper.nonceStr -- 生成随机字符串](#payhelpernoncestr----生成随机字符串)
         - [Pay.helper.toXML -- JS转XML](#payhelpertoxml----js转xml)
@@ -53,7 +53,8 @@ var Pay = require('@sigodenh/wechatpay');
 var pfxContent = fs.readFileSync("<location-of-your-apiclient-cert.p12>")
 var pay = new Pay(appid, mch_id, key, pfxContent);
 
-pay.unifiedorder({
+// Callback style
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
@@ -65,19 +66,29 @@ pay.unifiedorder({
   if (err) return callback(err);
   console.log(pay.tidyOrderResult(result)); 
 })
+
+// Promise style
+pay.unifiedOrder({
+  body: '腾讯充值中心-QQ会员充值',
+  out_trade_no: '1217752501201407033233368018',
+  total_fee: 888,
+  spbill_create_ip: '8.8.8.8',
+  notify_url: 'https://example.com/wechatpay/notify',
+  trade_type: 'JSAPI',
+  openid: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o'
+}).then(function(result) {
+  console.log(pay.tidyOrderResult(result));
+})
 ```
 
 ## 接口
 
-### micropay -- 提交刷卡支付
+### microPay -- 提交刷卡支付
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)
 
-alias: microPay
-
-
 ```js
-pay.micropay({
+pay.microPay({
   device_info: '013467007045764',
   body: '深圳腾大- QQ公仔',
   out_trade_no: '1217752501201407033233368018',
@@ -101,46 +112,40 @@ pay.reverse({
 pay.reverse('1217752501201407033233368018', function(err, result) {})
 ```
 
-### shorturl -- 转换短链接(仅限刷卡支付)
+### shortUrl -- 转换短链接(仅限刷卡支付)
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_9&index=9)
 
-alias: shortUrl, shortURL
-
 ```
-pay.shorturl({
-  long_url: 'weixin://wxpay/bizpayurl?sign=XXXXX&appid=XXXXX&mch_id=XXXXX&product_id=XXXXXX&time_stamp=XXXXXX&nonce_str=XXXXX'
+pay.shortUrl({
+  long_url: 'weixin://wxpay/bizpayurl?sign=XX&appid=XX&mch_id=XX&product_id=XX&time_stamp=XX&nonce_str=XX'
 }, function(err, result) {})
 
 // 或者直接传递 long_url 字符串
-pay.shorturl('weixin://wxpay/bizpayurl?sign=XXXXX&appid=XXXXX&mch_id=XXXXX&product_id=XXXXXX&time_stamp=XXXXXX&nonce_str=XXXXX', function(err, result) {})
+pay.shortUrl('weixin://wxpay/bizpayurl?sign=XX&appid=XX&mch_id=XX&product_id=XX&time_stamp=XX&nonce_str=XX', function(err, result) {})
 ```
 
-### authcodetoopenid -- 授权码查询openid
+### authCodeToOpenId -- 授权码查询openid
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10)
 
-alias: authCodeToOpenId
-
 ```js
-pay.authcodetoopenid({
+pay.authCodeToOpenid({
   auth_code: '120061098828009406'
 }, function(err, result) {})
 
 // 或者直接传递 auth_code 字符串
-pay.shorturl('120061098828009406', function(err, result) {})
+pay.authCodeToOpenid('120061098828009406', function(err, result) {})
 ```
 
-### unifiedorder -- 统一下单
-
-alias: unifiedOrder
+### unifiedOrder -- 统一下单
 
 > tidyOrderResult 可以用来处理统一下单返回结果，根据接口交易类型 (trade_type) 会生成不同的数据。
 
 [公众号](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1) / [小程序](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1) 
 
 ```js
-pay.unifiedorder({
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
@@ -168,7 +173,7 @@ pay.unifiedorder({
 [扫码](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1)
 
 ```js
-pay.unifiedorder({
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
@@ -189,7 +194,7 @@ pay.unifiedorder({
 [APP](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1)
 
 ```js
-pay.unifiedorder({
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
@@ -217,7 +222,7 @@ pay.unifiedorder({
 [MWEB](https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1)
 
 ```js
-pay.unifiedorder({
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
@@ -235,34 +240,30 @@ pay.unifiedorder({
 { mweb_url: 'https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2016121516420242444321ca0631331346&package=1405458241' }
 ```
 
-### orderquery -- 查询订单
+### orderQuery -- 查询订单
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2)
 
-alias: orderQuery
-
 ```js
-pay.orderquery({
+pay.orderQuery({
   out_trade_no: '120061098828009406'
 }, function(err, result) {})
 
 // 或者直接传递 out_trade_no 字符串
-pay.orderquery('120061098828009406', function(err, result) {})
+pay.orderQuery('120061098828009406', function(err, result) {})
 ```
 
-### closeorder -- 关闭订单
+### closeOrder -- 关闭订单
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3)
 
-alias: closeOrder
-
 ```js
-pay.closeorder({
+pay.closeOrder({
   out_trade_no: '120061098828009406'
 }, function(err, result) {})
 
 // 或者直接传递 out_trade_no 字符串
-pay.closeorder('120061098828009406', function(err, result) {})
+pay.closeOrder('120061098828009406', function(err, result) {})
 ```
 
 ### refund -- 申请退款
@@ -278,42 +279,36 @@ pay.refund({
 }, function(err, result) {})
 ```
 
-### refundquery -- 查询退款
+### refundQuery -- 查询退款
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5)
 
-alias: refundQuery
-
 ```js
-pay.refundquery({
+pay.refundQuery({
   out_trade_no: '120061098828009406'
 }, function(err, result) {})
 
 // 或者直接传递 out_trade_no 字符串
-pay.refundquery('120061098828009406', function(err, result) {})
+pay.refundQuery('120061098828009406', function(err, result) {})
 ```
 
-### downloadbill -- 下载对账单
+### downloadBill -- 下载对账单
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_6)
 
-alias: downloadBill
-
 ```js
-pay.downloadbill({
+pay.downloadBill({
   bill_date: '20140603',
   bill_type: 'ALL'
 }, function(err, result) {})
 ```
 
-### downloadfundflow  -- 下载资金账单
+### downloadFundFlow  -- 下载资金账单
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7)
 
-alias: downloadFundFlow
-
 ```js
-pay.downloadfundflow({
+pay.downloadFundFlow({
   bill_date: '20140603',
   account_type: 'Basic',
 }, function(err, result) {})
@@ -333,28 +328,24 @@ pay.report({
 }, function(err, result) {})
 ```
 
-### batchquerycomment -- 拉取订单评价数据
+### batchQueryComment -- 拉取订单评价数据
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_17&index=11)
 
-alias: batchQueryComment
-
 ```js
-pay.batchquerycomment({
+pay.batchQueryComment({
   begin_time: '20170724000000',
   end_time: '20170725000000',
   offset: 0,
 }, function(err, result) {})
 ```
 
-### send_coupon -- 发放代金券
+### sendCoupon -- 发放代金券
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4)
 
-alias: sendCoupon, sendcoupon
-
 ```js
-pay.send_coupon({
+pay.sendCoupon({
   coupon_stock_id: '1757',
   openid_count: 1,
   partner_trade_no: '1000009820141203515766',
@@ -362,43 +353,37 @@ pay.send_coupon({
 }, function(err, result) {})
 ```
 
-### query_coupon_stock -- 查询代金券批次
+### queryCouponStock -- 查询代金券批次
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_4&index=5)
 
-alias: querycouponstock, queryCouponStock
-
 ```js
-pay.query_coupon_stock({
+pay.queryCouponStock({
   coupon_stock_id: '1757'
 }, function(err, result) {})
 
 // 或者直接传递 coupon_stock_id 字符串
-pay.shorturl('1757', function(err, result) {})
+pay.queryCouponStock('1757', function(err, result) {})
 ```
 
-### querycouponsinfo -- 查询代金券信息
+### queryCouponsInfo -- 查询代金券信息
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6)
 
-alias: queryCouponsInfo
-
 ```js
-pay.querycouponsinfo({
+pay.queryCouponsInfo({
   coupon_id: '1565',
   openid: 'onqOjjrXT-776SpHnfexGm1_P7iE',
   stock_id: '58818'
 }, function(err, result) {})
 ```
 
-### sendredpack -- 发放普通红包
+### sendRedPack -- 发放普通红包
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3) 
 
-alias: sendRedPack
-
 ```js
-pay.sendredpack({
+pay.sendRedPack({
   mch_billno: '10000098201411111234567890',
   send_name: '天虹百货',
   re_openid: 'oxTWIuGaIt6gTKsQRLau2M0yL16E',
@@ -411,14 +396,12 @@ pay.sendredpack({
 }, function(err, result) {})
 ```
 
-### sendgroupredpack -- 发放裂变红包
+### sendGroupRedPack -- 发放裂变红包
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4)
 
-alias: sendGroupRedPack
-
 ```js
-pay.sendgroupredpack({
+pay.sendGroupredPack({
   mch_billno: '10000098201411111234567890',
   send_name: '天虹百货',
   re_openid: 'oxTWIuGaIt6gTKsQRLau2M0yL16E',
@@ -431,19 +414,17 @@ pay.sendgroupredpack({
 }, function(err, result) {})
 ```
 
-### gethbinfo -- 查询红包记录
+### getHbInfo -- 查询红包记录
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5)
 
-alias: getHbInfo
-
 ```js
-pay.gethbinfo({
+pay.getHbInfo({
   mch_billno: '10000098201411111234567890'
 }, function(err, result) {})
 
 // 或者直接传递 mch_billno 字符串
-pay.gethbinfo('10000098201411111234567890', function(err, result) {})
+pay.getHbInfo('10000098201411111234567890', function(err, result) {})
 ```
 
 ### transfers -- 企业付款到零钱
@@ -461,57 +442,49 @@ pay.transfers({
 }, function(err, result) {})
 ```
 
-### gettransferinfo -- 查询企业付款到零钱
+### getTransferInfo -- 查询企业付款到零钱
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3)
 
-alias: getTransferInfo
-
 ```js
-pay.gettransferinfo({
+pay.getTransferInfo({
   partner_trade_no: '10000098201411111234567890'
 }, function(err, result) {})
 
 // 或者直接传递 partner_trade_no 字符串
-pay.gettransferinfo('10000098201411111234567890', function(err, result) {})
+pay.getTransferInfo('10000098201411111234567890', function(err, result) {})
 ```
 
-### getpublickey -- 获取RSA加密公钥
+### getPublicKey -- 获取RSA加密公钥
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_7&index=4)
 
-alias: getPublicKey
-
 ```js
-pay.getpublickey(function(err, result) {})
+pay.getPublicKey(function(err, result) {})
 ```
 
-### query_bank -- 查询企业付款银行卡
+### queryBank -- 查询企业付款银行卡
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3)
 
-alias: querybank, queryBank
-
 ```js
-pay.query_bank({
+pay.queryBank({
   partner_trade_no: '1212121221227'
 }, function(err, result) {})
 
 // 或者直接传递 partner_trade_no 字符串
-pay.query_bank('1212121221227', function(err, result) {})
+pay.queryBank('1212121221227', function(err, result) {})
 ```
 
-### pay_bank -- 企业付款银行卡
+### payBank -- 企业付款银行卡
 
 [微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2)
-
-alias: paybank, payBank
 
 该接口使用前需要调用 `pay.setBankRSA` 设置 rsa 证书， 证书通过接口 `pay.getpublickey` 获得。
 
 ```js
 pay.setBankRSA(rsa);
-pay.pay_bank({
+pay.payBank({
   partner_trade_no: '1212121221227',
   enc_bank_no: '6225760017946512',
   enc_true_name: '王小王',
@@ -595,7 +568,7 @@ Pay.helper.aes256Decode(key, data)  === '{"a":3}'
 在回调的Error上的以name做了区分，有需要可以拿来做判断
 
 ```js
-pay.unifiedorder({
+pay.unifiedOrder({
   body: '腾讯充值中心-QQ会员充值',
   out_trade_no: '1217752501201407033233368018',
   total_fee: 888,
