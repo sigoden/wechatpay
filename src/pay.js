@@ -244,7 +244,7 @@ Pay.prototype.tidyOrderResult = function(options, sign_type) {
       appId: this.appid,
       timeStamp: parseInt(new Date().getTime() / 1000),
       nonceStr: helper.nonceStr(),
-      package: "prepare_id=" + checkedResult.prepare_id,
+      package: "prepay_id=" + checkedResult.prepay_id,
       signType: sign_type
     };
     result.paySign = helper.sign(sign_type, result, this.key);
@@ -254,7 +254,7 @@ Pay.prototype.tidyOrderResult = function(options, sign_type) {
     var result = {
       appid: this.appid,
       partnerid: this.mch_id,
-      prepareid: checkedResult.prepare_id,
+      prepayid: checkedResult.prepay_id,
       package: "Sign=WXPay",
       noncestr: helper.nonceStr(),
       timestamp: parseInt(new Date().getTime() / 1000)

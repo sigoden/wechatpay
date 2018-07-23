@@ -353,7 +353,7 @@ describe("tidyOrderResult", function() {
     var value = {
       return_code: "SUCCESS",
       result_code: "SUCCESS",
-      prepare_id: "wx201411101639507cbf6ffd8b0779950874",
+      prepay_id: "wx201411101639507cbf6ffd8b0779950874",
       trade_type: "NATIVE",
       code_url: "weixin://wxpay/s/An4baqw"
     };
@@ -365,7 +365,7 @@ describe("tidyOrderResult", function() {
     var value = {
       return_code: "SUCCESS",
       result_code: "SUCCESS",
-      prepare_id: "wx201411101639507cbf6ffd8b0779950874",
+      prepay_id: "wx201411101639507cbf6ffd8b0779950874",
       trade_type: "JSAPI"
     };
     var result = pay.tidyOrderResult(value);
@@ -383,7 +383,7 @@ describe("tidyOrderResult", function() {
     var value = {
       return_code: "SUCCESS",
       result_code: "SUCCESS",
-      prepare_id: "wx201411101639507cbf6ffd8b0779950874",
+      prepay_id: "wx201411101639507cbf6ffd8b0779950874",
       trade_type: "MWEB",
       mweb_url:
         "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx2016121516420242444321ca0631331346&package=1405458241"
@@ -396,14 +396,14 @@ describe("tidyOrderResult", function() {
     var value = {
       return_code: "SUCCESS",
       result_code: "SUCCESS",
-      prepare_id: "wx201411101639507cbf6ffd8b0779950874",
+      prepay_id: "wx201411101639507cbf6ffd8b0779950874",
       trade_type: "APP"
     };
     var result = pay.tidyOrderResult(value);
     expect(Object.keys(result)).toEqual([
       "appid",
       "partnerid",
-      "prepareid",
+      "prepayid",
       "package",
       "noncestr",
       "timestamp",

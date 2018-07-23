@@ -110,7 +110,7 @@ pay.unifiedorder({
   appId: 'wxb80e5bddb2d804f3',
   timeStamp: 1526470270,
   nonceStr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
-  package: 'prepare_id=wx201411101639507cbf6ffd8b0779950874',
+  package: 'prepay_id=wx201411101639507cbf6ffd8b0779950874',
   signType: 'MD5',
   paySign: 'B8EE9BEF040D445275AE937CB93DAA8B'
 }
@@ -156,7 +156,7 @@ pay.unifiedorder({
 { 
   appid: 'wxb80e5bddb2d804f3',
   partnerid: '1424712502',
-  prepareid: 'wx201411101639507cbf6ffd8b0779950874',
+  prepayid: 'wx201411101639507cbf6ffd8b0779950874',
   package: 'Sign=WXPay',
   noncestr: '6LSB219WG129E3OLD9JOT1QA5RSOTBHA',
   timestamp: 1526470270,
