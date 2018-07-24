@@ -11,7 +11,7 @@ Pay.helper.nonceStr = jest.fn(function() {
   return '6LSB219WG129E3OLD9JOT1QA5RSOTBHA';
 });
 
-var myDate = new Date(2018, 7, 11);
+var myDate = new Date('2018-08-10T16:00:00.000Z');
 var RealDate = Date;
 global.Date = jest.fn(function() {
   var props = Array.prototype.slice(arguments);
