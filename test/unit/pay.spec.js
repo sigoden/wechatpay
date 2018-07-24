@@ -11,6 +11,17 @@ Pay.helper.nonceStr = jest.fn(function() {
   return '6LSB219WG129E3OLD9JOT1QA5RSOTBHA';
 });
 
+var myDate = new Date(2018, 7, 11);
+var RealDate = Date;
+global.Date = jest.fn(function() {
+  var props = Array.prototype.slice(arguments);
+  if (props.length > 0) {
+    new (Function.prototype.bind.apply(Date, [null].concat(props)))();
+  }
+  return new RealDate(myDate);
+});
+Object.assign(Date, RealDate);
+
 beforeEach(function() {
   jest.clearAllMocks();
 });
@@ -52,6 +63,14 @@ describe('Pay', function() {
     expect(pay.getPublicKey).toBeDefined();
     expect(pay.queryBank).toBeDefined();
     expect(pay.payBank).toBeDefined();
+    expect(pay.entrustWeb).toBeDefined();
+    expect(pay.minaEntrustWeb).toBeDefined();
+    expect(pay.h5EntrustWeb).toBeDefined();
+    expect(pay.contractOrder).toBeDefined();
+    expect(pay.queryContract).toBeDefined();
+    expect(pay.papPayApply).toBeDefined();
+    expect(pay.deleteContract).toBeDefined();
+    expect(pay.papOrderQuery).toBeDefined();
   });
 });
 
@@ -1181,6 +1200,399 @@ describe('payBank', function() {
     pay.setBankRSA(rsa);
     pay.payBank(options, function(err) {
       expect(err.message).toMatch('miss fields partner_trade_no,enc_bank_no,enc_true_name,bank_code,amount');
+      done();
+    });
+  });
+});
+
+describe('entrustWeb', function() {
+  test('full options', function() {
+    var pay = initPay();
+    var url = pay.entrustWeb({
+      plan_id: '12535',
+      contract_code: '100000',
+      request_serial: 1000,
+      contract_display_account: '微信代扣',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify',
+      clientip: '119.145.83.6',
+      deviceid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      mobile: '18933432355',
+      email: 'aobama@whitehouse.com',
+      qq: '100243',
+      openid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      creid: '110102199701011000',
+      outerid: '115324'
+    });
+    expect(url).toMatch(
+      'https://api.mch.weixin.qq.com/papay/entrustweb?plan_id=12535&contract_code=100000&request_serial=1000&contract_display_account=%E5%BE%AE%E4%BF%A1%E4%BB%A3%E6%89%A3&notify_url=https%253A%252F%252Fexample.com%252Fwechatpay%252Fpapcontract%252Fnotify&clientip=119.145.83.6&deviceid=baf04e6bbbd06f7b1a197d18ed53b7f1&mobile=18933432355&email=aobama%40whitehouse.com&qq=100243&openid=baf04e6bbbd06f7b1a197d18ed53b7f1&creid=110102199701011000&outerid=115324&appid=wxb80e5bddb2d804f3&mch_id=1424712502&version=1.0&timestamp=1533916800&sign=2CFAC489573744BF74AD2F70C7454A00'
+    );
+  });
+  test('mini options', function() {
+    var pay = initPay();
+    var url = pay.entrustWeb({
+      plan_id: '12535',
+      contract_code: '100000',
+      request_serial: 1000,
+      contract_display_account: '微信代扣',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify'
+    });
+    expect(url).toBe(
+      'https://api.mch.weixin.qq.com/papay/entrustweb?plan_id=12535&contract_code=100000&request_serial=1000&contract_display_account=%E5%BE%AE%E4%BF%A1%E4%BB%A3%E6%89%A3&notify_url=https%253A%252F%252Fexample.com%252Fwechatpay%252Fpapcontract%252Fnotify&appid=wxb80e5bddb2d804f3&mch_id=1424712502&version=1.0&timestamp=1533916800&sign=4212E08D1566D5D5F1C6EE9B220B511F'
+    );
+  });
+  test('miss fields', function() {
+    var pay = initPay();
+    expect(() => pay.entrustWeb({})).toThrow(
+      'miss fields plan_id,contract_code,request_serial,contract_display_account,notify_url'
+    );
+  });
+});
+
+describe('minaEntrustWeb', function() {
+  test('full options', function() {
+    var pay = initPay();
+    var extraData = pay.minaEntrustWeb({
+      plan_id: '12535',
+      contract_code: '100000',
+      request_serial: 1000,
+      contract_display_account: '微信代扣',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify',
+      clientip: '119.145.83.6',
+      deviceid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      mobile: '18933432355',
+      email: 'aobama@whitehouse.com',
+      qq: '100243',
+      openid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      creid: '110102199701011000',
+      outerid: '115324'
+    });
+    expect(extraData).toEqual({
+      appid: 'wxb80e5bddb2d804f3',
+      clientip: '119.145.83.6',
+      contract_code: '100000',
+      contract_display_account: '微信代扣',
+      creid: '110102199701011000',
+      deviceid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      email: 'aobama@whitehouse.com',
+      mch_id: '1424712502',
+      mobile: '18933432355',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify',
+      openid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+      outerid: '115324',
+      plan_id: '12535',
+      qq: '100243',
+      request_serial: 1000,
+      sign: 'A20F18B5EB9A2DC43E8CEE16813A10B8',
+      timestamp: 1533916800,
+      version: '1.0'
+    });
+  });
+  test('mini options', function() {
+    var pay = initPay();
+    var extraData = pay.minaEntrustWeb({
+      plan_id: '12535',
+      contract_code: '100000',
+      request_serial: 1000,
+      contract_display_account: '微信代扣',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify'
+    });
+    expect(extraData).toEqual({
+      appid: 'wxb80e5bddb2d804f3',
+      contract_code: '100000',
+      contract_display_account: '微信代扣',
+      mch_id: '1424712502',
+      notify_url: 'https://example.com/wechatpay/papcontract/notify',
+      plan_id: '12535',
+      request_serial: 1000,
+      sign: 'A389030998CD32A856437D5B14219E1C',
+      timestamp: 1533916800,
+      version: '1.0'
+    });
+  });
+  test('miss fields', function() {
+    var pay = initPay();
+    expect(() => pay.entrustWeb({})).toThrow(
+      'miss fields plan_id,contract_code,request_serial,contract_display_account,notify_url'
+    );
+  });
+});
+
+describe('h5EntrustWeb', function() {
+  beforeAll(function() {
+    request.get = jest.fn((url, callback) => {
+      callback(null, null, {
+        url: url,
+        result_code: 'SUCCESS',
+        redirect_url:
+          'https://api.mch.weixin.qq.com/papay/readentrustwebtemplate?type=index&session_id=17d19a9aa7ce733d00ab921bd81ae3113f0983c6d51ffc43b1daee9aea37c3de&session_sign=041f839e5e60c828128c03f12da26641#/redirect'
+      });
+    });
+  });
+  afterAll(function() {
+    request.get.mockRestore();
+  });
+  test('full options', function(done) {
+    var pay = initPay();
+    pay.h5EntrustWeb(
+      {
+        plan_id: '12535',
+        contract_code: '100000',
+        request_serial: 1000,
+        contract_display_account: '微信代扣',
+        notify_url: 'https://example.com/wechatpay/papcontract/notify',
+        clientip: '119.145.83.6',
+        deviceid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+        mobile: '18933432355',
+        email: 'aobama@whitehouse.com',
+        qq: '100243',
+        openid: 'baf04e6bbbd06f7b1a197d18ed53b7f1',
+        creid: '110102199701011000',
+        outerid: '115324'
+      },
+      function(err, result) {
+        expect(err).toBeNull();
+        expect(result.url).toEqual(
+          'https://api.mch.weixin.qq.com/papay/entrustweb?plan_id=12535&contract_code=100000&request_serial=1000&contract_display_account=%E5%BE%AE%E4%BF%A1%E4%BB%A3%E6%89%A3&notify_url=https%3A%2F%2Fexample.com%2Fwechatpay%2Fpapcontract%2Fnotify&clientip=119.145.83.6&deviceid=baf04e6bbbd06f7b1a197d18ed53b7f1&mobile=18933432355&email=aobama%40whitehouse.com&qq=100243&openid=baf04e6bbbd06f7b1a197d18ed53b7f1&creid=110102199701011000&outerid=115324&appid=wxb80e5bddb2d804f3&mch_id=1424712502&version=1.0&timestamp=1533916800&sign=687EF567D6BCF5D4417409FB9487B73D04C8DAC6A5936BDC4C37688A98343CAC'
+        );
+        done();
+      }
+    );
+  });
+  test('mini options', function(done) {
+    var pay = initPay();
+    pay.h5EntrustWeb(
+      {
+        plan_id: '12535',
+        contract_code: '100000',
+        request_serial: 1000,
+        contract_display_account: '微信代扣',
+        notify_url: 'https://example.com/wechatpay/papcontract/notify',
+        clientip: '119.145.83.6'
+      },
+      done
+    );
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    pay.h5EntrustWeb({}, function(err) {
+      expect(err.message).toBe(
+        'miss fields plan_id,contract_code,request_serial,contract_display_account,notify_url,clientip'
+      );
+      done();
+    });
+  });
+});
+
+describe('contractOrder', function() {
+  test('full options', function(done) {
+    var pay = initPay();
+    pay.contractOrder(
+      {
+        trade_type: 'JSAPI', // 可选值 JSAPI,NATIVE,APP,MWEB
+        contract_mchid: '1223816102',
+        contract_appid: 'wx426a3015555a46be',
+        out_trade_no: '1217752501201407033233368018',
+        device_info: '013467007045764',
+        body: '腾讯充值中心-QQ会员充值',
+        detail: 'Ipad mini 16G 白色',
+        attach: '深圳分店',
+        notify_url: 'https://example.com/wechatpay/notify',
+        total_fee: 888,
+        spbill_create_ip: '8.8.8.8',
+        time_start: '20091227091010',
+        goods_tag: 'WXG',
+        product_id: '12235413214070356458058',
+        limit_pay: 'no_credit',
+        openid: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o',
+        plan_id: 12535,
+        contract_code: '100000',
+        request_serial: 1000,
+        contract_display_account: '微信代扣',
+        contract_notify_url: 'https://example.com/wechatpay/pap/notify'
+      },
+      function(err, result) {
+        expect(err).toBeNull();
+        var requestOptions = request.post.mock.calls[0][0];
+        expect(requestOptions.url).toBe('https://api.mch.weixin.qq.com/pay/contractorder');
+        done();
+      }
+    );
+  });
+  test('mini options', function(done) {
+    var pay = initPay();
+    pay.contractOrder(
+      {
+        trade_type: 'JSAPI', // 可选值 JSAPI,NATIVE,APP,MWEB
+        contract_mchid: '1223816102',
+        contract_appid: 'wx426a3015555a46be',
+        out_trade_no: '1217752501201407033233368018',
+        body: '腾讯充值中心-QQ会员充值',
+        notify_url: 'https://example.com/wechatpay/notify',
+        total_fee: 888,
+        spbill_create_ip: '8.8.8.8',
+        plan_id: 12535,
+        contract_code: '100000',
+        request_serial: 1000,
+        contract_display_account: '微信代扣',
+        contract_notify_url: 'https://example.com/wechatpay/pap/notify'
+      },
+      done
+    );
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    pay.contractOrder({ trade_type: 'JSAPI' }, function(err) {
+      expect(err.message).toBe(
+        'miss fields contract_mchid,contract_appid,out_trade_no,body,notify_url,total_fee,spbill_create_ip,plan_id,contract_code,request_serial,contract_display_account,contract_notify_url'
+      );
+      done();
+    });
+  });
+});
+
+describe('queryContract', function() {
+  test('string options', function(done) {
+    var pay = initPay();
+    var options = '120061098828009406';
+    pay.queryContract(options, function(err, body) {
+      if (err) return done(err);
+      var requestOptions = request.post.mock.calls[0][0];
+      expect(requestOptions.url).toBe('https://api.mch.weixin.qq.com/papay/querycontract');
+      done();
+    });
+  });
+  test('options contract_id', function(done) {
+    var pay = initPay();
+    var options = {
+      contract_id: '120061098828009406'
+    };
+    pay.queryContract(options, done);
+  });
+  test('options plain_id + contract_code', function(done) {
+    var pay = initPay();
+    var options = {
+      plan_id: 123,
+      contract_code: '1023658866'
+    };
+    pay.queryContract(options, done);
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    var options = {};
+    pay.queryContract(options, function(err) {
+      expect(err.message).toMatch('required contract_id or plan_id + contract_code');
+      done();
+    });
+  });
+});
+
+describe('papPayApply', function() {
+  test('full options', function(done) {
+    var pay = initPay();
+    pay.papPayApply(
+      {
+        body: '水电代扣',
+        detail: 'Ipad mini 16G 白色',
+        attach: '深圳分店',
+        out_trade_no: '1217752501201407033233368018',
+        total_fee: 888,
+        fee_type: 'CNY',
+        spbill_create_ip: '8.8.8.8',
+        goods_tag: 'WXG',
+        notify_url: 'https://example.com/wechatpay/pap/notify',
+        contract_id: 'Wx15463511252015071056489715'
+      },
+      function(err, result) {
+        expect(err).toBeNull();
+        var requestOptions = request.post.mock.calls[0][0];
+        expect(requestOptions.url).toBe('https://api.mch.weixin.qq.com/pay/pappayapply');
+        done();
+      }
+    );
+  });
+  test('mini options', function(done) {
+    var pay = initPay();
+    pay.papPayApply(
+      {
+        body: '水电代扣',
+        out_trade_no: '1217752501201407033233368018',
+        total_fee: 888,
+        spbill_create_ip: '8.8.8.8',
+        notify_url: 'https://example.com/wechatpay/pap/notify',
+        contract_id: 'Wx15463511252015071056489715'
+      },
+      done
+    );
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    pay.papPayApply({}, function(err) {
+      expect(err.message).toBe('miss fields body,out_trade_no,total_fee,spbill_create_ip,notify_url,contract_id');
+      done();
+    });
+  });
+});
+
+describe('deleteContract', function() {
+  test('options contract_id', function(done) {
+    var pay = initPay();
+    var options = {
+      contract_id: '120061098828009406',
+      contract_termination_remark: '解约原因'
+    };
+    pay.deleteContract(options, done);
+  });
+  test('options plain_id + contract_code', function(done) {
+    var pay = initPay();
+    var options = {
+      plan_id: 123,
+      contract_code: '1023658866',
+      contract_termination_remark: '解约原因'
+    };
+    pay.deleteContract(options, done);
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    var options = {};
+    pay.deleteContract(options, function(err) {
+      expect(err.message).toMatch('required contract_id or plan_id + contract_code');
+      done();
+    });
+  });
+});
+
+describe('papOrderQuery', function() {
+  test('string options', function(done) {
+    var pay = initPay();
+    var options = '120061098828009406';
+    pay.papOrderQuery(options, function(err, body) {
+      if (err) return done(err);
+      var requestOptions = request.post.mock.calls[0][0];
+      expect(Pay.helper.sign(pay.sign_type, body, pay.key)).toEqual(body.sign);
+      expect(requestOptions.url).toBe('https://api.mch.weixin.qq.com/pay/paporderquery');
+      expect(requestOptions.agentOptions).toBeUndefined();
+      done();
+    });
+  });
+  test('options out_trade_no', function(done) {
+    var pay = initPay();
+    var options = {
+      out_trade_no: '120061098828009406'
+    };
+    pay.papOrderQuery(options, done);
+  });
+  test('options transaction_id', function(done) {
+    var pay = initPay();
+    var options = {
+      transaction_id: '120061098828009406'
+    };
+    pay.papOrderQuery(options, done);
+  });
+  test('miss fields', function(done) {
+    var pay = initPay();
+    var options = {};
+    pay.papOrderQuery(options, function(err) {
+      expect(err.message).toMatch('required transaction_id or out_trade_no');
       done();
     });
   });

@@ -2,6 +2,7 @@
 
 var merge = require('merge');
 var request = require('request');
+var qs = require('querystring');
 
 var helper = require('./helper');
 
@@ -35,7 +36,14 @@ var PAY_URLS = {
   transfers: '/mmpaymkttransfers/promotion/transfers', // 企业付款到零钱
   gettransferinfo: '/mmpaymkttransfers/gettransferinfo', // 查询企业付款到零钱
   pay_bank: '/mmpaysptrans/pay_bank', // 企业付款到银行卡
-  query_bank: '/mmpaysptrans/query_bank' // 查询企业付款到银行卡
+  query_bank: '/mmpaysptrans/query_bank', // 查询企业付款到银行卡
+  entrustweb: '/papay/entrustweb', // 公众号、APP纯签约
+  h5entrustweb: '/papay/entrustweb', // H5纯签约
+  contractorder: '/pay/contractorder', // 支付中纯签约
+  querycontract: '/papay/querycontract', // 查询签约关系
+  pappayapply: '/pay/pappayapply', // 申请代扣
+  deletecontract: '/papay/deletecontract', // 申请解约
+  paporderquery: '/pay/paporderquery' // 查询代扣订单
 };
 
 var GET_PUBLIC_KEY_URL = 'https://fraud.mch.weixin.qq.com/risk/getpublickey';
@@ -627,14 +635,181 @@ Pay.prototype.payBank = function(options, callback) {
 };
 
 /**
+ * 公众号、APP纯签约
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_1&index=1}
+ */
+Pay.prototype.entrustWeb = function(options) {
+  var requireFields = ['plan_id', 'contract_code', 'request_serial', 'contract_display_account', 'notify_url'];
+  this.mustHaveFields(options, requireFields);
+  options.notify_url = encodeURIComponent(options.notify_url);
+  this.createPapayEntrustOption(options);
+  return this.createPapayEntrustLink('entrustweb', options);
+};
+
+/**
+ * 小程序纯签约
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_14&index=2}
+ */
+Pay.prototype.minaEntrustWeb = function(options) {
+  var requireFields = ['plan_id', 'contract_code', 'request_serial', 'contract_display_account', 'notify_url'];
+  this.mustHaveFields(options, requireFields);
+  this.createPapayEntrustOption(options);
+  return options;
+};
+
+/**
+ * H5纯签约
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_14&index=2}
+ */
+Pay.prototype.h5EntrustWeb = function(options, callback) {
+  var requireFields = [
+    'plan_id',
+    'contract_code',
+    'request_serial',
+    'contract_display_account',
+    'notify_url',
+    'clientip'
+  ];
+  try {
+    this.mustHaveFields(options, requireFields);
+  } catch (err) {
+    return callback(err);
+  }
+  this.createPapayEntrustOption(options, 'HMAC-SHA256');
+  let url = this.createPapayEntrustLink('h5entrustweb', options);
+  request.get(url, function(err, _, result) {
+    if (err) return callback(helper.wrapError(err, 'RequestError'));
+    var checkedResult = verifyResult(result);
+    if (checkedResult instanceof Error) {
+      return callback(checkedResult);
+    }
+    return callback(null, checkedResult);
+  });
+};
+
+/**
+ * 支付中签约
+ *
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_13&index=4}
+ */
+Pay.prototype.contractOrder = function(options, callback) {
+  var tradeType = options.trade_type;
+  if (TRADE_TYPES.indexOf(tradeType) === -1) {
+    var err = helper.createError('ArgumentError', 'unsupported trade_type ' + tradeType, { invalid: ['trade_type'] });
+    return callback(err);
+  }
+  var requireFields = [
+    'contract_mchid',
+    'contract_appid',
+    'out_trade_no',
+    'body',
+    'notify_url',
+    'total_fee',
+    'spbill_create_ip',
+    'plan_id',
+    'contract_code',
+    'request_serial',
+    'contract_display_account',
+    'contract_notify_url'
+  ];
+
+  try {
+    this.mustHaveFields(options, requireFields);
+  } catch (err) {
+    return callback(err);
+  }
+  options.nonce_str = helper.nonceStr();
+  var requestOptions = this.createRequestOptions('contractorder', options);
+  return this.request(requestOptions, callback);
+};
+
+/**
+ * 查询签约关系
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_2&index=6}
+ */
+Pay.prototype.queryContract = function(options, callback) {
+  if (typeof options === 'string') {
+    options = { contract_id: options };
+  }
+  if (!options['contract_id'] && !(options['plan_id'] && options['contract_code'])) {
+    var err = helper.createError('ArgumentError', 'required contract_id or plan_id + contract_code');
+    return callback(err);
+  }
+  options.version = '1.0';
+  return this.request(
+    {
+      url: this.getUrl('querycontract'),
+      body: options
+    },
+    callback
+  );
+};
+
+/**
+ * 申请扣款
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_3&index=7}
+ */
+Pay.prototype.papPayApply = function(options, callback) {
+  var requireFields = ['body', 'out_trade_no', 'total_fee', 'spbill_create_ip', 'notify_url', 'contract_id'];
+  try {
+    this.mustHaveFields(options, requireFields);
+  } catch (err) {
+    return callback(err);
+  }
+  options.trade_type = 'PAP';
+  var requestOptions = this.createRequestOptions('pappayapply', options);
+  return this.request(requestOptions, callback);
+};
+
+/**
+ * 申请解约
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_4&index=8}
+ */
+Pay.prototype.deleteContract = function(options, callback) {
+  if (!options['contract_id'] && !(options['plan_id'] && options['contract_code'])) {
+    var err = helper.createError('ArgumentError', 'required contract_id or plan_id + contract_code');
+    return callback(err);
+  }
+  var requireFields = ['contract_termination_remark'];
+  try {
+    this.mustHaveFields(options, requireFields);
+  } catch (err) {
+    return callback(err);
+  }
+  options.version = '1.0';
+  return this.request(
+    {
+      url: this.getUrl('deletecontract'),
+      body: options
+    },
+    callback
+  );
+};
+
+/**
+ * 查询代扣支付订单
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_10&index=13}
+ */
+Pay.prototype.papOrderQuery = function(options, callback) {
+  if (typeof options === 'string') {
+    options = { out_trade_no: options };
+  }
+  if (!options['transaction_id'] && !options['out_trade_no']) {
+    var err = helper.createError('ArgumentError', 'required transaction_id or out_trade_no');
+    return callback(err);
+  }
+  var requestOptions = this.createRequestOptions('paporderquery', options);
+  return this.request(requestOptions, callback);
+};
+
+/**
  * 发送请求
  */
 Pay.prototype.request = function(options, callback) {
   var reqBody = options.body;
   reqBody.sign = helper.sign(reqBody.sign_type || this.sign_type, reqBody, this.key);
   options.body = helper.toXML(reqBody);
-
-  return request.post(options, function(err, response, body) {
+  request.post(options, function(err, _, body) {
     if (err) return callback(helper.wrapError(err, 'RequestError'));
     return helper.fromXML(body, function(err, result) {
       if (err) return callback(helper.wrapError(err, 'XMLParseError'));
@@ -682,6 +857,25 @@ Pay.prototype.createRequestOptions = function(method, options) {
   return result;
 };
 
+/**
+ * 补全代扣签约请求数据
+ */
+Pay.prototype.createPapayEntrustOption = function(options, encrypt) {
+  options.appid = this.appid;
+  options.mch_id = this.mch_id;
+  options.version = '1.0';
+  options.timestamp = parseInt(new Date().getTime() / 1000);
+  options.sign = helper.sign(encrypt || 'MD5', options, this.key);
+};
+
+/**
+ * 生成代扣签约请求链接
+ */
+Pay.prototype.createPapayEntrustLink = function(method, options) {
+  let url = this.getUrl(method);
+  return url + '?' + qs.stringify(options);
+};
+
 function verifyResult(result) {
   if (result.return_code === 'FAIL') {
     return helper.createError('ProtocolError', result.return_msg, result);
@@ -719,7 +913,13 @@ function verifyResult(result) {
   'getTransferInfo',
   'getPublicKey',
   'queryBank',
-  'payBank'
+  'payBank',
+  'h5EntrustWeb',
+  'contractOrder',
+  'queryContract',
+  'papPayApply',
+  'deleteContract',
+  'papOrderQuery'
 ].forEach(function(key) {
   Pay.prototype[key] = universalify.fromCallback(Pay.prototype[key]);
 });
