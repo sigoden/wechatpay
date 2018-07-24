@@ -85,7 +85,7 @@ pay.unifiedOrder({
 
 ### microPay -- 提交刷卡支付
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1)
 
 ```js
 pay.microPay({
@@ -100,7 +100,7 @@ pay.microPay({
 
 ### reverse -- 撤销订单(仅限刷卡支付) 
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3)
 
 ```js
 pay.reverse({
@@ -114,7 +114,7 @@ pay.reverse('1217752501201407033233368018', function(err, result) {})
 
 ### shortUrl -- 转换短链接(仅限刷卡支付)
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_9&index=9)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_9&index=9)
 
 ```
 pay.shortUrl({
@@ -127,7 +127,7 @@ pay.shortUrl('weixin://wxpay/bizpayurl?sign=XX&appid=XX&mch_id=XX&product_id=XX&
 
 ### authCodeToOpenId -- 授权码查询openid
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10)
 
 ```js
 pay.authCodeToOpenid({
@@ -242,7 +242,7 @@ pay.unifiedOrder({
 
 ### orderQuery -- 查询订单
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_2)
 
 ```js
 pay.orderQuery({
@@ -255,7 +255,7 @@ pay.orderQuery('120061098828009406', function(err, result) {})
 
 ### closeOrder -- 关闭订单
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3)
 
 ```js
 pay.closeOrder({
@@ -268,7 +268,7 @@ pay.closeOrder('120061098828009406', function(err, result) {})
 
 ### refund -- 申请退款
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4)
 
 ```js
 pay.refund({
@@ -281,7 +281,7 @@ pay.refund({
 
 ### refundQuery -- 查询退款
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_5)
 
 ```js
 pay.refundQuery({
@@ -294,7 +294,7 @@ pay.refundQuery('120061098828009406', function(err, result) {})
 
 ### downloadBill -- 下载对账单
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_6)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_6)
 
 ```js
 pay.downloadBill({
@@ -305,7 +305,7 @@ pay.downloadBill({
 
 ### downloadFundFlow  -- 下载资金账单
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7)
 
 ```js
 pay.downloadFundFlow({
@@ -316,7 +316,7 @@ pay.downloadFundFlow({
 
 ### report -- 交易保障
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9)
 
 ```js
 pay.report({
@@ -330,7 +330,7 @@ pay.report({
 
 ### batchQueryComment -- 拉取订单评价数据
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_17&index=11)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_17&index=11)
 
 ```js
 pay.batchQueryComment({
@@ -342,7 +342,7 @@ pay.batchQueryComment({
 
 ### sendCoupon -- 发放代金券
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4)
 
 ```js
 pay.sendCoupon({
@@ -355,7 +355,7 @@ pay.sendCoupon({
 
 ### queryCouponStock -- 查询代金券批次
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_4&index=5)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_4&index=5)
 
 ```js
 pay.queryCouponStock({
@@ -368,7 +368,7 @@ pay.queryCouponStock('1757', function(err, result) {})
 
 ### queryCouponsInfo -- 查询代金券信息
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6)
 
 ```js
 pay.queryCouponsInfo({
@@ -380,7 +380,7 @@ pay.queryCouponsInfo({
 
 ### sendRedPack -- 发放普通红包
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3) 
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3) 
 
 ```js
 pay.sendRedPack({
@@ -398,7 +398,7 @@ pay.sendRedPack({
 
 ### sendGroupRedPack -- 发放裂变红包
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4)
 
 ```js
 pay.sendGroupredPack({
@@ -416,7 +416,7 @@ pay.sendGroupredPack({
 
 ### getHbInfo -- 查询红包记录
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5)
 
 ```js
 pay.getHbInfo({
@@ -429,7 +429,7 @@ pay.getHbInfo('10000098201411111234567890', function(err, result) {})
 
 ### transfers -- 企业付款到零钱
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2)
 
 ```js
 pay.transfers({
@@ -444,7 +444,7 @@ pay.transfers({
 
 ### getTransferInfo -- 查询企业付款到零钱
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3)
 
 ```js
 pay.getTransferInfo({
@@ -457,7 +457,7 @@ pay.getTransferInfo('10000098201411111234567890', function(err, result) {})
 
 ### getPublicKey -- 获取RSA加密公钥
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_7&index=4)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_7&index=4)
 
 ```js
 pay.getPublicKey(function(err, result) {})
@@ -465,7 +465,7 @@ pay.getPublicKey(function(err, result) {})
 
 ### queryBank -- 查询企业付款银行卡
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3)
 
 ```js
 pay.queryBank({
@@ -478,7 +478,7 @@ pay.queryBank('1212121221227', function(err, result) {})
 
 ### payBank -- 企业付款银行卡
 
-[微信文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2)
+[weixin](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2)
 
 该接口使用前需要调用 `pay.setBankRSA` 设置 rsa 证书， 证书通过接口 `pay.getpublickey` 获得。
 
