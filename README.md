@@ -59,7 +59,7 @@
 ## 开始使用
 
 ```js
-var Pay = require('@sigodenh/wechatpay');
+var Pay = require('@sigodenjs/wechatpay');
 var pfxContent = fs.readFileSync("<location-of-your-apiclient-cert.p12>")
 var pay = new Pay(appid, mch_id, key, pfxContent);
 
