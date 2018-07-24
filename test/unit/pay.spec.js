@@ -1448,6 +1448,13 @@ describe('contractOrder', function() {
       done();
     });
   });
+  test('trade_type', function(done) {
+    var pay = initPay();
+    pay.contractOrder({ trade_type: 'JAPI' }, function(err) {
+      expect(err.message).toBe('unsupported trade_type JAPI');
+      done();
+    });
+  });
 });
 
 describe('queryContract', function() {
@@ -1556,6 +1563,14 @@ describe('deleteContract', function() {
     var options = {};
     pay.deleteContract(options, function(err) {
       expect(err.message).toMatch('required contract_id or plan_id + contract_code');
+      done();
+    });
+  });
+  test('miss fileds contract_termination_remark', function(done) {
+    var pay = initPay();
+    var options = { contract_id: '120061098828009406' };
+    pay.deleteContract(options, function(err) {
+      expect(err.message).toMatch('miss fields contract_termination_remark');
       done();
     });
   });

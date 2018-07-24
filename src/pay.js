@@ -678,12 +678,7 @@ Pay.prototype.h5EntrustWeb = function(options, callback) {
   this.createPapayEntrustOption(options, 'HMAC-SHA256');
   let url = this.createPapayEntrustLink('h5entrustweb', options);
   request.get(url, function(err, _, result) {
-    if (err) return callback(helper.wrapError(err, 'RequestError'));
-    var checkedResult = verifyResult(result);
-    if (checkedResult instanceof Error) {
-      return callback(checkedResult);
-    }
-    return callback(null, checkedResult);
+    wechatResult(err, result, callback);
   });
 };
 
@@ -812,12 +807,7 @@ Pay.prototype.request = function(options, callback) {
   request.post(options, function(err, _, body) {
     if (err) return callback(helper.wrapError(err, 'RequestError'));
     return helper.fromXML(body, function(err, result) {
-      if (err) return callback(helper.wrapError(err, 'XMLParseError'));
-      var checkedResult = verifyResult(result);
-      if (checkedResult instanceof Error) {
-        return callback(checkedResult);
-      }
-      return callback(null, checkedResult);
+      wechatResult(err, result, callback);
     });
   });
 };
@@ -884,6 +874,15 @@ function verifyResult(result) {
     return helper.createError('BussinessError', result.err_code_des, result);
   }
   return result;
+}
+
+function wechatResult(err, result, callback) {
+  if (err) return callback(helper.wrapError(err, 'RequestError'));
+  var checkedResult = verifyResult(result);
+  if (checkedResult instanceof Error) {
+    return callback(checkedResult);
+  }
+  return callback(null, checkedResult);
 }
 
 /**
