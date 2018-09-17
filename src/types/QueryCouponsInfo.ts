@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 查询代金券信息选项
+ * 查询代金券信息
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface QueryCouponsInfoOptions {
   /**
    * 代金券id
@@ -54,11 +55,7 @@ export interface QueryCouponsInfoOptions {
   type?: string;
 }
 
-/**
- * 查询代金券信息 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6}
- */
-export interface QueryCouponsInfoReturn extends BaseReturn, BusinessReturn {
+interface QueryCouponsInfoResponseCommon {
   /**
    * 公众账号ID
    * @description 微信为发券方商户分配的公众账号ID，接口传入的所有appid应该为公众号的appid（在mp.weixin.qq.com申请的），不能为APP的appid（在open.weixin.qq.com申请的）。
@@ -103,11 +100,10 @@ export interface QueryCouponsInfoReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 查询代金券信息  `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6}
- */
-export interface QueryCouponsInfoReturnSuccess extends QueryCouponsInfoReturn {
+interface QueryCouponsInfoResponseFail extends QueryCouponsInfoResponseCommon {}
+
+interface QueryCouponsInfoResponseSuccess
+  extends QueryCouponsInfoResponseCommon {
   /**
    * 批次ID
    * @description 代金券批次Id
@@ -184,9 +180,5 @@ export interface QueryCouponsInfoReturnSuccess extends QueryCouponsInfoReturn {
   is_partial_use?: string;
 }
 
-/**
- * 查询代金券信息返回值
- */
-export type QueryCouponsInfoResult =
-  | QueryCouponsInfoReturn
-  | QueryCouponsInfoReturnSuccess;
+export type QueryCouponsInfoSuccess = SuccessT<QueryCouponsInfoResponseSuccess>;
+export type QueryCouponsInfoFail = FailT<QueryCouponsInfoResponseFail>;

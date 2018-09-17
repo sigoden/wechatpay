@@ -1,6 +1,5 @@
-import * as errors from "../errors";
+import { fetch } from "../fetch";
 import * as types from "../types";
-import { fetch } from "../utils";
 import Base from "./Base";
 
 const SEND_RED_PACK_BASE = "/mmpaymkttransfers/sendredpack";
@@ -20,15 +19,11 @@ export class RedPack extends Base {
     const url = this.completeURL(SEND_RED_PACK_BASE);
     const extra = await this.createFetchOptions(url, true);
     extra.mapAppId = "wxappid";
-    return fetch<types.SendRedPackOptions, types.SendRedPackResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.SendRedPackReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.SendRedPackOptions,
+      types.SendRedPackSuccess,
+      types.SendRedPackFail
+    >(options, extra);
   }
 
   /**
@@ -39,15 +34,11 @@ export class RedPack extends Base {
     const url = this.completeURL(SEND_GROUP_RED_PACK_BASE);
     const extra = await this.createFetchOptions(url, true);
     extra.mapAppId = "wxappid";
-    return fetch<types.SendGroupRedPackOptions, types.SendGroupRedPackResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.SendGroupRedPackReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.SendGroupRedPackOptions,
+      types.SendGroupRedPackSuccess,
+      types.SendGroupRedPackFail
+    >(options, extra);
   }
 
   /**
@@ -57,14 +48,10 @@ export class RedPack extends Base {
   public async getHbInfo(options: types.GetHbInfoOptions) {
     const url = this.completeURL(GET_HB_INFO_BASE);
     const extra = await this.createFetchOptions(url, true);
-    return fetch<types.GetHbInfoOptions, types.GetHbInfoResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.GetHbInfoReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.GetHbInfoOptions,
+      types.GetHbInfoSuccess,
+      types.GetHbInfoFail
+    >(options, extra);
   }
 }

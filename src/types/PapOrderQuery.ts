@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 查询订单选项
+ * 查询订单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_10&index=13}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface PapOrderQueryOptions {
   /**
    * 微信订单号
@@ -21,11 +22,7 @@ export interface PapOrderQueryOptions {
   out_trade_no?: string;
 }
 
-/**
- * 查询订单 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_10&index=13}
- */
-export interface PapOrderQueryReturn extends BaseReturn, BusinessReturn {
+interface PapOrderQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -56,11 +53,9 @@ export interface PapOrderQueryReturn extends BaseReturn, BusinessReturn {
   sign?: string;
 }
 
-/**
- * 查询订单 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_10&index=13}
- */
-export interface PapOrderQueryReturnSuccess extends PapOrderQueryReturn {
+interface PapOrderQueryResponseFail extends PapOrderQueryResponseCommon {}
+
+interface PapOrderQueryResponseSuccess extends PapOrderQueryResponseCommon {
   /**
    * 设备号
    * @description undefined
@@ -203,9 +198,5 @@ export interface PapOrderQueryReturnSuccess extends PapOrderQueryReturn {
   contract_id: string;
 }
 
-/**
- * 查询订单返回值
- */
-export type PapOrderQueryResult =
-  | PapOrderQueryReturn
-  | PapOrderQueryReturnSuccess;
+export type PapOrderQuerySuccess = SuccessT<PapOrderQueryResponseSuccess>;
+export type PapOrderQueryFail = FailT<PapOrderQueryResponseFail>;

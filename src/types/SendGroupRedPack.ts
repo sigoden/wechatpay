@@ -1,9 +1,9 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 发放裂变红包选项
+ * 发放裂变红包
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4}
  */
+import { FailT, SuccessT } from "./Base";
+
 export interface SendGroupRedPackOptions {
   /**
    * 商户订单号
@@ -105,17 +105,11 @@ export interface SendGroupRedPackOptions {
   consume_mch_id?: string;
 }
 
-/**
- * 发放裂变红包 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4}
- */
-export interface SendGroupRedPackReturn extends BaseReturn, BusinessReturn {}
+interface SendGroupRedPackResponseCommon {}
 
-/**
- * 发放裂变红包 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4}
- */
-export interface SendGroupRedPackReturnSuccess extends SendGroupRedPackReturn {
+interface SendGroupRedPackResponseFail extends SendGroupRedPackResponseCommon {}
+
+interface SendGroupRedPackResponseSuccess extends SendGroupRedPackResponseCommon {
   /**
    * 商户订单号
    * @description 商户订单号（每个订单号必须唯一）。组成： mch_id+yyyymmdd+10位一天内不能重复的数字
@@ -160,9 +154,5 @@ export interface SendGroupRedPackReturnSuccess extends SendGroupRedPackReturn {
   send_listid: string;
 }
 
-/**
- * 发放裂变红包返回值
- */
-export type SendGroupRedPackResult =
-  | SendGroupRedPackReturn
-  | SendGroupRedPackReturnSuccess;
+export type SendGroupRedPackSuccess = SuccessT<SendGroupRedPackResponseSuccess>;
+export type SendGroupRedPackFail = FailT<SendGroupRedPackResponseFail>;

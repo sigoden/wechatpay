@@ -1,6 +1,5 @@
 node_modules
 
-/tmp
 .tern-*
 *.log
 package-lock.json

@@ -1,3 +1,2 @@
-export * from "./BusinessError";
-export * from "./FetchError";
-export * from "./ReturnError";
+export * from "./CommunicationError";
+export * from "./RequestError";

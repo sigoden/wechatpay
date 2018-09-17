@@ -1,16 +1,16 @@
 import * as types from "types";
-import { fetch, nonceStr } from "utils";
+import { fetch } from "../fetch";
+import { nonceStr } from "../utils";
 
 const GET_SIGN_KEY_BASE = "/pay/getsignkey";
+
+const URL_MCH = "https://api.mch.weixin.qq.com";
+const URL_SANBOX = URL_MCH + "/sandboxnew";
 
 /**
  * 基类
  */
 class Base {
-  set debug(debugMode: boolean) {
-    this._debug = debugMode;
-  }
-
   /**
    * 公众账号ID
    */
@@ -34,9 +34,9 @@ class Base {
   /**
    * 仿真模式开关
    */
-  public _debug: boolean = false;
+  public debug: boolean = false;
 
-  constructor(options: types.PayerOptions) {
+  constructor(options: types.ConstructorOptions) {
     const { appId, mchId, key, pfx } = options;
     this.appId = appId;
     this.mchId = mchId;
@@ -45,10 +45,38 @@ class Base {
   }
 
   /**
+   * 仿真模式开关
+   * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1}
+   */
+  public async setDebug(useDebug: boolean) {
+    if (useDebug && !this.keyForDebug) {
+      const url = URL_MCH + GET_SIGN_KEY_BASE;
+      const extra: types.FetchOptions = {
+        appid: this.appId,
+        mch_id: this.mchId,
+        key: this.key,
+        url,
+        nonce_str: nonceStr(),
+        mapAppId: "-"
+      };
+
+      return fetch<
+        types.GetSignKeyOptions,
+        types.GetSignKeySuccess,
+        types.GetSignKeyFail
+      >({}, extra).then(result => {
+        this.keyForDebug = result.sandbox_signkey;
+        this.debug = useDebug;
+      });
+    }
+    this.debug = useDebug;
+  }
+
+  /**
    * 生成 FetchOptions 数据
    */
   protected async createFetchOptions(url: string, usePfx: boolean = false) {
-    const key = await this.getKey();
+    const key = this.getKey();
     const ret: types.FetchOptions = {
       appid: this.appId,
       mch_id: this.mchId,
@@ -66,43 +94,17 @@ class Base {
    * 拼接路径
    */
   protected completeURL(base: string) {
-    if (this._debug) {
-      return types.URL_SANBOX + base;
+    if (this.debug) {
+      return URL_SANBOX + base;
     }
-    return types.URL_MCH + base;
+    return URL_MCH + base;
   }
 
   /**
    * 获取私钥
    */
-  protected async getKey() {
-    return this._debug ? await this.getDebugKey() : this.key;
-  }
-
-  /**
-   * 获取仿真系统 API 验签密钥
-   * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1}
-   */
-  private async getDebugKey() {
-    if (this.keyForDebug) {
-      return this.keyForDebug;
-    }
-    const url = types.URL_MCH + GET_SIGN_KEY_BASE;
-    const extra: types.FetchOptions = {
-      appid: this.appId,
-      mch_id: this.mchId,
-      key: this.key,
-      url,
-      nonce_str: nonceStr(),
-      mapAppId: "-"
-    };
-
-    return fetch<types.GetSignKeyOptions, types.GetSignKeyResult>(
-      {},
-      extra
-    ).then(result => {
-      return result.sandbox_signkey;
-    });
+  protected getKey() {
+    return this.debug ? this.keyForDebug : this.key;
   }
 }
 

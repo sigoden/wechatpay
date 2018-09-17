@@ -1,9 +1,9 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 转换短链接选项
+ * 转换短链接
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_9&index=9}
  */
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface ShortURLOptions {
   /**
    * URL链接
@@ -22,11 +22,7 @@ export interface ShortURLOptions {
   sign_type?: SignType;
 }
 
-/**
- * 转换短链接 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_9&index=9}
- */
-export interface ShortURLReturn extends BaseReturn, BusinessReturn {
+interface ShortURLResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -64,7 +60,9 @@ export interface ShortURLReturn extends BaseReturn, BusinessReturn {
   short_url: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type ShortURLResult = ShortURLReturn;
+interface ShortURLResponseFail extends ShortURLResponseCommon {}
+
+interface ShortURLResponseSuccess extends ShortURLResponseCommon {}
+
+export type ShortURLSuccess = SuccessT<ShortURLResponseSuccess>;
+export type ShortURLFail = FailT<ShortURLResponseFail>;

@@ -1,9 +1,9 @@
-import { BaseReturn, SignType } from "./Base";
-
 /**
- * 下载对账单选项
+ * 下载对账单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_6}
  */
+import { BaseReturn, SignType } from "./Base";
+
 export interface DownloadBillOptions {
   /**
    * 签名类型
@@ -39,8 +39,4 @@ export interface DownloadBillOptions {
   tar_type?: string;
 }
 
-/**
- * 下载对账单返回值
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_6}
- */
-export type DownloadBillResult = BaseReturn;
+export interface DownloadBillReturn extends BaseReturn {}

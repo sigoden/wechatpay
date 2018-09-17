@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
  * 申请解约项
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_4&index=8}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface DeleteContractOptions {
   /**
    * 模板id
@@ -42,11 +43,7 @@ export interface DeleteContractOptions {
   version: string;
 }
 
-/**
- * 申请解约`return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_4&index=8}
- */
-export interface DeleteContractReturn extends BaseReturn, BusinessReturn {
+interface DeleteContractResponseCommon {
   /**
    * 公众账号id
    * @description 微信支付分配的公众账号id
@@ -91,7 +88,8 @@ export interface DeleteContractReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 申请解约回值
- */
-export type DeleteContractResult = DeleteContractReturn;
+interface DeleteContractResponseSuccess extends DeleteContractResponseCommon {}
+interface DeleteContractResponseFail extends DeleteContractResponseCommon {}
+
+export type DeleteContractSuccess = SuccessT<DeleteContractResponseSuccess>;
+export type DeleteContractFail = FailT<DeleteContractResponseFail>;

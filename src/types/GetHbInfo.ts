@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 查询红包记录选项
+ * 查询红包记录
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface GetHbInfoOptions {
   /**
    * 商户订单号
@@ -21,17 +22,11 @@ export interface GetHbInfoOptions {
   bill_type: string;
 }
 
-/**
- * 查询红包记录 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5}
- */
-export interface GetHbInfoReturn extends BaseReturn, BusinessReturn {}
+interface GetHbInfoResponseCommon {}
 
-/**
- * 查询红包记录 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5}
- */
-export interface GetHbInfoReturnSuccess extends GetHbInfoReturn {
+interface GetHbInfoResponseFail extends GetHbInfoResponseCommon {}
+
+interface GetHbInfoResponseSuccess extends GetHbInfoResponseCommon {
   /**
    * 商户订单号
    * @description 商户使用查询API填写的商户单号的原路返回
@@ -174,7 +169,5 @@ export interface GetHbInfoReturnSuccess extends GetHbInfoReturn {
   rcv_time: string;
 }
 
-/**
- * 查询红包记录返回值
- */
-export type GetHbInfoResult = GetHbInfoReturn | GetHbInfoReturnSuccess;
+export type GetHbInfoSuccess = SuccessT<GetHbInfoResponseSuccess>;
+export type GetHbInfoFail = FailT<GetHbInfoResponseFail>;

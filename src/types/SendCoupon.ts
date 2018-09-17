@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 发放代金券选项
+ * 发放代金券
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface SendCouponOptions {
   /**
    * 代金券批次id
@@ -61,11 +62,7 @@ export interface SendCouponOptions {
   type?: string;
 }
 
-/**
- * 发放代金券 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4}
- */
-export interface SendCouponReturn extends BaseReturn, BusinessReturn {
+interface SendCouponResponseCommon {
   /**
    * 公众账号ID
    * @description 微信为发券方商户分配的公众账号ID，接口传入的所有appid应该为公众号的appid（在mp.weixin.qq.com申请的），
@@ -104,11 +101,9 @@ export interface SendCouponReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 发放代金券 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4}
- */
-export interface SendCouponReturnSuccess extends SendCouponReturn {
+interface SendCouponResponseFail extends SendCouponResponseCommon {}
+
+interface SendCouponResponseSuccess extends SendCouponResponseCommon {
   /**
    * 代金券批次id
    * @description 创建代金券时生成的批次号，可在商户平台-代金券管理页面查看
@@ -164,7 +159,5 @@ export interface SendCouponReturnSuccess extends SendCouponReturn {
   ret_msg: string;
 }
 
-/**
- * 发放代金券返回值
- */
-export type SendCouponResult = SendCouponReturn | SendCouponReturnSuccess;
+export type SendCouponSuccess = SuccessT<SendCouponResponseSuccess>;
+export type SendCouponFail = FailT<SendCouponResponseFail>;

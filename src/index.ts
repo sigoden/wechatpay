@@ -10,5 +10,6 @@ export * from "./pays/RedPack";
 export * from "./pays/WapPay";
 export * from "./pays/entrusts/LiteEntrust";
 export * from "./pays/entrusts/WapEntrust";
-export * from "pays/entrusts/PubEntrust";
-export * from "./utils";
+export * from "./pays/entrusts/PubEntrust";
+import * as utils from "./utils";
+export { utils };

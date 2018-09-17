@@ -1,6 +1,5 @@
-import * as errors from "../errors";
+import { fetch } from "../fetch";
 import * as types from "../types";
-import { fetch } from "../utils";
 import Base from "./Base";
 
 const SEND_COUPON_BASE = "/mmpaymkttransfers/send_coupon";
@@ -19,15 +18,11 @@ export class Coupon extends Base {
   public async sendCoupon(options: types.SendCouponOptions) {
     const url = this.completeURL(SEND_COUPON_BASE);
     const extra = await this.createFetchOptions(url, true);
-    return fetch<types.SendCouponOptions, types.SendCouponResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.SendCouponReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.SendCouponOptions,
+      types.SendCouponSuccess,
+      types.SendCouponFail
+    >(options, extra);
   }
 
   /**
@@ -37,15 +32,11 @@ export class Coupon extends Base {
   public async queryCouponStock(options: types.QueryCouponStockOptions) {
     const url = this.completeURL(QUERY_COUPON_STOCK_BASE);
     const extra = await this.createFetchOptions(url);
-    return fetch<types.QueryCouponStockOptions, types.QueryCouponStockResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.QueryCouponStockReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.QueryCouponStockOptions,
+      types.QueryCouponStockSuccess,
+      types.QueryCouponStockFail
+    >(options, extra);
   }
   /**
    * 查询代金券信息
@@ -54,14 +45,10 @@ export class Coupon extends Base {
   public async queryCouponsInfo(options: types.QueryCouponsInfoOptions) {
     const url = this.completeURL(QUERY_COUPONS_INFO_BASE);
     const extra = await this.createFetchOptions(url);
-    return fetch<types.QueryCouponsInfoOptions, types.QueryCouponsInfoResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.QueryCouponsInfoReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.QueryCouponsInfoOptions,
+      types.QueryCouponsInfoSuccess,
+      types.QueryCouponsInfoFail
+    >(options, extra);
   }
 }

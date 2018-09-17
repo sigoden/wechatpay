@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 下载资金账单选项
+ * 下载资金账单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_18&index=7}
  */
+
+import { BaseReturn, SignType } from "./Base";
+
 export interface DownloadFundFlowOptions {
   /**
    * 签名类型
@@ -38,13 +39,26 @@ export interface DownloadFundFlowOptions {
   tar_type?: string;
 }
 
-/**
- * 下载资金账单返回值
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_18&index=7}
- */
-export interface DownloadFundFlowReturn extends BaseReturn, BusinessReturn {}
-
-/**
- * 提交刷卡支付返回值
- */
-export type DownloadFundFlowResult = DownloadFundFlowReturn;
+export interface DownloadFundFlowReturn extends BaseReturn {
+  /**
+   * 业务结果
+   * @description success/fail
+   * @example success
+   * @typedef string(16)
+   */
+  result_code: "FAIL";
+  /**
+   * 错误代码
+   * @description 详细参见错误列表
+   * @example systemerror
+   * @typedef string(32)
+   */
+  err_code?: string;
+  /**
+   * 错误代码描述
+   * @description 错误返回的信息描述
+   * @example 系统错误
+   * @typedef string(128)
+   */
+  err_code_des?: string;
+}

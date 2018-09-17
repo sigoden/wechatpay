@@ -1,7 +1,7 @@
 /**
- * fetch 函数调用失败时抛出，如网络连接
+ * 远程调用微信 API 失败
  */
-export class FetchError extends Error {
+export class RequestError extends Error {
   public readonly err: any;
   constructor(err) {
     super(err.message ? err.message : "请求失败");

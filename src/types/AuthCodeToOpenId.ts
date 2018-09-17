@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 授权码查询OpenId选项
- * @see {https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10}
+ * 下载资金账单
+ * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_18&index=7}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface AuthCodeToOpenIdOptions {
   /**
    * 授权码
@@ -13,11 +14,7 @@ export interface AuthCodeToOpenIdOptions {
   auth_code: string;
 }
 
-/**
- * 授权码查询OpenId `return_code` SUCCESS时返回
- * @see {https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10}
- */
-export interface AuthCodeToOpenIdReturn extends BaseReturn, BusinessReturn {
+interface AuthCodeToOpenIdResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -48,11 +45,10 @@ export interface AuthCodeToOpenIdReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 授权码查询OpenId `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_13&index=10}
- */
-export interface AuthCodeToOpenIdReturnSuccess extends AuthCodeToOpenIdReturn {
+interface AuthCodeToOpenIdResponseFail extends AuthCodeToOpenIdResponseCommon {}
+
+interface AuthCodeToOpenIdResponseSuccess
+  extends AuthCodeToOpenIdResponseCommon {
   /**
    * 用户标识
    * @description 用户在商户appid下的唯一标识
@@ -61,6 +57,5 @@ export interface AuthCodeToOpenIdReturnSuccess extends AuthCodeToOpenIdReturn {
   openid: string;
 }
 
-export type AuthCodeToOpenIdResult =
-  | AuthCodeToOpenIdReturn
-  | AuthCodeToOpenIdReturnSuccess;
+export type AuthCodeToOpenIdSuccess = SuccessT<AuthCodeToOpenIdResponseSuccess>;
+export type AuthCodeToOpenIdFail = FailT<AuthCodeToOpenIdResponseFail>;

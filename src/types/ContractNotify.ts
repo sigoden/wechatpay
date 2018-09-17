@@ -1,10 +1,14 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
  * 签约结果通知
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_17&index=5}
  */
-export interface ContractNotifyInfo extends BaseReturn, BusinessReturn {
+
+import { BaseReturn, FailT, SuccessT } from "./Base";
+
+interface ContractNotifyOptionsCommon {}
+
+interface ContractNotifyOptionsFail extends ContractNotifyOptionsCommon {}
+interface ContractNotifyOptionsSuccess extends ContractNotifyOptionsCommon {
   /**
    * 商户号
    * @description 微信支付分配的商户号
@@ -91,8 +95,9 @@ export interface ContractNotifyInfo extends BaseReturn, BusinessReturn {
   request_serial: string;
 }
 
-export interface ContractNotifyResponse extends BaseReturn {}
+export type ContractNotifySuccess = SuccessT<ContractNotifyOptionsSuccess>;
+export type ContractNotifyFail = FailT<ContractNotifyOptionsFail>;
 
 export type ContractNotifyHandler = (
-  data: ContractNotifyInfo
-) => Promise<ContractNotifyResponse>;
+  data: ContractNotifySuccess | ContractNotifyFail
+) => Promise<BaseReturn>;

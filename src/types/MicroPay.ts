@@ -1,8 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
 /**
- * 提交刷卡支付选项
+ * 提交刷卡支付
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1}
  */
+
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface MicroPayOptions {
   /**
    * 设备号
@@ -112,11 +114,7 @@ export interface MicroPayOptions {
   scene_info?: string;
 }
 
-/**
- * 提交刷卡支付 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1}
- */
-export interface MicroPayReturn extends BaseReturn, BusinessReturn {
+interface MicroPayResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -154,11 +152,9 @@ export interface MicroPayReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 提交刷卡支付 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1}
- */
-export interface MicroPayReturnSuccess extends MicroPayReturn {
+interface MicroPayResponseFail extends MicroPayResponseCommon {}
+
+interface MicroPayResponseSuccess extends MicroPayResponseCommon {
   /**
    * 用户标识
    * @description 用户在商户appid 下的唯一标识
@@ -266,7 +262,5 @@ export interface MicroPayReturnSuccess extends MicroPayReturn {
   promotion_detail?: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type MicroPayResult = MicroPayReturn | MicroPayReturnSuccess;
+export type MicroPaySuccess = SuccessT<MicroPayResponseSuccess>;
+export type MicroPayFail = FailT<MicroPayResponseFail>;

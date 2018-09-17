@@ -1,9 +1,9 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 查询订单选项
+ * 查询订单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_2}
  */
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface OrderQueryOptions {
   /**
    * 微信订单号
@@ -28,11 +28,7 @@ export interface OrderQueryOptions {
   sign_type?: SignType;
 }
 
-/**
- * 查询订单 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_2}
- */
-export interface OrderQueryReturn extends BaseReturn, BusinessReturn {
+interface OrderQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -63,11 +59,9 @@ export interface OrderQueryReturn extends BaseReturn, BusinessReturn {
   sign?: string;
 }
 
-/**
- * 查询订单 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_2}
- */
-export interface OrderQueryReturnSuccess extends OrderQueryReturn {
+export interface OrderQueryResponseFail extends OrderQueryResponseCommon {}
+
+export interface OrderQueryResponseSuccess extends OrderQueryResponseCommon {
   /**
    * 设备号
    * @description 微信支付分配的终端设备号，
@@ -224,7 +218,5 @@ export interface OrderQueryReturnSuccess extends OrderQueryReturn {
   trade_state_desc?: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type OrderQueryResult = OrderQueryReturn | OrderQueryReturnSuccess;
+export type OrderQuerySuccess = SuccessT<OrderQueryResponseSuccess>;
+export type OrderQueryFail = FailT<OrderQueryResponseFail>;

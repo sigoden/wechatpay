@@ -15,40 +15,49 @@ export interface BaseReturn {
    * @example OK
    * @typedef String(128)
    */
-  return_msg: string;
+  return_msg?: string;
 }
 
-/**
- * 业务逻辑返回
- */
-export interface BusinessReturn {
-  /**
-   * 业务结果
-   * @description success/fail
-   * @example success
-   * @typedef string(16)
-   */
-  result_code: string;
-  /**
-   * 错误代码
-   * @description 详细参见错误列表
-   * @example systemerror
-   * @typedef string(32)
-   */
-  err_code?: string;
-  /**
-   * 错误代码描述
-   * @description 错误返回的信息描述
-   * @example 系统错误
-   * @typedef string(128)
-   */
-  err_code_des?: string;
-}
+export type SuccessT<T> = BaseReturn &
+  T & {
+    /**
+     * 业务结果
+     * @description success/fail
+     * @example success
+     * @typedef string(16)
+     */
+    result_code: "SUCCESS";
+  };
+
+export type FailT<T> = BaseReturn &
+  T & {
+    /**
+     * 业务结果
+     * @description success/fail
+     * @example success
+     * @typedef string(16)
+     */
+    result_code: "FAIL";
+    /**
+     * 错误代码
+     * @description 详细参见错误列表
+     * @example systemerror
+     * @typedef string(32)
+     */
+    err_code?: string;
+    /**
+     * 错误代码描述
+     * @description 错误返回的信息描述
+     * @example 系统错误
+     * @typedef string(128)
+     */
+    err_code_des?: string;
+  };
 
 /**
  * 支付类构造函数选项
  */
-export interface PayerOptions {
+export interface ConstructorOptions {
   appId: string;
   mchId: string;
   key: string;
@@ -79,19 +88,6 @@ export interface FetchOptions {
    */
   mapMchId?: string;
 }
-
-/**
- * 基础路径
- */
-export const URL_MCH = "https://api.mch.weixin.qq.com";
-/**
- * 仿真模式基础路径
- */
-export const URL_SANBOX = URL_MCH + "/sandboxnew";
-/**
- * 统一下单接口路径
- */
-export const UNIFIED_ORDER_BASE = "/pay/unifiedorder";
 
 /**
  * 银行编号

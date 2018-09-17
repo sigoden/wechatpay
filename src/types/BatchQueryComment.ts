@@ -1,8 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
 /**
- * 拉取订单评价数据选项
+ * 拉取订单评价数据
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_17&index=12}
  */
+
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface BatchQueryCommentOptions {
   /**
    * 签名类型
@@ -42,13 +44,15 @@ export interface BatchQueryCommentOptions {
   limit?: number;
 }
 
-/**
- * 拉取订单评价数据 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_17&index=12}
- */
-export interface BatchQueryCommentReturn extends BaseReturn, BusinessReturn {}
+interface BatchQueryCommentResponseCommon {}
 
-/**
- * 提交刷卡支付返回值
- */
-export type BatchQueryCommentResult = BatchQueryCommentReturn;
+interface BatchQueryCommentResponseFail
+  extends BatchQueryCommentResponseCommon {}
+
+interface BatchQueryCommentResponseSuccess
+  extends BatchQueryCommentResponseCommon {}
+
+export type BatchQueryCommentSuccess = SuccessT<
+  BatchQueryCommentResponseSuccess
+>;
+export type BatchQueryCommentFail = FailT<BatchQueryCommentResponseFail>;

@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 查询企业付款到银行卡选项
+ * 查询企业付款到银行卡
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface QueryBankOptions {
   /**
    * 商户企业付款单号
@@ -14,17 +15,11 @@ export interface QueryBankOptions {
   partner_trade_no: string;
 }
 
-/**
- * 查询企业付款到银行卡 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3}
- */
-export interface QueryBankReturn extends BaseReturn, BusinessReturn {}
+interface QueryBankResponseCommon {}
 
-/**
- * 查询企业付款到银行卡 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3}
- */
-export interface QueryBankReturnSuccess extends QueryBankReturn {
+interface QueryBankResponseFail extends QueryBankResponseCommon {}
+
+interface QueryBankResponseSuccess extends QueryBankResponseCommon {
   /**
    * 商户号
    * @typedef string(32)
@@ -96,7 +91,5 @@ export interface QueryBankReturnSuccess extends QueryBankReturn {
   reason?: string;
 }
 
-/**
- * 查询企业付款到银行卡返回值
- */
-export type QueryBankResult = QueryBankReturn | QueryBankReturnSuccess;
+export type QueryBankSuccess = SuccessT<QueryBankResponseSuccess>;
+export type QueryBankFail = FailT<QueryBankResponseFail>;

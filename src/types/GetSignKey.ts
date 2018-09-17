@@ -1,15 +1,16 @@
-import { BaseReturn } from "./Base";
-
 /**
- * 获取验签秘钥选项
+ * 获取验签秘钥
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface GetSignKeyOptions {}
 
 /**
  * 获取验签秘钥返回值
  */
-export interface GetSignKeyReturn extends BaseReturn {
+interface GetSignKeyResponseCommon {
   /**
    * 商户号
    * @description 微信支付分配的微信商户号
@@ -26,4 +27,8 @@ export interface GetSignKeyReturn extends BaseReturn {
   sandbox_signkey: string;
 }
 
-export type GetSignKeyResult = GetSignKeyReturn;
+interface GetSignKeyResponseSuccess extends GetSignKeyResponseCommon {}
+interface GetSignKeyResponseFail extends GetSignKeyResponseCommon {}
+
+export type GetSignKeySuccess = SuccessT<GetSignKeyResponseSuccess>;
+export type GetSignKeyFail = FailT<GetSignKeyResponseFail>;

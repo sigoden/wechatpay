@@ -6,10 +6,6 @@ import PayFund from "./PayFund";
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&index=1}
  */
 export class LitePay extends PayFund {
-  constructor(options: types.PayerOptions) {
-    super(options);
-  }
-
   /**
    * 统一下单
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1}

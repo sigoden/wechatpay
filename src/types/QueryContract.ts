@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 查询签约关系选项
+ * 查询签约关系
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_2&index=6}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface QueryContractOptions {
   /**
    * 委托代扣协议id
@@ -35,18 +36,11 @@ export interface QueryContractOptions {
   version: string;
 }
 
-/**
- * 查询签约关系 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_2&index=6}
- */
-export interface QueryContractReturn extends BaseReturn, BusinessReturn {
-}
+interface QueryContractResponseCommon {}
 
-/**
- * 查询签约关系 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_2&index=6}
- */
-export interface QueryContractReturnSuccess extends QueryContractReturn {
+interface QueryContractResponseFail extends QueryContractResponseCommon {}
+
+interface QueryContractResponseSuccess extends QueryContractResponseCommon {
   /**
    * 商户号
    * @description 微信支付分配的商户号
@@ -160,7 +154,5 @@ export interface QueryContractReturnSuccess extends QueryContractReturn {
   openid: string;
 }
 
-/**
- * 查询签约关系返回值
- */
-export type QueryContractResult = QueryContractReturn | QueryContractReturnSuccess;
+export type QueryContractSuccess = SuccessT<QueryContractResponseSuccess>;
+export type QueryContractFail = FailT<QueryContractResponseFail>;

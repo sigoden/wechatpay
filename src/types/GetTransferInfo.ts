@@ -1,9 +1,9 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 查询企业付款到零钱选项
+ * 查询企业付款到零钱
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3}
  */
+import { FailT, SuccessT } from "./Base";
+
 export interface GetTransferInfoOptions {
   /**
    * 商户订单号
@@ -14,17 +14,11 @@ export interface GetTransferInfoOptions {
   partner_trade_no: string;
 }
 
-/**
- * 查询企业付款到零钱 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3}
- */
-export interface GetTransferInfoReturn extends BaseReturn, BusinessReturn {}
+interface GetTransferInfoResponseCommon {}
 
-/**
- * 查询企业付款到零钱 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3}
- */
-export interface GetTransferInfoReturnSuccess extends GetTransferInfoReturn {
+interface GetTransferInfoResponseFail extends GetTransferInfoResponseCommon {}
+
+interface GetTransferInfoResponseSuccess extends GetTransferInfoResponseCommon {
   /**
    * 商户单号
    * @description 商户使用查询API填写的单号的原路返回.
@@ -95,9 +89,5 @@ export interface GetTransferInfoReturnSuccess extends GetTransferInfoReturn {
   desc: string;
 }
 
-/**
- * 查询企业付款到零钱返回值
- */
-export type GetTransferInfoResult =
-  | GetTransferInfoReturn
-  | GetTransferInfoReturnSuccess;
+export type GetTransferInfoSuccess = SuccessT<GetTransferInfoResponseSuccess>;
+export type GetTransferInfoFail = FailT<GetTransferInfoResponseFail>;

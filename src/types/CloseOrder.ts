@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 关闭订单选项
+ * 关闭订单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3}
  */
+
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface CloseOrderOptions {
   /**
    * 商户订单号
@@ -21,11 +22,7 @@ export interface CloseOrderOptions {
   sign_type?: SignType;
 }
 
-/**
- * 关闭订单 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3}
- */
-export interface CloseOrderReturn extends BaseReturn, BusinessReturn {
+interface CloseOrderResponseCommon {
   /**
    * 公众账号ID
    * @description 返回提交的公众账号ID
@@ -54,16 +51,10 @@ export interface CloseOrderReturn extends BaseReturn, BusinessReturn {
    * @typedef String(32)
    */
   sign: string;
-  /**
-   * 是否重调
-   * @description 是否需要继续调用撤销，Y-需要，N-不需要
-   * @example Y
-   * @typedef String(1)
-   */
-  recall: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type CloseOrderResult = CloseOrderReturn;
+interface CloseOrderResponseSuccess extends CloseOrderResponseCommon {}
+interface CloseOrderResponseFail extends CloseOrderResponseCommon {}
+
+export type CloseOrderSuccess = SuccessT<CloseOrderResponseSuccess>;
+export type CloseOrderFail = FailT<CloseOrderResponseFail>;

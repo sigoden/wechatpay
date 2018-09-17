@@ -1,7 +1,7 @@
 /**
  * 微信调用返回值 `return_code` 为 FAIL 时抛出
  */
-export class ReturnError extends Error {
+export class CommunicationError extends Error {
   /**
    * 状态码
    */

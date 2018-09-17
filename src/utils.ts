@@ -1,8 +1,6 @@
 import * as buffer from "buffer";
 import * as crypto from "crypto";
-import * as request from "request";
 import * as xml2js from "xml2js";
-import * as errors from "./errors";
 import * as types from "./types";
 
 /**
@@ -115,65 +113,4 @@ export function decode(key: string, data: string) {
   decipherChunks.push(decipher.update(data, "base64", "utf8"));
   decipherChunks.push(decipher.final("utf8"));
   return decipherChunks.join("");
-}
-
-/**
- * 远程调用
- */
-export function fetch<U, V extends types.BaseReturn>(
-  data: U,
-  extra: types.FetchOptions
-): Promise<V> {
-  const body: any = Object.assign(data, {
-    nonce_str: extra.nonce_str
-  });
-  setBodyAppIdAndMchId(body, extra);
-  body.sign = sign(getSignType(data), body, extra.key);
-  const options: request.Options = {
-    url: extra.url,
-    body: toXML(body)
-  };
-  if (extra.pfx) {
-    options.agentOptions = {
-      pfx: extra.pfx,
-      passphrase: extra.mch_id
-    };
-  }
-  return new Promise<V>((resolve, reject) => {
-    request(options, (err, _, resBody: V) => {
-      if (err) {
-        return reject(new errors.FetchError(err));
-      }
-      if (resBody.return_code === "FAIL") {
-        return reject(
-          new errors.ReturnError(resBody.return_code, resBody.return_msg)
-        );
-      }
-      resolve(resBody);
-    });
-  });
-}
-
-function getSignType(data: any): types.SignType {
-  if (data.sign_type) {
-    return data.sign_type;
-  }
-  return types.SignType.MD5;
-}
-
-function setBodyAppIdAndMchId(body: any, extra: types.FetchOptions) {
-  if (extra.mapAppId) {
-    if (extra.mapAppId !== "-") {
-      body[extra.mapAppId] = extra.appid;
-    }
-  } else {
-    body.appid = extra.appid;
-  }
-  if (extra.mapMchId) {
-    if (extra.mapMchId !== "-") {
-      body[extra.mapMchId] = extra.mch_id;
-    }
-  } else {
-    body.mch_id = extra.mch_id;
-  }
 }

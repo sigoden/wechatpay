@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 支付中签约选项
+ * 支付中签约
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_13&index=4}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface ContractOrderOptions {
   /**
    * 签约商户号
@@ -160,11 +161,7 @@ export interface ContractOrderOptions {
   contract_notify_url: string;
 }
 
-/**
- * 支付中签约 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_13&index=4}
- */
-export interface ContractOrderReturn extends BaseReturn, BusinessReturn {
+interface ContractOrderResponseCommon {
   /**
    * 请求appid
    * @description appid是商户在微信申请公众号或移动应用成功后分配的帐号ID，登录平台为mp.weixin.qq.com或open.weixin.qq.com
@@ -213,11 +210,9 @@ export interface ContractOrderReturn extends BaseReturn, BusinessReturn {
   contract_err_code_des?: string;
 }
 
-/**
- * 支付中签约 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_13&index=4}
- */
-export interface ContractOrderReturnSuccess extends ContractOrderReturn {
+interface ContractOrderResponseFail extends ContractOrderResponseCommon {}
+
+interface ContractOrderResponseSuccess extends ContractOrderResponseCommon {
   /**
    * 预支付交易会话标识
    * @description 微信生成的预支付回话标识,用于后续接口调用中使用,该值有效期为2小时.
@@ -284,9 +279,5 @@ export interface ContractOrderReturnSuccess extends ContractOrderReturn {
   out_trade_no: string;
 }
 
-/**
- * 支付中签约返回值
- */
-export type ContractOrderResult =
-  | ContractOrderReturn
-  | ContractOrderReturnSuccess;
+export type ContractOrderSuccess = SuccessT<ContractOrderResponseSuccess>;
+export type ContractOrderFail = FailT<ContractOrderResponseFail>;

@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
- * 申请代扣选项
+ * 申请代扣
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_3&index=7}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface PapPayApplyOptions {
   /**
    * 商品描述
@@ -148,11 +149,7 @@ export interface PapPayApplyOptions {
   timestamp?: number;
 }
 
-/**
- * 申请代扣 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_3&index=7}
- */
-export interface PapPayApplyReturn extends BaseReturn, BusinessReturn {
+interface PapPayApplyResponseCommon {
   /**
    * 公众账号id
    * @description 微信支付分配的公众账号id
@@ -183,7 +180,8 @@ export interface PapPayApplyReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 申请代扣返回值
- */
-export type PapPayApplyResult = PapPayApplyReturn;
+interface PapPayApplyResponseSuccess extends PapPayApplyResponseCommon {}
+interface PapPayApplyResponseFail extends PapPayApplyResponseCommon {}
+
+export type PapPayApplySuccess = SuccessT<PapPayApplyResponseSuccess>;
+export type PapPayApplyFail = FailT<PapPayApplyResponseFail>;

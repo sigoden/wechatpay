@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 撤销订单选项
+ * 撤销订单
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3}
  */
+
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface ReverseOptions {
   /**
    * 微信订单号
@@ -28,11 +29,7 @@ export interface ReverseOptions {
   sign_type?: SignType;
 }
 
-/**
- * 撤销订单 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_11&index=3}
- */
-export interface ReverseReturn extends BaseReturn, BusinessReturn {
+interface ReverseResponseCommon {
   /**
    * 公众账号ID
    * @description 返回提交的公众账号ID
@@ -70,7 +67,9 @@ export interface ReverseReturn extends BaseReturn, BusinessReturn {
   recall: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type ReverseResult = ReverseReturn;
+interface ReverseResponseFail extends ReverseResponseCommon {}
+
+interface ReverseResponseSuccess extends ReverseResponseCommon {}
+
+export type ReverseSuccess = SuccessT<ReverseResponseSuccess>;
+export type ReverseFail = FailT<ReverseResponseFail>;

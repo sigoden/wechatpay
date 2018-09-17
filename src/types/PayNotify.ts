@@ -1,10 +1,11 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
  * 支付结果通知
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8}
  */
-export interface PayNotifyInfo extends BaseReturn, BusinessReturn {
+
+import { BaseReturn, FailT, SignType, SuccessT } from "./Base";
+
+export interface PayNotifyOptionCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID（企业号corpid即为此appId）
@@ -177,8 +178,9 @@ export interface PayNotifyInfo extends BaseReturn, BusinessReturn {
   time_end: string;
 }
 
-export interface PayNotifyResponse extends BaseReturn {}
+export type PayNotifySuccess = SuccessT<PayNotifyOptionCommon>;
+export type PayNotifyFail = FailT<PayNotifyOptionCommon>;
 
 export type PayNotifyHandler = (
-  data: PayNotifyInfo
-) => Promise<PayNotifyResponse>;
+  data: PayNotifySuccess | PayNotifyFail
+) => Promise<BaseReturn>;

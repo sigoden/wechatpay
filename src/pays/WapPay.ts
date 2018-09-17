@@ -6,10 +6,6 @@ import PayFund from "./PayFund";
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=15_1}
  */
 export class WapPay extends PayFund {
-  constructor(options: types.PayerOptions) {
-    super(options);
-  }
-
   /**
    * 统一下单
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1}

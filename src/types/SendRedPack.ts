@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 发放普通红包选项
+ * 发放普通红包
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface SendRedPackOptions {
   /**
    * 商户订单号
@@ -104,17 +105,11 @@ export interface SendRedPackOptions {
   consume_mch_id?: string;
 }
 
-/**
- * 发放普通红包 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3}
- */
-export interface SendRedPackReturn extends BaseReturn, BusinessReturn {}
+interface SendRedPackResponseCommon {}
 
-/**
- * 发放普通红包 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3}
- */
-export interface SendRedPackReturnSuccess extends SendRedPackReturn {
+interface SendRedPackResponseFail extends SendRedPackResponseCommon {}
+
+interface SendRedPackResponseSuccess extends SendRedPackResponseCommon {
   /**
    * 商户订单号
    * @description 商户订单号（每个订单号必须唯一）  组成：mch_id+yyyymmdd+10位一天内不能重复的数字
@@ -160,7 +155,5 @@ export interface SendRedPackReturnSuccess extends SendRedPackReturn {
   send_listid: string;
 }
 
-/**
- * 发放普通红包返回值
- */
-export type SendRedPackResult = SendRedPackReturn | SendRedPackReturnSuccess;
+export type SendRedPackSuccess = SuccessT<SendRedPackResponseSuccess>;
+export type SendRedPackFail = FailT<SendRedPackResponseFail>;

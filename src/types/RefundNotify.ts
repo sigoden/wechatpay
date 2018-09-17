@@ -1,9 +1,10 @@
-import { BaseReturn } from "./Base";
-
 /**
  * 退款结果通知
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_16&index=11}
  */
+
+import { BaseReturn } from "./Base";
+
 export interface RefundNotifyBase extends BaseReturn {
   /**
    * 公众账号ID
@@ -135,8 +136,6 @@ export interface RefundNotifyDecode {
   refund_request_source: string;
 }
 
-export interface RefundNotifyResponse extends BaseReturn {}
-
 export type RefundNotifyHandler = (
   data: RefundNotifyBase & RefundNotifyDecode
-) => Promise<RefundNotifyResponse>;
+) => Promise<BaseReturn>;

@@ -1,9 +1,9 @@
-import { BaseReturn, BusinessReturn } from "./Base";
-
 /**
  * 查询企业付款到零钱选项
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2}
  */
+import { FailT, SuccessT } from "./Base";
+
 export interface TransfersOptions {
   /**
    * 设备号
@@ -65,11 +65,7 @@ export interface TransfersOptions {
   spbill_create_ip: string;
 }
 
-/**
- * 查询企业付款到零钱 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2}
- */
-export interface TransfersReturn extends BaseReturn, BusinessReturn {
+interface TransfersResponseCommon {
   /**
    * 商户appid
    * @description 申请商户号的appid或商户号绑定的appid（企业号corpid即为此appId）
@@ -100,11 +96,9 @@ export interface TransfersReturn extends BaseReturn, BusinessReturn {
   nonce_str: string;
 }
 
-/**
- * 查询企业付款到零钱 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2}
- */
-export interface TransfersReturnSuccess extends TransfersReturn {
+interface TransfersResponseFail extends TransfersResponseCommon {}
+
+interface TransfersResponseSuccess extends TransfersResponseCommon {
   /**
    * 商户订单号
    * @description 商户订单号，需保持历史全局唯一性(只能是字母或者数字，不能包含有符号)
@@ -128,7 +122,5 @@ export interface TransfersReturnSuccess extends TransfersReturn {
   payment_time: string;
 }
 
-/**
- * 查询企业付款到零钱返回值
- */
-export type TransfersResult = TransfersReturn | TransfersReturnSuccess;
+export type TransfersSuccess = SuccessT<TransfersResponseSuccess>;
+export type TransfersFail = FailT<TransfersResponseFail>;

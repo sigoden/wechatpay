@@ -6,10 +6,6 @@ import PayFund from "./PayFund";
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_1}
  */
 export class PubPay extends PayFund {
-  constructor(options: types.PayerOptions) {
-    super(options);
-  }
-
   /**
    * 统一下单
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1}

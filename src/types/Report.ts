@@ -1,9 +1,10 @@
-import { BaseReturn } from "./Base";
-
 /**
- * 交易保障选项
+ * 交易保障
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_14&index=8}
  */
+
+import { FailT, SuccessT } from "./Base";
+
 export interface ReportOptions {
   /**
    * 设备号
@@ -62,21 +63,11 @@ export interface ReportOptions {
   trades: string;
 }
 
-/**
- * 交易保障 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_14&index=8}
- */
-export interface ReportReturn extends BaseReturn {
-  /**
-   * 业务结果
-   * @description SUCCESS/FAIL
-   * @example SUCCESS
-   * @typedef String(16)
-   */
-  result_code: string;
-}
+interface ReportResponseCommon {}
 
-/**
- * 提交刷卡支付返回值
- */
-export type ReportResult = BaseReturn | ReportReturn;
+interface ReportResponseFail extends ReportResponseCommon {}
+
+interface ReportResponseSuccess extends ReportResponseCommon {}
+
+export type ReportSuccess = SuccessT<ReportResponseSuccess>;
+export type ReportFail = FailT<ReportResponseFail>;

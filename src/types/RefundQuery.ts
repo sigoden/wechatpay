@@ -1,9 +1,10 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
-
 /**
- * 查询退款选项
+ * 查询退款
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_5}
  */
+
+import { FailT, SignType, SuccessT } from "./Base";
+
 export interface RefundQueryOptions {
   /**
    * 签名类型
@@ -49,11 +50,7 @@ export interface RefundQueryOptions {
   offset?: number;
 }
 
-/**
- * 查询退款 `return_code` SUCCESS时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_5}
- */
-export interface RefundQueryReturn extends BaseReturn, BusinessReturn {
+interface RefundQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID（企业号corpid即为此appId）
@@ -260,7 +257,9 @@ export interface RefundQueryReturn extends BaseReturn, BusinessReturn {
   refund_success_time_$n?: string;
 }
 
-/**
- * 提交刷卡支付返回值
- */
-export type RefundQueryResult = RefundQueryReturn;
+interface RefundQueryResponseFail extends RefundQueryResponseCommon {}
+
+interface RefundQueryResponseSuccess extends RefundQueryResponseCommon {}
+
+export type RefundQuerySuccess = SuccessT<RefundQueryResponseSuccess>;
+export type RefundQueryFail = FailT<RefundQueryResponseFail>;

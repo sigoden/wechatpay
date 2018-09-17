@@ -1,4 +1,4 @@
-import { BaseReturn, BusinessReturn, SignType } from "./Base";
+import { FailT, SignType, SuccessT } from "./Base";
 
 /**
  * 统一下单通用选项
@@ -261,7 +261,7 @@ export interface UnifiedOrderOptionsLite extends UnifiedOrderOptionsBase {
  * 统一下单 `return_code` SUCCESS时返回
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1}
  */
-export interface UnifiedOrderReturn extends BaseReturn, BusinessReturn {
+interface UnifiedOrderResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -299,11 +299,9 @@ export interface UnifiedOrderReturn extends BaseReturn, BusinessReturn {
   sign: string;
 }
 
-/**
- * 统一下单 `return_code` 和 `result_code` 均为 SUCCESS 时返回
- * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1}
- */
-export interface UnifiedOrderReturnSuccess extends UnifiedOrderReturn {
+interface UnifiedOrderResponseFail extends UnifiedOrderResponseCommon {}
+
+interface UnifiedOrderResponseSuccess extends UnifiedOrderResponseCommon {
   /**
    * 交易类型
    * @description
@@ -330,7 +328,5 @@ export interface UnifiedOrderReturnSuccess extends UnifiedOrderReturn {
   code_url?: string;
 }
 
-/**
- * 统一下单返回值
- */
-export type UnifiedOrderResult = UnifiedOrderReturn | UnifiedOrderReturnSuccess;
+export type UnifiedOrderSuccess = SuccessT<UnifiedOrderResponseSuccess>;
+export type UnifiedOrderFail = FailT<UnifiedOrderResponseFail>;

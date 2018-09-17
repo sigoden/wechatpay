@@ -1,6 +1,5 @@
-import * as errors from "../errors";
+import { fetch } from "../fetch";
 import * as types from "../types";
-import { fetch } from "../utils";
 import PayBase from "./PayBase";
 
 const REVERSE_BASE = "/secapi/pay/reverse";
@@ -12,10 +11,6 @@ const AUTH_CODE_TO_OPENID_BASE = "/tools/authcodetoopenid";
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=5_1}
  */
 export class PubScanPay extends PayBase {
-  constructor(options: types.PayerOptions) {
-    super(options);
-  }
-
   /**
    * 提交刷卡支付
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_10&index=1}
@@ -23,15 +18,11 @@ export class PubScanPay extends PayBase {
   public async microPay(options: types.MicroPayOptions) {
     const url = this.completeURL(MICRO_PAY_BASE);
     const extra = await this.createFetchOptions(url);
-    return fetch<types.MicroPayOptions, types.MicroPayResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.MicroPayReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.MicroPayOptions,
+      types.MicroPaySuccess,
+      types.MicroPayFail
+    >(options, extra);
   }
 
   /**
@@ -41,15 +32,10 @@ export class PubScanPay extends PayBase {
   public async reverse(options: types.ReverseOptions) {
     const url = this.completeURL(REVERSE_BASE);
     const extra = await this.createFetchOptions(url, true);
-    return fetch<types.ReverseOptions, types.ReverseResult>(
+    return fetch<types.ReverseOptions, types.ReverseSuccess, types.ReverseFail>(
       options,
       extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.ReverseReturn>(result);
-      }
-      return result;
-    });
+    );
   }
   /**
    * 短链接转换
@@ -59,15 +45,11 @@ export class PubScanPay extends PayBase {
     const url = this.completeURL(SHORT_URL_BASE);
     const extra = await this.createFetchOptions(url);
     options.sign_type = types.SignType["HMAC-SHA256"];
-    return fetch<types.ShortURLOptions, types.ShortURLResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.ShortURLReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.ShortURLOptions,
+      types.ShortURLSuccess,
+      types.ShortURLFail
+    >(options, extra);
   }
 
   /**
@@ -77,14 +59,10 @@ export class PubScanPay extends PayBase {
   public async authCodeToOpenId(options: types.AuthCodeToOpenIdOptions) {
     const url = this.completeURL(AUTH_CODE_TO_OPENID_BASE);
     const extra = await this.createFetchOptions(url);
-    return fetch<types.AuthCodeToOpenIdOptions, types.AuthCodeToOpenIdResult>(
-      options,
-      extra
-    ).then(result => {
-      if (result.result_code === "FAIL") {
-        throw new errors.BusinessError<types.AuthCodeToOpenIdReturn>(result);
-      }
-      return result;
-    });
+    return fetch<
+      types.AuthCodeToOpenIdOptions,
+      types.AuthCodeToOpenIdSuccess,
+      types.AuthCodeToOpenIdFail
+    >(options, extra);
   }
 }
