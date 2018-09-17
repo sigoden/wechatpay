@@ -9,46 +9,37 @@
     "wx",
     "pay"
   ],
-  "main": "src/pay.js",
-  "scripts": {
-    "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "lint": "eslint --ext=.js src test",
-    "lint:fix": "eslint --fix --ext=.js src test",
-    "pretest": "npm run lint",
-    "test": "jest --coverage"
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "directories": {
+    "test": "test"
   },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120
+  "scripts": {
+    "build": "tsc",
+    "build:prod": "tsc -p tsconfig.prod.json",
+    "clean": "rimraf dist",
+    "prepublish": "npm run clean && npm run build:prod",
+    "lint": "tslint -p tsconfig.json --fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sigoden/wechatpay.git"
   },
-  "author": "sigoden huang <sigoden@gmail.com> (https://sigoden.com)",
+  "author": "Sigoden Huang <sigoden@gmail.com> (https://sigoden.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sigoden/wechatpay/issues"
   },
   "homepage": "https://github.com/sigoden/wechatpay#readme",
   "devDependencies": {
-    "coveralls": "^3.0.1",
-    "eslint": "^5.2.0",
-    "eslint-plugin-jest": "^21.18.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "jest": "^23.4.1",
-    "prettier": "^1.12.1"
-  },
-  "files": [
-    "src"
-  ],
-  "engine": {
-    "node": ">=4"
+    "@types/request": "^2.47.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "merge": "^1.2.0",
-    "request": "^2.85.0",
-    "universalify": "^0.1.2",
-    "xml2js": "^0.4.19"
+    "@types/node": "^10.9.4",
+    "@types/xml2js": "^0.4.3",
+    "lodash.omit": "^4.5.0",
+    "request": "^2.88.0"
   }
 }

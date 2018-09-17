@@ -1,0 +1,24 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {
+    "no-unused-expression": true
+  },
+  "rules": {
+    "no-empty": false,
+    "no-empty-interface": false,
+    "no-namespace": false,
+    "max-classes-per-file": false,
+    "interface-name": [false],
+    "no-angle-bracket-type-assertion": false,
+    "arrow-parens": false,
+    "object-literal-sort-keys": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "trailing-comma": false
+  }
+}
