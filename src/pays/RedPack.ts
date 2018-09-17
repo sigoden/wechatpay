@@ -1,6 +1,6 @@
 import { fetch } from "../fetch";
 import * as types from "../types";
-import Base from "./Base";
+import Base from "./core/Base";
 
 const SEND_RED_PACK_BASE = "/mmpaymkttransfers/sendredpack";
 const SEND_GROUP_RED_PACK_BASE = "/mmpaymkttransfers/sendgroupredpack";

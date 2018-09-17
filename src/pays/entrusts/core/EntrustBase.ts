@@ -1,7 +1,7 @@
-import { download, fetch } from "../../fetch";
-import * as types from "../../types";
-import { sign, toXML } from "../../utils";
-import Base from "../Base";
+import { download, fetch } from "../../../fetch";
+import * as types from "../../../types";
+import { sign, toXML } from "../../../utils";
+import Base from "../../core/Base";
 
 const REFUND_BASE = "/secapi/pay/refund";
 const REFUND_QUERY_BASE = "/pay/refundquery";

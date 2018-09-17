@@ -1,6 +1,6 @@
-import * as types from "types";
 import { fetch } from "../fetch";
-import Base from "./Base";
+import * as types from "../types";
+import Base from "./core/Base";
 
 const PAY_BANK_BASE = "/mmpaysptrans/pay_bank";
 const QUERY_BANK_BASE = "/mmpaysptrans/query_bank";

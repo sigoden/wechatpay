@@ -1,6 +1,6 @@
-import * as types from "types";
-import { fetch } from "../fetch";
-import { nonceStr } from "../utils";
+import { fetch } from "../../fetch";
+import * as types from "../../types";
+import { nonceStr } from "../../utils";
 
 const GET_SIGN_KEY_BASE = "/pay/getsignkey";
 

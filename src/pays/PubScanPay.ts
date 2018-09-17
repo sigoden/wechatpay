@@ -1,6 +1,6 @@
 import { fetch } from "../fetch";
 import * as types from "../types";
-import PayBase from "./PayBase";
+import PayBase from "./core/PayBase";
 
 const REVERSE_BASE = "/secapi/pay/reverse";
 const MICRO_PAY_BASE = "/pay/micropay";

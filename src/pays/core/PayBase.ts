@@ -1,6 +1,6 @@
-import { download, fetch } from "../fetch";
-import * as types from "../types";
-import { decode, toXML } from "../utils";
+import { download, fetch } from "../../fetch";
+import * as types from "../../types";
+import { decode, toXML } from "../../utils";
 import Base from "./Base";
 
 const ORDER_QUERY_BASE = "/pay/orderquery";

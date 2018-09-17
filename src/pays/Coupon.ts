@@ -1,6 +1,6 @@
 import { fetch } from "../fetch";
 import * as types from "../types";
-import Base from "./Base";
+import Base from "./core/Base";
 
 const SEND_COUPON_BASE = "/mmpaymkttransfers/send_coupon";
 const QUERY_COUPON_STOCK_BASE = "/mmpaymkttransfers/query_coupon_stock";

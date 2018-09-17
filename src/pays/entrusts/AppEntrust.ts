@@ -1,6 +1,6 @@
 import * as qs from "querystring";
 import * as types from "../../types";
-import EntrustBase from "./EntrustBase";
+import EntrustBase from "./core/EntrustBase";
 
 const ENTRUST_BASE = "https://api.mch.weixin.qq.com/papay/entrustweb";
 

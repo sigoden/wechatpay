@@ -1,5 +1,5 @@
 import * as types from "../../types";
-import EntrustBase from "./EntrustBase";
+import EntrustBase from "./core/EntrustBase";
 
 /**
  * 小程序签约
