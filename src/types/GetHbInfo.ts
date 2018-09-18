@@ -13,13 +13,6 @@ export interface GetHbInfoOptions {
    * @typedef String(28)
    */
   mch_billno: string;
-  /**
-   * 订单类型
-   * @description MCHT:通过商户订单号获取红包信息。
-   * @example MCHT
-   * @typedef String(32)
-   */
-  bill_type: string;
 }
 
 export interface GetHbInfoResponseCommon {}

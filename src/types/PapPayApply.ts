@@ -73,13 +73,6 @@ export interface PapPayApplyOptions {
    */
   notify_url: string;
   /**
-   * 交易类型
-   * @description 交易类型PAP-微信委托代扣支付
-   * @example PAP
-   * @typedef String
-   */
-  trade_type: string;
-  /**
    * 委托代扣协议id
    * @description 签约成功后，微信返回的委托代扣协议id
    * @example Wx15463511252015071056489715

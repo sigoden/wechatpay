@@ -27,13 +27,6 @@ export interface QueryContractOptions {
    * @typedef string
    */
   contract_code?: string;
-  /**
-   * 版本号
-   * @description 固定值1.0
-   * @example 1.0
-   * @typedef string
-   */
-  version: string;
 }
 
 export interface QueryContractResponseCommon {}

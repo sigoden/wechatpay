@@ -42,14 +42,6 @@ export interface SendGroupRedPackOptions {
    */
   total_num: number;
   /**
-   * 红包金额设置方式
-   * @description 红包金额设置方式
-   * - ALL_RAND—全部随机,商户指定总金额和红包发放总人数，由微信支付随机计算出各红包金额
-   * @example ALL_RAND
-   * @typedef String(32)
-   */
-  amt_type: string;
-  /**
    * 红包祝福语
    * @example 感谢您参加猜灯谜活动，祝您元宵节快乐！
    * @typedef String(128)

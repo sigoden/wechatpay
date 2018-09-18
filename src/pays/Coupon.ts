@@ -13,6 +13,15 @@ const QUERY_COUPONS_INFO_BASE = "/mmpaymkttransfers/querycouponsinfo";
 export class Coupon extends Base {
   /**
    * 发放代金券
+   *
+   * ```
+   * pay.sendCoupon({
+   *   coupon_stock_id: "1757",
+   *   openid_count: 1,
+   *   partner_trade_no: "1000009820141203515766",
+   *   openid: "onqOjjrXT-776SpHnfexGm1_P7iE"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_3&index=4}
    */
   public async sendCoupon(options: types.SendCouponOptions) {
@@ -27,6 +36,12 @@ export class Coupon extends Base {
 
   /**
    * 查询代金券批次
+   *
+   * ```
+   * pay.queryCouponStock({
+   *   coupon_stock_id: "1757"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_4&index=5}
    */
   public async queryCouponStock(options: types.QueryCouponStockOptions) {
@@ -40,6 +55,14 @@ export class Coupon extends Base {
   }
   /**
    * 查询代金券信息
+   *
+   * ```
+   * pay.queryCouponsInfo({
+   *   coupon_id: "1565",
+   *   openid: "onqOjjrXT-776SpHnfexGm1_P7iE",
+   *   stock_id: "58818"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_5&index=6}
    */
   public async queryCouponsInfo(options: types.QueryCouponsInfoOptions) {

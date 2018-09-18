@@ -59,7 +59,7 @@ function createRequestOptions<U>(
   data: U,
   extra: types.FetchOptions
 ): request.Options {
-  const body: any = Object.assign(data, {
+  const body: any = Object.assign(extra.consts || {}, data, {
     nonce_str: extra.nonce_str
   });
   setBodyAppIdAndMchId(body, extra);

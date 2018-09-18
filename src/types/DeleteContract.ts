@@ -34,13 +34,6 @@ export interface DeleteContractOptions {
    * @typedef String(256)
    */
   contract_termination_remark: string;
-  /**
-   * 版本号
-   * @description 固定值1.0
-   * @example 1.0
-   * @typedef String
-   */
-  version: string;
 }
 
 export interface DeleteContractResponseCommon {
@@ -88,8 +81,10 @@ export interface DeleteContractResponseCommon {
   sign: string;
 }
 
-export interface DeleteContractResponseSuccess extends DeleteContractResponseCommon {}
-export interface DeleteContractResponseFail extends DeleteContractResponseCommon {}
+export interface DeleteContractResponseSuccess
+  extends DeleteContractResponseCommon {}
+export interface DeleteContractResponseFail
+  extends DeleteContractResponseCommon {}
 
 export type DeleteContractSuccess = SuccessT<DeleteContractResponseSuccess>;
 export type DeleteContractFail = FailT<DeleteContractResponseFail>;

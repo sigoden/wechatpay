@@ -3,7 +3,7 @@
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2}
  */
 
-import { BankCode, FailT, SuccessT } from "./Base";
+import { FailT, SuccessT } from "./Base";
 
 export interface PayBankOptions {
   /**
@@ -36,7 +36,7 @@ export interface PayBankOptions {
    * @example 1001
    * @typedef string(64)
    */
-  bank_code: BankCode;
+  bank_code: string;
   /**
    * 付款金额
    * @description 付款金额：RMB分（支付总额，不含手续费）。注：大于0的整数

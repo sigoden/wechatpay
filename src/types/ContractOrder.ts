@@ -98,13 +98,6 @@ export interface ContractOrderOptions {
    */
   goods_tag?: string;
   /**
-   * 交易类型
-   * @description 取值如下：JSAPI,NATIVE,APP,MWEB
-   * @example JSAPI
-   * @typedef String(16)
-   */
-  trade_type: string;
-  /**
    * 商品ID
    * @description trade_type=NATIVE,此参数必传. 此id为二维码中包含的商品ID,商户自行定义.
    * @example 12235413214070356458058

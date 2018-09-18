@@ -34,27 +34,6 @@ export interface EntrustCommon {
    */
   notify_url: string;
   /**
-   * 版本号
-   * @description 固定值1.0
-   * @example 1.0
-   * @typedef String
-   */
-  version: string;
-  /**
-   * 时间戳
-   * @description 系统当前时间，定义规则详见时间戳
-   * @example 1414488825
-   * @typedef String(10)
-   */
-  timestamp: string;
-  /**
-   * 客户端 IP
-   * @description 用户客户端的真实IP地址
-   * @example 119.145.83.6
-   * @typedef String
-   */
-  clientip: string;
-  /**
    * 设备ID
    * @description android填imei的一次md5; ios填idfa的一次md5
    * @example baf04e6bbbd06f7b1a197d18ed53b7f1
@@ -111,6 +90,13 @@ export interface EntrustCommon {
  */
 export interface EntrustWapOptions extends EntrustCommon {
   /**
+   * 客户端 IP
+   * @description 用户客户端的真实IP地址
+   * @example 119.145.83.6
+   * @typedef String
+   */
+  clientip: string;
+  /**
    * 回调应用appid
    * @description 当指定该字段时，且商户模版标注商户具有指定返回app的权限时，签约成功将返回return_appid指定的app应用，
    *   如果不填且签约发起时的浏览器UA可被微信识别，则跳转到浏览器，否则留在微信
@@ -126,6 +112,13 @@ export interface EntrustWapOptions extends EntrustCommon {
  */
 export interface EntrustAppOptions extends EntrustCommon {
   /**
+   * 客户端 IP
+   * @description 用户客户端的真实IP地址
+   * @example 119.145.83.6
+   * @typedef String
+   */
+  clientip?: string;
+  /**
    * 返回app
    * @description 1表示返回app, 0 或不填则不返回 注：签约参数appid必须为发起APP的注册appid
    * @example 1
@@ -140,6 +133,13 @@ export interface EntrustAppOptions extends EntrustCommon {
  */
 export interface EntrustPubOptions extends EntrustCommon {
   /**
+   * 客户端 IP
+   * @description 用户客户端的真实IP地址
+   * @example 119.145.83.6
+   * @typedef String
+   */
+  clientip?: string;
+  /**
    * 返回web
    * @description 表示返回签约页面的referrer url, 0 或不填或获取不到referrer则不返回; 跳转referrer url时会自动带上参数from_wxpay=1
    * @example 1
@@ -152,4 +152,12 @@ export interface EntrustPubOptions extends EntrustCommon {
  * 小程序签约
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/pap.php?chapter=18_14&index=2}
  */
-export interface EntrustLiteOptions extends EntrustCommon {}
+export interface EntrustLiteOptions extends EntrustCommon {
+  /**
+   * 客户端 IP
+   * @description 用户客户端的真实IP地址
+   * @example 119.145.83.6
+   * @typedef String
+   */
+  clientip?: string;
+}

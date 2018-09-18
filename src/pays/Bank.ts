@@ -15,6 +15,17 @@ const GET_TRANSFER_INFO_BASE = "/mmpaymkttransfers/gettransferinfo";
 export class Bank extends Base {
   /**
    * 企业付款到零钱
+   *
+   * ```
+   * pay.transfers({
+   *   partner_trade_no: "10000098201411111234567890",
+   *   openid: "oxTWIuGaIt6gTKsQRLau2M0yL16E",
+   *   check_name: "FORCE_CHECK",
+   *   amount: 10099,
+   *   desc: "理赔",
+   *   spbill_create_ip: "192.168.0.1"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2}
    */
   public async transfers(options: types.TransfersOptions) {
@@ -28,8 +39,15 @@ export class Bank extends Base {
       types.TransfersFail
     >(options, extra);
   }
+
   /**
    * 查询企业付款到零钱
+   *
+   * ```
+   * pay.getTransferInfo({
+   *   partner_trade_no: "10000098201411111234567890"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_3}
    */
   public async getTransferInfo(options: types.GetTransferInfoOptions) {
@@ -41,8 +59,21 @@ export class Bank extends Base {
       types.GetTransferInfoFail
     >(options, extra);
   }
+
   /**
    * 企业付款到银行卡
+   *
+   * ```
+   * pay.payBank({
+   *   partner_trade_no: "1212121221227",
+   *   enc_bank_no: utils.rsa(pemKey, "6225760017946512"),
+   *   enc_true_name: utils.rsa(pemKey, "王小王"),
+   *   bank_code: "1001",
+   *   amount: 100,
+   *   desc: "理财"
+   * });
+   * // pemKey 通过 `pay.getPublicKey` 获取
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_2}
    */
   public async payBank(options: types.PayBankOptions) {
@@ -56,6 +87,12 @@ export class Bank extends Base {
   }
   /**
    * 查询企业付款到银行卡
+   *
+   * ```
+   * pay.queryBank({
+   *   partner_trade_no: "1212121221227"
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=24_3}
    */
   public async queryBank(options: types.QueryBankOptions) {
@@ -70,6 +107,12 @@ export class Bank extends Base {
   }
   /**
    * 获取RSA加密公钥
+   *
+   * ```
+   * pay.getPublicKey({
+   *  sign_type: SignType.MD5
+   * });
+   * ```
    */
   public async getPublicKey(options: types.GetPublicKeyOptions) {
     const extra = await this.createFetchOptions(GET_PUBLIC_URL, true);

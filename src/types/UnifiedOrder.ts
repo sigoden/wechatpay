@@ -156,13 +156,6 @@ export interface UnifiedOrderOptionsPub extends UnifiedOrderOptionsBase {
    * @typedef String(128)
    */
   openid: string;
-  /**
-   * 场景信息
-   * @description 该字段用于上报场景信息，目前支持上报实际门店信息。该字段为JSON对象数据
-   * @example {"store_info" : {"id": "SZTX001","name": "腾大餐厅","area_code": "440305","address": "科技园中一路腾讯大厦" }}
-   * @typedef String(256)
-   */
-  scene_info?: string;
 }
 
 /**
@@ -171,55 +164,19 @@ export interface UnifiedOrderOptionsPub extends UnifiedOrderOptionsBase {
  */
 export interface UnifiedOrderOptionsPubQr extends UnifiedOrderOptionsBase {
   /**
-   * 设备号
-   * @description 自定义参数，可以为终端设备号(门店号或收银设备ID)，PC网页或公众号内支付可以传"WEB"
-   * @example 013467007045764
-   * @typedef String(32)
-   */
-  device_info?: string;
-  /**
    * 商品ID
    * @description trade_type=NATIVE时（即扫码支付），此参数必传。此参数为二维码中包含的商品ID，商户自行定义。
    * @example 12235413214070356458058
    * @typedef String(32)
    */
   product_id: string;
-  /**
-   * 场景信息
-   * @description 该字段用于上报场景信息，目前支持上报实际门店信息。该字段为JSON对象数据
-   * @example {"store_info" : {"id": "SZTX001","name": "腾大餐厅","area_code": "440305","address": "科技园中一路腾讯大厦" }}
-   * @typedef String(256)
-   */
-  scene_info?: string;
 }
 
 /**
  * 统一下单选项，限 APP 支付
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1}
  */
-export interface UnifiedOrderOptionsApp extends UnifiedOrderOptionsBase {
-  /**
-   * 设备号
-   * @description 自定义参数，可以为终端设备号(门店号或收银设备ID)，PC网页或公众号内支付可以传"WEB"
-   * @example 013467007045764
-   * @typedef String(32)
-   */
-  device_info?: string;
-  /**
-   * 商品ID
-   * @description trade_type=NATIVE时（即扫码支付），此参数必传。此参数为二维码中包含的商品ID，商户自行定义。
-   * @example 12235413214070356458058
-   * @typedef String(32)
-   */
-  product_id: string;
-  /**
-   * 场景信息
-   * @description 该字段用于上报场景信息，目前支持上报实际门店信息。该字段为JSON对象数据
-   * @example {"store_info" : {"id": "SZTX001","name": "腾大餐厅","area_code": "440305","address": "科技园中一路腾讯大厦" }}
-   * @typedef String(256)
-   */
-  scene_info?: string;
-}
+export interface UnifiedOrderOptionsApp extends UnifiedOrderOptionsBase {}
 
 /**
  * 统一下单选项，限 H5 支付
@@ -293,7 +250,8 @@ export interface UnifiedOrderResponseCommon {
 
 export interface UnifiedOrderResponseFail extends UnifiedOrderResponseCommon {}
 
-export interface UnifiedOrderResponseSuccess extends UnifiedOrderResponseCommon {
+export interface UnifiedOrderResponseSuccess
+  extends UnifiedOrderResponseCommon {
   /**
    * 交易类型
    * @description

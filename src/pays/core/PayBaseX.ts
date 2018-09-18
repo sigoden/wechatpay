@@ -1,8 +1,9 @@
 import { fetch } from "../../fetch";
 import * as types from "../../types";
-import { sign, toXML } from "../../utils";
+import { toXML } from "../../utils";
 import PayBase from "./PayBase";
 
+const REPORT_BASE = "/payitil/report";
 const CLOSE_ORDER_BASE = "/pay/closeorder";
 const UNIFIED_ORDER_BASE = "/pay/unifiedorder";
 /**
@@ -11,6 +12,12 @@ const UNIFIED_ORDER_BASE = "/pay/unifiedorder";
 export default class PayBaseX extends PayBase {
   /**
    * 关闭订单
+   *
+   * ```
+   * pay.closeOrder({
+   *   out_trade_no: '120061098828009406'
+   * })
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3}
    */
   public async closeOrder(options: types.CloseOrderOptions) {
@@ -24,7 +31,51 @@ export default class PayBaseX extends PayBase {
   }
 
   /**
+   * 交易保障
+   *
+   * ```
+   * pay.report({
+   *   interface_url: "https://api.mch.weixin.qq.com/pay/unifiedorder",
+   *   execute_time: 1000,
+   *   return_code: "SUCCESS",
+   *   return_msg: "OK",
+   *   result_code: "SUCCESS",
+   *   user_ip: "8.8.8.8"
+   * });
+   * ```
+   * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9}
+   */
+  public async report(options: types.ReportOptionsGeneral) {
+    const url = this.completeURL(REPORT_BASE);
+    const extra = await this.createFetchOptions(url);
+    return fetch<
+      types.ReportOptionsGeneral,
+      types.ReportSuccess,
+      types.ReportFail
+    >(options, extra);
+  }
+
+  /**
    * 支付结果通知
+   *
+   * ```
+   * router.post("/wechatpay/notify/refund", (req, res) => {
+   *   getXMLBody(req).then(data => {
+   *     pay
+   *       .payNotify(data, async parsedData => {
+   *         // ...
+   *         return {
+   *           return_code: "SUCCESS",
+   *           return_msg: "OK"
+   *         };
+   *       })
+   *       .then(returnData => {
+   *         res.set("Content-Type", "application/xml; charset=utf-8");
+   *         res.end(returnData);
+   *       });
+   *   });
+   * });
+   * ```
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8}
    */
   public async payNotify(
