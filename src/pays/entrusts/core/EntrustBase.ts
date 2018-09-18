@@ -117,14 +117,6 @@ class EntrustBase extends Base {
         return_msg: info.return_msg
       });
     }
-    const key = this.getKey();
-    const checkSign = sign(types.SignType.MD5, info, key);
-    if (checkSign !== info.sign) {
-      return toXML({
-        return_code: "FAIL",
-        return_msg: "签名失败"
-      });
-    }
     const result = await handler(info);
     return toXML(result);
   }

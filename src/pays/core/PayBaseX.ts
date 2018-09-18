@@ -37,14 +37,6 @@ export default class PayBaseX extends PayBase {
         return_msg: info.return_msg
       });
     }
-    const key = this.getKey();
-    const checkSign = sign(info.sign_type, info, key);
-    if (checkSign !== info.sign) {
-      return toXML({
-        return_code: "FAIL",
-        return_msg: "签名失败"
-      });
-    }
     const result = await handler(info);
     return toXML(result);
   }

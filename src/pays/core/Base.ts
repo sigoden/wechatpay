@@ -1,6 +1,6 @@
 import { fetch } from "../../fetch";
 import * as types from "../../types";
-import { nonceStr } from "../../utils";
+import { nonceStr, sign } from "../../utils";
 
 const GET_SIGN_KEY_BASE = "/pay/getsignkey";
 
@@ -70,6 +70,17 @@ class Base {
       });
     }
     this.debug = useDebug;
+  }
+
+  /**
+   * 校验 sign
+   */
+  public verifySign(
+    data: { sign_type: types.SignType },
+    signType = types.SignType.MD5
+  ): boolean {
+    const signData = sign(signType, data, this.getKey());
+    return signData === data.sign_type;
   }
 
   /**
