@@ -1,4 +1,5 @@
 export * from "./types";
+export * from "./errors";
 export * from "./pays/AppPay";
 export * from "./pays/Bank";
 export * from "./pays/Coupon";

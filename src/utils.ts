@@ -1,5 +1,8 @@
 import * as buffer from "buffer";
 import * as crypto from "crypto";
+import * as http from "http";
+import * as getRawBody from "raw-body";
+import * as stream from "stream";
 import * as xml2js from "xml2js";
 import * as types from "./types";
 
@@ -113,4 +116,14 @@ export function decode(key: string, data: string) {
   decipherChunks.push(decipher.update(data, "base64", "utf8"));
   decipherChunks.push(decipher.final("utf8"));
   return decipherChunks.join("");
+}
+
+/**
+ * 从请求中获取 xml 数据并解析
+ */
+export async function getXMLBody(req: stream.Readable) {
+  const rawData = await getRawBody(req, {
+    limit: "1mb"
+  });
+  return fromXML(rawData.toString("utf8"));
 }
