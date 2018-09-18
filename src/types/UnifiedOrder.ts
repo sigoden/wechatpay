@@ -148,8 +148,6 @@ export interface UnifiedOrderOptionsGeneral extends UnifiedOrderOptionsBase {
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1}
  */
 export interface UnifiedOrderOptionsPub extends UnifiedOrderOptionsBase {
-  trade_type: "JSAPI";
-  device_info: "WEB";
   /**
    * 用户标识
    * @description trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。
@@ -172,7 +170,6 @@ export interface UnifiedOrderOptionsPub extends UnifiedOrderOptionsBase {
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1}
  */
 export interface UnifiedOrderOptionsPubQr extends UnifiedOrderOptionsBase {
-  trade_type: "NATIVE";
   /**
    * 设备号
    * @description 自定义参数，可以为终端设备号(门店号或收银设备ID)，PC网页或公众号内支付可以传"WEB"
@@ -201,7 +198,6 @@ export interface UnifiedOrderOptionsPubQr extends UnifiedOrderOptionsBase {
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1}
  */
 export interface UnifiedOrderOptionsApp extends UnifiedOrderOptionsBase {
-  trade_type: "APP";
   /**
    * 设备号
    * @description 自定义参数，可以为终端设备号(门店号或收银设备ID)，PC网页或公众号内支付可以传"WEB"
@@ -230,8 +226,6 @@ export interface UnifiedOrderOptionsApp extends UnifiedOrderOptionsBase {
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1}
  */
 export interface UnifiedOrderOptionsWap extends UnifiedOrderOptionsBase {
-  trade_type: "MWEB";
-  device_info: "WEB";
   /**
    * 场景信息
    * @description 该字段用于上报场景信息，目前支持上报实际门店信息。该字段为JSON对象数据
@@ -253,9 +247,7 @@ export interface UnifiedOrderOptionsWap extends UnifiedOrderOptionsBase {
  * 统一下单选项，限小程序支付
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1}
  */
-export interface UnifiedOrderOptionsLite extends UnifiedOrderOptionsBase {
-  trade_type: "JSAPI";
-}
+export interface UnifiedOrderOptionsLite extends UnifiedOrderOptionsBase {}
 
 /**
  * 统一下单 `return_code` SUCCESS时返回

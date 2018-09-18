@@ -11,6 +11,8 @@ export class WapPay extends PayBaseX {
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1}
    */
   public async unifiedOrder(options: types.UnifiedOrderOptionsWap) {
-    return this.unifiedOrderBase<types.UnifiedOrderOptionsWap>(options);
+    return this.unifiedOrderBase(
+      Object.assign({ trade_type: "MWEB" }, options)
+    );
   }
 }

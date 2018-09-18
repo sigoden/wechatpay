@@ -52,14 +52,13 @@ export default class PayBaseX extends PayBase {
   /**
    * 统一下单
    */
-  protected async unifiedOrderBase<T extends types.UnifiedOrderOptionsBase>(
-    options: T
-  ) {
+  protected async unifiedOrderBase(options: types.UnifiedOrderOptionsGeneral) {
     const url = this.completeURL(UNIFIED_ORDER_BASE);
     const extra = await this.createFetchOptions(url);
-    return fetch<T, types.UnifiedOrderSuccess, types.UnifiedOrderFail>(
-      options,
-      extra
-    );
+    return fetch<
+      types.UnifiedOrderOptionsGeneral,
+      types.UnifiedOrderSuccess,
+      types.UnifiedOrderFail
+    >(options, extra);
   }
 }

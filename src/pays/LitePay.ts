@@ -11,6 +11,8 @@ export class LitePay extends PayBaseX {
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1}
    */
   public async unifiedOrder(options: types.UnifiedOrderOptionsLite) {
-    return this.unifiedOrderBase<types.UnifiedOrderOptionsLite>(options);
+    return this.unifiedOrderBase(
+      Object.assign({ trade_type: "JSAPI" }, options)
+    );
   }
 }

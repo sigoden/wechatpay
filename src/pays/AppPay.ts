@@ -11,6 +11,6 @@ export class AppPay extends PayBaseX {
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1}
    */
   public async unifiedOrder(options: types.UnifiedOrderOptionsApp) {
-    return this.unifiedOrderBase<types.UnifiedOrderOptionsApp>(options);
+    return this.unifiedOrderBase(Object.assign({ trade_type: "APP" }, options));
   }
 }

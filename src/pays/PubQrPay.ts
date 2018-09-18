@@ -11,6 +11,8 @@ export class PubQrPay extends PayBaseX {
    * @see {@link https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1}
    */
   public async unifiedOrder(options: types.UnifiedOrderOptionsPubQr) {
-    return this.unifiedOrderBase<types.UnifiedOrderOptionsPubQr>(options);
+    return this.unifiedOrderBase(
+      Object.assign({ trade_type: "NATIVE" }, options)
+    );
   }
 }
