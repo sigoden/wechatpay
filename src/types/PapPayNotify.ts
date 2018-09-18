@@ -5,7 +5,7 @@
 
 import { BaseReturn, FailT, SuccessT } from "./Base";
 
-interface PapPayNotifyOptionsSuccess {
+export interface PapPayNotifyOptionsSuccess {
   /**
    * 请求appid
    * @description appid是商户在微信申请公众号或移动应用成功后分配的帐号ID，登录平台为mp.weixin.qq.com或open.weixin.qq.com
@@ -166,7 +166,7 @@ interface PapPayNotifyOptionsSuccess {
   contract_id: string;
 }
 
-interface PapPayNotifyOptionsFail {
+export interface PapPayNotifyOptionsFail {
   /**
    * 请求appid
    * @description appid是商户在微信申请公众号或移动应用成功后分配的帐号ID，登录平台为mp.weixin.qq.com或open.weixin.qq.com

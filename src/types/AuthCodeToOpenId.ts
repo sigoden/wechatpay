@@ -14,7 +14,7 @@ export interface AuthCodeToOpenIdOptions {
   auth_code: string;
 }
 
-interface AuthCodeToOpenIdResponseCommon {
+export interface AuthCodeToOpenIdResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -45,9 +45,9 @@ interface AuthCodeToOpenIdResponseCommon {
   sign: string;
 }
 
-interface AuthCodeToOpenIdResponseFail extends AuthCodeToOpenIdResponseCommon {}
+export interface AuthCodeToOpenIdResponseFail extends AuthCodeToOpenIdResponseCommon {}
 
-interface AuthCodeToOpenIdResponseSuccess
+export interface AuthCodeToOpenIdResponseSuccess
   extends AuthCodeToOpenIdResponseCommon {
   /**
    * 用户标识

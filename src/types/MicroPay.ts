@@ -114,7 +114,7 @@ export interface MicroPayOptions {
   scene_info?: string;
 }
 
-interface MicroPayResponseCommon {
+export interface MicroPayResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -152,9 +152,9 @@ interface MicroPayResponseCommon {
   sign: string;
 }
 
-interface MicroPayResponseFail extends MicroPayResponseCommon {}
+export interface MicroPayResponseFail extends MicroPayResponseCommon {}
 
-interface MicroPayResponseSuccess extends MicroPayResponseCommon {
+export interface MicroPayResponseSuccess extends MicroPayResponseCommon {
   /**
    * 用户标识
    * @description 用户在商户appid 下的唯一标识

@@ -29,7 +29,7 @@ export interface ReverseOptions {
   sign_type?: SignType;
 }
 
-interface ReverseResponseCommon {
+export interface ReverseResponseCommon {
   /**
    * 公众账号ID
    * @description 返回提交的公众账号ID
@@ -67,9 +67,9 @@ interface ReverseResponseCommon {
   recall: string;
 }
 
-interface ReverseResponseFail extends ReverseResponseCommon {}
+export interface ReverseResponseFail extends ReverseResponseCommon {}
 
-interface ReverseResponseSuccess extends ReverseResponseCommon {}
+export interface ReverseResponseSuccess extends ReverseResponseCommon {}
 
 export type ReverseSuccess = SuccessT<ReverseResponseSuccess>;
 export type ReverseFail = FailT<ReverseResponseFail>;

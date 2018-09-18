@@ -15,11 +15,11 @@ export interface QueryBankOptions {
   partner_trade_no: string;
 }
 
-interface QueryBankResponseCommon {}
+export interface QueryBankResponseCommon {}
 
-interface QueryBankResponseFail extends QueryBankResponseCommon {}
+export interface QueryBankResponseFail extends QueryBankResponseCommon {}
 
-interface QueryBankResponseSuccess extends QueryBankResponseCommon {
+export interface QueryBankResponseSuccess extends QueryBankResponseCommon {
   /**
    * 商户号
    * @typedef string(32)

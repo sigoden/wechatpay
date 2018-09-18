@@ -63,11 +63,11 @@ export interface ReportOptions {
   trades: string;
 }
 
-interface ReportResponseCommon {}
+export interface ReportResponseCommon {}
 
-interface ReportResponseFail extends ReportResponseCommon {}
+export interface ReportResponseFail extends ReportResponseCommon {}
 
-interface ReportResponseSuccess extends ReportResponseCommon {}
+export interface ReportResponseSuccess extends ReportResponseCommon {}
 
 export type ReportSuccess = SuccessT<ReportResponseSuccess>;
 export type ReportFail = FailT<ReportResponseFail>;

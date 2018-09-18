@@ -50,7 +50,7 @@ export interface RefundQueryOptions {
   offset?: number;
 }
 
-interface RefundQueryResponseCommon {
+export interface RefundQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID（企业号corpid即为此appId）
@@ -257,9 +257,9 @@ interface RefundQueryResponseCommon {
   refund_success_time_$n?: string;
 }
 
-interface RefundQueryResponseFail extends RefundQueryResponseCommon {}
+export interface RefundQueryResponseFail extends RefundQueryResponseCommon {}
 
-interface RefundQueryResponseSuccess extends RefundQueryResponseCommon {}
+export interface RefundQueryResponseSuccess extends RefundQueryResponseCommon {}
 
 export type RefundQuerySuccess = SuccessT<RefundQueryResponseSuccess>;
 export type RefundQueryFail = FailT<RefundQueryResponseFail>;

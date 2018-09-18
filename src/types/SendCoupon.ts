@@ -62,7 +62,7 @@ export interface SendCouponOptions {
   type?: string;
 }
 
-interface SendCouponResponseCommon {
+export interface SendCouponResponseCommon {
   /**
    * 公众账号ID
    * @description 微信为发券方商户分配的公众账号ID，接口传入的所有appid应该为公众号的appid（在mp.weixin.qq.com申请的），
@@ -101,9 +101,9 @@ interface SendCouponResponseCommon {
   sign: string;
 }
 
-interface SendCouponResponseFail extends SendCouponResponseCommon {}
+export interface SendCouponResponseFail extends SendCouponResponseCommon {}
 
-interface SendCouponResponseSuccess extends SendCouponResponseCommon {
+export interface SendCouponResponseSuccess extends SendCouponResponseCommon {
   /**
    * 代金券批次id
    * @description 创建代金券时生成的批次号，可在商户平台-代金券管理页面查看

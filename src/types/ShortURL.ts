@@ -22,7 +22,7 @@ export interface ShortURLOptions {
   sign_type?: SignType;
 }
 
-interface ShortURLResponseCommon {
+export interface ShortURLResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -60,9 +60,9 @@ interface ShortURLResponseCommon {
   short_url: string;
 }
 
-interface ShortURLResponseFail extends ShortURLResponseCommon {}
+export interface ShortURLResponseFail extends ShortURLResponseCommon {}
 
-interface ShortURLResponseSuccess extends ShortURLResponseCommon {}
+export interface ShortURLResponseSuccess extends ShortURLResponseCommon {}
 
 export type ShortURLSuccess = SuccessT<ShortURLResponseSuccess>;
 export type ShortURLFail = FailT<ShortURLResponseFail>;

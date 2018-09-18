@@ -41,7 +41,7 @@ export interface QueryCouponStockOptions {
   type?: string;
 }
 
-interface QueryCouponStockResponseCommon {
+export interface QueryCouponStockResponseCommon {
   /**
    * 公众账号ID
    * @description 微信为发券方商户分配的公众账号ID，接口传入的所有appid应该为公众号的appid（在mp.weixin.qq.com申请的），
@@ -80,9 +80,9 @@ interface QueryCouponStockResponseCommon {
   sign: string;
 }
 
-interface QueryCouponStockResponseFail extends QueryCouponStockResponseCommon {}
+export interface QueryCouponStockResponseFail extends QueryCouponStockResponseCommon {}
 
-interface QueryCouponStockResponseSuccess
+export interface QueryCouponStockResponseSuccess
   extends QueryCouponStockResponseCommon {
   /**
    * 代金券批次ID

@@ -14,11 +14,11 @@ export interface GetTransferInfoOptions {
   partner_trade_no: string;
 }
 
-interface GetTransferInfoResponseCommon {}
+export interface GetTransferInfoResponseCommon {}
 
-interface GetTransferInfoResponseFail extends GetTransferInfoResponseCommon {}
+export interface GetTransferInfoResponseFail extends GetTransferInfoResponseCommon {}
 
-interface GetTransferInfoResponseSuccess extends GetTransferInfoResponseCommon {
+export interface GetTransferInfoResponseSuccess extends GetTransferInfoResponseCommon {
   /**
    * 商户单号
    * @description 商户使用查询API填写的单号的原路返回.

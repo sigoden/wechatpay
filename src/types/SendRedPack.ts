@@ -105,11 +105,11 @@ export interface SendRedPackOptions {
   consume_mch_id?: string;
 }
 
-interface SendRedPackResponseCommon {}
+export interface SendRedPackResponseCommon {}
 
-interface SendRedPackResponseFail extends SendRedPackResponseCommon {}
+export interface SendRedPackResponseFail extends SendRedPackResponseCommon {}
 
-interface SendRedPackResponseSuccess extends SendRedPackResponseCommon {
+export interface SendRedPackResponseSuccess extends SendRedPackResponseCommon {
   /**
    * 商户订单号
    * @description 商户订单号（每个订单号必须唯一）  组成：mch_id+yyyymmdd+10位一天内不能重复的数字

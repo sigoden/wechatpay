@@ -81,7 +81,7 @@ export interface RefundOptions {
   notify_url?: string;
 }
 
-interface RefundResponseCommon {
+export interface RefundResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -231,8 +231,8 @@ interface RefundResponseCommon {
   coupon_refund_id_$n?: string;
 }
 
-interface RefundResponseFail extends RefundResponseCommon {}
-interface RefundResponseSuccess extends RefundResponseCommon {}
+export interface RefundResponseFail extends RefundResponseCommon {}
+export interface RefundResponseSuccess extends RefundResponseCommon {}
 
 export type RefundSuccess = SuccessT<RefundResponseSuccess>;
 export type RefundFail = FailT<RefundResponseFail>;

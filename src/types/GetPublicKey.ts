@@ -15,11 +15,11 @@ export interface GetPublicKeyOptions {
   sign_type: SignType;
 }
 
-interface GetPublicKeyResponseCommon {}
+export interface GetPublicKeyResponseCommon {}
 
-interface GetPublicKeyResponseFail extends GetPublicKeyResponseCommon {}
+export interface GetPublicKeyResponseFail extends GetPublicKeyResponseCommon {}
 
-interface GetPublicKeyResponseSuccess extends GetPublicKeyResponseCommon {
+export interface GetPublicKeyResponseSuccess extends GetPublicKeyResponseCommon {
   /**
    * 商户号
    * @typedef String(32)

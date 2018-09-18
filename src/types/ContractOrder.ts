@@ -161,7 +161,7 @@ export interface ContractOrderOptions {
   contract_notify_url: string;
 }
 
-interface ContractOrderResponseCommon {
+export interface ContractOrderResponseCommon {
   /**
    * 请求appid
    * @description appid是商户在微信申请公众号或移动应用成功后分配的帐号ID，登录平台为mp.weixin.qq.com或open.weixin.qq.com
@@ -210,9 +210,9 @@ interface ContractOrderResponseCommon {
   contract_err_code_des?: string;
 }
 
-interface ContractOrderResponseFail extends ContractOrderResponseCommon {}
+export interface ContractOrderResponseFail extends ContractOrderResponseCommon {}
 
-interface ContractOrderResponseSuccess extends ContractOrderResponseCommon {
+export interface ContractOrderResponseSuccess extends ContractOrderResponseCommon {
   /**
    * 预支付交易会话标识
    * @description 微信生成的预支付回话标识,用于后续接口调用中使用,该值有效期为2小时.

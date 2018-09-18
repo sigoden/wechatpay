@@ -18,41 +18,49 @@ export interface BaseReturn {
   return_msg?: string;
 }
 
-export type SuccessT<T> = BaseReturn &
-  T & {
-    /**
-     * 业务结果
-     * @description success/fail
-     * @example success
-     * @typedef string(16)
-     */
-    result_code: "SUCCESS";
-  };
+export interface SuccessReturn extends BaseReturn {
+  /**
+   * 业务结果
+   * @description success/fail
+   * @example success
+   * @typedef string(16)
+   */
+  result_code: "SUCCESS";
+}
 
-export type FailT<T> = BaseReturn &
-  T & {
-    /**
-     * 业务结果
-     * @description success/fail
-     * @example success
-     * @typedef string(16)
-     */
-    result_code: "FAIL";
-    /**
-     * 错误代码
-     * @description 详细参见错误列表
-     * @example systemerror
-     * @typedef string(32)
-     */
-    err_code?: string;
-    /**
-     * 错误代码描述
-     * @description 错误返回的信息描述
-     * @example 系统错误
-     * @typedef string(128)
-     */
-    err_code_des?: string;
-  };
+/**
+ * 业务逻辑成功返回数据
+ */
+export type SuccessT<T> = T & SuccessReturn;
+
+export interface FailReturn extends BaseReturn {
+  /**
+   * 业务结果
+   * @description success/fail
+   * @example success
+   * @typedef string(16)
+   */
+  result_code: "FAIL";
+  /**
+   * 错误代码
+   * @description 详细参见错误列表
+   * @example systemerror
+   * @typedef string(32)
+   */
+  err_code?: string;
+  /**
+   * 错误代码描述
+   * @description 错误返回的信息描述
+   * @example 系统错误
+   * @typedef string(128)
+   */
+  err_code_des?: string;
+}
+
+/**
+ * 业务逻辑失败返回数据
+ */
+export type FailT<T> = T & FailReturn;
 
 /**
  * 支付类构造函数选项

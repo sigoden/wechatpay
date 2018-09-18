@@ -44,12 +44,12 @@ export interface BatchQueryCommentOptions {
   limit?: number;
 }
 
-interface BatchQueryCommentResponseCommon {}
+export interface BatchQueryCommentResponseCommon {}
 
-interface BatchQueryCommentResponseFail
+export interface BatchQueryCommentResponseFail
   extends BatchQueryCommentResponseCommon {}
 
-interface BatchQueryCommentResponseSuccess
+export interface BatchQueryCommentResponseSuccess
   extends BatchQueryCommentResponseCommon {}
 
 export type BatchQueryCommentSuccess = SuccessT<

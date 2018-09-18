@@ -10,7 +10,7 @@ export interface GetSignKeyOptions {}
 /**
  * 获取验签秘钥返回值
  */
-interface GetSignKeyResponseCommon {
+export interface GetSignKeyResponseCommon {
   /**
    * 商户号
    * @description 微信支付分配的微信商户号
@@ -27,8 +27,8 @@ interface GetSignKeyResponseCommon {
   sandbox_signkey: string;
 }
 
-interface GetSignKeyResponseSuccess extends GetSignKeyResponseCommon {}
-interface GetSignKeyResponseFail extends GetSignKeyResponseCommon {}
+export interface GetSignKeyResponseSuccess extends GetSignKeyResponseCommon {}
+export interface GetSignKeyResponseFail extends GetSignKeyResponseCommon {}
 
 export type GetSignKeySuccess = SuccessT<GetSignKeyResponseSuccess>;
 export type GetSignKeyFail = FailT<GetSignKeyResponseFail>;

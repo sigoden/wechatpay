@@ -22,11 +22,11 @@ export interface GetHbInfoOptions {
   bill_type: string;
 }
 
-interface GetHbInfoResponseCommon {}
+export interface GetHbInfoResponseCommon {}
 
-interface GetHbInfoResponseFail extends GetHbInfoResponseCommon {}
+export interface GetHbInfoResponseFail extends GetHbInfoResponseCommon {}
 
-interface GetHbInfoResponseSuccess extends GetHbInfoResponseCommon {
+export interface GetHbInfoResponseSuccess extends GetHbInfoResponseCommon {
   /**
    * 商户订单号
    * @description 商户使用查询API填写的商户单号的原路返回

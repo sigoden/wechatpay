@@ -36,11 +36,11 @@ export interface QueryContractOptions {
   version: string;
 }
 
-interface QueryContractResponseCommon {}
+export interface QueryContractResponseCommon {}
 
-interface QueryContractResponseFail extends QueryContractResponseCommon {}
+export interface QueryContractResponseFail extends QueryContractResponseCommon {}
 
-interface QueryContractResponseSuccess extends QueryContractResponseCommon {
+export interface QueryContractResponseSuccess extends QueryContractResponseCommon {
   /**
    * 商户号
    * @description 微信支付分配的商户号

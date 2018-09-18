@@ -53,7 +53,7 @@ export interface PayBankOptions {
   desc?: string;
 }
 
-interface PayBankResponseCommon {
+export interface PayBankResponseCommon {
   /**
    * 商户appid
    * @description 申请商户号的appid或商户号绑定的appid（企业号corpid即为此appId）
@@ -84,9 +84,9 @@ interface PayBankResponseCommon {
   nonce_str: string;
 }
 
-interface PayBankResponseFail extends PayBankResponseCommon {}
+export interface PayBankResponseFail extends PayBankResponseCommon {}
 
-interface PayBankResponseSuccess extends PayBankResponseCommon {
+export interface PayBankResponseSuccess extends PayBankResponseCommon {
   /**
    * 商户订单号
    * @description 商户订单号，需保持历史全局唯一性(只能是字母或者数字，不能包含有符号)

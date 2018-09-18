@@ -1,4 +1,4 @@
-interface EntrustCommon {
+export interface EntrustCommon {
   /**
    * 模板id
    * @description 协议模板id

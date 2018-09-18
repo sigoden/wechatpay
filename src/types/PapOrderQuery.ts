@@ -22,7 +22,7 @@ export interface PapOrderQueryOptions {
   out_trade_no?: string;
 }
 
-interface PapOrderQueryResponseCommon {
+export interface PapOrderQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID
@@ -53,9 +53,9 @@ interface PapOrderQueryResponseCommon {
   sign?: string;
 }
 
-interface PapOrderQueryResponseFail extends PapOrderQueryResponseCommon {}
+export interface PapOrderQueryResponseFail extends PapOrderQueryResponseCommon {}
 
-interface PapOrderQueryResponseSuccess extends PapOrderQueryResponseCommon {
+export interface PapOrderQueryResponseSuccess extends PapOrderQueryResponseCommon {
   /**
    * 设备号
    * @description undefined

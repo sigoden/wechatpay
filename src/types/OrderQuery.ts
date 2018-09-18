@@ -28,7 +28,7 @@ export interface OrderQueryOptions {
   sign_type?: SignType;
 }
 
-interface OrderQueryResponseCommon {
+export interface OrderQueryResponseCommon {
   /**
    * 公众账号ID
    * @description 微信分配的公众账号ID

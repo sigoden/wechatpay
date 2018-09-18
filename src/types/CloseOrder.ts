@@ -22,7 +22,7 @@ export interface CloseOrderOptions {
   sign_type?: SignType;
 }
 
-interface CloseOrderResponseCommon {
+export interface CloseOrderResponseCommon {
   /**
    * 公众账号ID
    * @description 返回提交的公众账号ID
@@ -53,8 +53,8 @@ interface CloseOrderResponseCommon {
   sign: string;
 }
 
-interface CloseOrderResponseSuccess extends CloseOrderResponseCommon {}
-interface CloseOrderResponseFail extends CloseOrderResponseCommon {}
+export interface CloseOrderResponseSuccess extends CloseOrderResponseCommon {}
+export interface CloseOrderResponseFail extends CloseOrderResponseCommon {}
 
 export type CloseOrderSuccess = SuccessT<CloseOrderResponseSuccess>;
 export type CloseOrderFail = FailT<CloseOrderResponseFail>;

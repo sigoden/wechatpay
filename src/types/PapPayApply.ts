@@ -149,7 +149,7 @@ export interface PapPayApplyOptions {
   timestamp?: number;
 }
 
-interface PapPayApplyResponseCommon {
+export interface PapPayApplyResponseCommon {
   /**
    * 公众账号id
    * @description 微信支付分配的公众账号id
@@ -180,8 +180,8 @@ interface PapPayApplyResponseCommon {
   sign: string;
 }
 
-interface PapPayApplyResponseSuccess extends PapPayApplyResponseCommon {}
-interface PapPayApplyResponseFail extends PapPayApplyResponseCommon {}
+export interface PapPayApplyResponseSuccess extends PapPayApplyResponseCommon {}
+export interface PapPayApplyResponseFail extends PapPayApplyResponseCommon {}
 
 export type PapPayApplySuccess = SuccessT<PapPayApplyResponseSuccess>;
 export type PapPayApplyFail = FailT<PapPayApplyResponseFail>;

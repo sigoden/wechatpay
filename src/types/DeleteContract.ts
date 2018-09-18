@@ -43,7 +43,7 @@ export interface DeleteContractOptions {
   version: string;
 }
 
-interface DeleteContractResponseCommon {
+export interface DeleteContractResponseCommon {
   /**
    * 公众账号id
    * @description 微信支付分配的公众账号id
@@ -88,8 +88,8 @@ interface DeleteContractResponseCommon {
   sign: string;
 }
 
-interface DeleteContractResponseSuccess extends DeleteContractResponseCommon {}
-interface DeleteContractResponseFail extends DeleteContractResponseCommon {}
+export interface DeleteContractResponseSuccess extends DeleteContractResponseCommon {}
+export interface DeleteContractResponseFail extends DeleteContractResponseCommon {}
 
 export type DeleteContractSuccess = SuccessT<DeleteContractResponseSuccess>;
 export type DeleteContractFail = FailT<DeleteContractResponseFail>;

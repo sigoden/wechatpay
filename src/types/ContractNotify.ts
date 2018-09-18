@@ -5,10 +5,10 @@
 
 import { BaseReturn, FailT, SuccessT } from "./Base";
 
-interface ContractNotifyOptionsCommon {}
+export interface ContractNotifyOptionsCommon {}
 
-interface ContractNotifyOptionsFail extends ContractNotifyOptionsCommon {}
-interface ContractNotifyOptionsSuccess extends ContractNotifyOptionsCommon {
+export interface ContractNotifyOptionsFail extends ContractNotifyOptionsCommon {}
+export interface ContractNotifyOptionsSuccess extends ContractNotifyOptionsCommon {
   /**
    * 商户号
    * @description 微信支付分配的商户号

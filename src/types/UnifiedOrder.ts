@@ -261,7 +261,7 @@ export interface UnifiedOrderOptionsLite extends UnifiedOrderOptionsBase {
  * 统一下单 `return_code` SUCCESS时返回
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1}
  */
-interface UnifiedOrderResponseCommon {
+export interface UnifiedOrderResponseCommon {
   /**
    * 公众账号ID
    * @description 调用接口提交的公众账号ID
@@ -299,9 +299,9 @@ interface UnifiedOrderResponseCommon {
   sign: string;
 }
 
-interface UnifiedOrderResponseFail extends UnifiedOrderResponseCommon {}
+export interface UnifiedOrderResponseFail extends UnifiedOrderResponseCommon {}
 
-interface UnifiedOrderResponseSuccess extends UnifiedOrderResponseCommon {
+export interface UnifiedOrderResponseSuccess extends UnifiedOrderResponseCommon {
   /**
    * 交易类型
    * @description
