@@ -10,6 +10,15 @@ const GET_TRANSFER_INFO_BASE = "/mmpaymkttransfers/gettransferinfo";
 
 /**
  * 企业付款
+ *
+ * ```
+ * const pay = new Bank({
+ *   appId: "wxb80e5bddb2d804f3",
+ *   key: "6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7",
+ *   mchId: "1434712502",
+ *   pfx: fs.readFileSync(path.resolve(__dirname, "cert.p12"))
+ * });
+ * ```
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_1}
  */
 export class Bank extends Base {
@@ -85,6 +94,7 @@ export class Bank extends Base {
       extra
     );
   }
+
   /**
    * 查询企业付款到银行卡
    *
@@ -105,6 +115,7 @@ export class Bank extends Base {
       types.QueryBankFail
     >(options, extra);
   }
+
   /**
    * 获取RSA加密公钥
    *

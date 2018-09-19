@@ -60,7 +60,7 @@ export default class PayBaseX extends PayBase {
    *
    * ```
    * router.post("/wechatpay/notify/refund", (req, res) => {
-   *   getXMLBody(req).then(data => {
+   *   getXMLBody(req, options).then(data => {
    *     pay
    *       .payNotify(data, async parsedData => {
    *         // ...

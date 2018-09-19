@@ -152,7 +152,7 @@ class PayBase extends Base {
    *
    * ```
    * router.post("/wechatpay/notify/refund", (req, res) => {
-   *   getXMLBody(req).then(data => {
+   *   getXMLBody(req, options).then(data => {
    *     pay
    *       .refundNotify(data, async parsedData => {
    *         if (!pay.verifySign(parsedData)) {

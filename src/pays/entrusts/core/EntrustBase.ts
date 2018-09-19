@@ -22,7 +22,7 @@ class EntrustBase extends Base {
    *
    * ```
    * router.post("/wechatpay/notify/contract", (req, res) => {
-   *   getXMLBody(req).then(data => {
+   *   getXMLBody(req, options).then(data => {
    *     pay
    *       .contractNotify(data, async parsedData => {
    *         if (!pay.verifySign(parsedData)) {
@@ -162,7 +162,7 @@ class EntrustBase extends Base {
    *
    * ```
    * router.post("/wechatpay/notify/refund", (req, res) => {
-   *   getXMLBody(req).then(data => {
+   *   getXMLBody(req, options).then(data => {
    *     pay
    *       .papPayNotify(data, async parsedData => {
    *         if (!pay.verifySign(parsedData)) {

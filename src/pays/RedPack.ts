@@ -8,6 +8,15 @@ const GET_HB_INFO_BASE = "/mmpaymkttransfers/gethbinfo";
 
 /**
  * 现金红包
+ *
+ * ```
+ * const pay = new RedPack({
+ *   appId: "wxb80e5bddb2d804f3",
+ *   key: "6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7",
+ *   mchId: "1434712502",
+ *   pfx: fs.readFileSync(path.resolve(__dirname, "cert.p12"))
+ * });
+ * ```
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_1}
  */
 export class RedPack extends Base {

@@ -3,6 +3,15 @@ import PayBaseX from "./core/PayBaseX";
 
 /**
  * 扫码支付
+ *
+ * ```
+ * const pay = new PubQrPay({
+ *   appId: "wxb80e5bddb2d804f3",
+ *   key: "6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7",
+ *   mchId: "1434712502",
+ *   pfx: fs.readFileSync(path.resolve(__dirname, "cert.p12"))
+ * });
+ * ```
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_1}
  */
 export class PubQrPay extends PayBaseX {

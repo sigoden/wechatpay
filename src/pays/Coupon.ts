@@ -8,6 +8,15 @@ const QUERY_COUPONS_INFO_BASE = "/mmpaymkttransfers/querycouponsinfo";
 
 /**
  * 代金券
+ *
+ * ```
+ * const pay = new Coupon({
+ *   appId: "wxb80e5bddb2d804f3",
+ *   key: "6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7",
+ *   mchId: "1434712502",
+ *   pfx: fs.readFileSync(path.resolve(__dirname, "cert.p12"))
+ * });
+ * ```
  * @see {@link https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_1}
  */
 export class Coupon extends Base {
@@ -53,6 +62,7 @@ export class Coupon extends Base {
       types.QueryCouponStockFail
     >(options, extra);
   }
+
   /**
    * 查询代金券信息
    *
