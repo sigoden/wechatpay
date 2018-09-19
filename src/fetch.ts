@@ -1,7 +1,7 @@
 import * as request from "request";
-import * as types from "types";
-import { sign, toXML } from "utils";
 import { CommunicationError, RequestError } from "./errors";
+import * as types from "./types";
+import { fromXML, sign, toXML } from "./utils";
 
 /**
  * 远程调用
@@ -14,16 +14,22 @@ export function fetch<
   const options = createRequestOptions<U>(data, extra);
   options.method = "POST";
   return new Promise<S | F>((resolve, reject) => {
-    request(options, (err, _, resBody: S | F) => {
+    request(options, (err, _, rawBody: string) => {
       if (err) {
         return reject(new RequestError(err));
       }
-      if (resBody.return_code === "FAIL") {
-        return reject(
-          new CommunicationError(resBody.return_code, resBody.return_msg)
-        );
-      }
-      resolve(resBody);
+      fromXML<S | F>(rawBody)
+        .then(resBody => {
+          if (resBody.return_code === "FAIL") {
+            return reject(
+              new CommunicationError(resBody.return_code, resBody.return_msg)
+            );
+          }
+          resolve(resBody);
+        })
+        .catch(parseErr => {
+          reject(new RequestError("解析失败: " + rawBody));
+        });
     });
   });
 }
@@ -38,19 +44,22 @@ export function download<U, F extends types.BaseReturn>(
   const options = createRequestOptions<U>(data, extra);
   options.method = "POST";
   return new Promise<string | F>((resolve, reject) => {
-    request(options, (err, _, resBody: string | F) => {
+    request(options, (err, _, rawBody: string) => {
       if (err) {
         return reject(new RequestError(err));
       }
-      if (typeof resBody === "string") {
-        return resolve(resBody);
-      }
-      if (resBody.return_code === "FAIL") {
-        return reject(
-          new CommunicationError(resBody.return_code, resBody.return_msg)
-        );
-      }
-      return resolve(resBody);
+      fromXML<F>(rawBody)
+        .then(resBody => {
+          if (resBody.return_code === "FAIL") {
+            return reject(
+              new CommunicationError(resBody.return_code, resBody.return_msg)
+            );
+          }
+          resolve(resBody);
+        })
+        .catch(parseErr => {
+          resolve(rawBody);
+        });
     });
   });
 }

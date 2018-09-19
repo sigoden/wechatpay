@@ -1,6 +1,5 @@
 import * as buffer from "buffer";
 import * as crypto from "crypto";
-import * as http from "http";
 import * as getRawBody from "raw-body";
 import * as stream from "stream";
 import * as xml2js from "xml2js";
@@ -34,18 +33,18 @@ export function toXML(data: any): string {
 /**
  * 从 XML 格式字符串生成对象
  */
-export function fromXML(data: string): any {
+export function fromXML<T>(data: string) {
   const parser = new xml2js.Parser({
     trim: true,
     explicitArray: false,
     explicitRoot: false
   });
-  return new Promise<any>((resolve, reject) => {
+  return new Promise<T>((resolve, reject) => {
     parser.parseString(data, (err, ret) => {
       if (err) {
         return reject(err);
       }
-      resolve(ret);
+      resolve(<T> ret);
     });
   });
 }
@@ -109,7 +108,7 @@ export function rsa(pemKey: string, data: string) {
  * 解密
  */
 export function decode(key: string, data: string) {
-  const secret = exports.signMethods.MD5(key).toLowerCase();
+  const secret = md5(key).toLowerCase();
   const decipher = crypto.createDecipheriv("aes-256-ecb", secret, "");
   decipher.setAutoPadding(true);
   const decipherChunks = [];
@@ -121,9 +120,10 @@ export function decode(key: string, data: string) {
 /**
  * 从请求中获取 xml 数据并解析
  */
-export async function getXMLBody(req: stream.Readable) {
-  const rawData = await getRawBody(req, {
-    limit: "1mb"
-  });
+export async function getXMLBody(
+  req: stream.Readable,
+  options: getRawBody.Options
+) {
+  const rawData = await getRawBody(req, options);
   return fromXML(rawData.toString("utf8"));
 }
