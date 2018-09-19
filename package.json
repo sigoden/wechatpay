@@ -1,6 +1,6 @@
 {
   "name": "@sigodenjs/wechatpay",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "微信支付 SDK，支持刷卡支付、公众号支付、扫码支付、APP支付、H5支付，以及优惠券，红包，企业付款，微信代扣",
   "keywords": [
     "wechat",
@@ -15,7 +15,9 @@
     "test": "test"
   },
   "scripts": {
+    "test": "jest",
     "build": "tsc",
+    "docs": "typedoc --mode file --out docs src",
     "build:prod": "tsc -p tsconfig.prod.json",
     "clean": "rimraf dist",
     "prepublish": "npm run clean && npm run build:prod",
@@ -32,14 +34,19 @@
   },
   "homepage": "https://github.com/sigoden/wechatpay#readme",
   "devDependencies": {
+    "@types/jest": "^23.3.2",
     "@types/request": "^2.47.1",
+    "@types/xml2js": "^0.4.3",
+    "jest": "^23.6.0",
+    "lodash.omit": "^4.5.0",
+    "ts-jest": "^23.1.4",
     "tslint": "^5.11.0",
+    "typedoc": "^0.12.0",
     "typescript": "^3.0.3"
   },
   "dependencies": {
     "@types/node": "^10.9.4",
-    "@types/xml2js": "^0.4.3",
-    "lodash.omit": "^4.5.0",
+    "raw-body": "^2.3.3",
     "request": "^2.88.0"
   }
 }
