@@ -14,6 +14,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc",
