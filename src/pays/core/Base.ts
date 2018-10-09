@@ -76,11 +76,11 @@ class Base {
    * 校验 sign
    */
   public verifySign(
-    data: { sign_type: types.SignType },
+    data: { sign: string },
     signType = types.SignType.MD5
   ): boolean {
     const signData = sign(signType, data, this.getKey());
-    return signData === data.sign_type;
+    return signData === data.sign;
   }
 
   /**

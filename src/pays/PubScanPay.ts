@@ -26,7 +26,6 @@ export class PubScanPay extends PayBase {
    *
    * ```
    * pay.microPay({
-   *   device_info: "013467007045764",
    *   body: "深圳腾大- QQ公仔",
    *   out_trade_no: "1217752501201407033233368018",
    *   total_fee: 888,
