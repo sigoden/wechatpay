@@ -1,6 +1,6 @@
 {
   "name": "@sigodenjs/wechatpay",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "微信支付 SDK，支持刷卡支付、公众号支付、扫码支付、APP支付、H5支付，以及优惠券，红包，企业付款，微信代扣",
   "keywords": [
     "wechat",
