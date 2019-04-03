@@ -50,7 +50,7 @@ class Base {
    */
   public async setDebug(useDebug: boolean) {
     if (useDebug && !this.keyForDebug) {
-      const url = URL_MCH + GET_SIGN_KEY_BASE;
+      const url = URL_SANBOX + GET_SIGN_KEY_BASE;
       const extra: types.FetchOptions = {
         appid: this.appId,
         mch_id: this.mchId,
