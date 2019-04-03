@@ -28,7 +28,7 @@ class EntrustBase extends Base {
    *         if (!pay.verifySign(parsedData)) {
    *           // 签名校验失败
    *         }
-   *         if (parsedData.parsedDatault_code === "FAIL") {
+   *         if (parsedData.result_code === "FAIL") {
    *           // 业务逻辑失败
    *         }
    *         // ...
@@ -168,7 +168,7 @@ class EntrustBase extends Base {
    *         if (!pay.verifySign(parsedData)) {
    *           // 签名校验失败
    *         }
-   *         if (parsedData.parsedDatault_code === "FAIL") {
+   *         if (parsedData.result_code === "FAIL") {
    *           // 业务逻辑失败
    *         }
    *         // ...
