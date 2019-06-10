@@ -1,6 +1,6 @@
 import { download, fetch } from "../../fetch";
 import * as types from "../../types";
-import { decode, toXML } from "../../utils";
+import { decode, toXML, fromXML } from "../../utils";
 import Base from "./Base";
 
 const ORDER_QUERY_BASE = "/pay/orderquery";
@@ -188,7 +188,7 @@ class PayBase extends Base {
     }
     const key = this.getKey();
     const decodeRawData = decode(key, baseData.req_info);
-    const decodeData = <types.RefundNotifyDecode> JSON.parse(decodeRawData);
+    const decodeData = await fromXML<types.RefundNotifyDecode>(decodeRawData);
     const result = await handler(Object.assign(baseData, decodeData));
     return toXML(result);
   }
