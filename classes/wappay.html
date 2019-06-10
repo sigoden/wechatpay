@@ -1,0 +1,1092 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>WapPay | @sigodenjs/wechatpay</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@sigodenjs/wechatpay</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="wappay.html">WapPay</a>
+				</li>
+			</ul>
+			<h1>Class WapPay</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>H5支付</p>
+					</div>
+					<pre><code>const pay = new WapPay({
+  appId: <span class="hljs-string">"wxb80e5bddb2d804f3"</span>,
+  key: <span class="hljs-string">"6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7"</span>,
+  mchId: <span class="hljs-string">"1434712502"</span>,
+  pfx: fs.readFileSync(<span class="hljs-name">path</span>.resolve(<span class="hljs-name">__dirname</span>, <span class="hljs-string">"cert.p12"</span>))
+})<span class="hljs-comment">;</span></code></pre>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=15_1" class="external">https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=15_1</a></p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="paybasex.html" class="tsd-signature-type">PayBaseX</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">WapPay</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#appid" class="tsd-kind-icon">app<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#key" class="tsd-kind-icon">key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#keyfordebug" class="tsd-kind-icon">key<wbr>For<wbr>Debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#mchid" class="tsd-kind-icon">mch<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#pfx" class="tsd-kind-icon">pfx</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#batchquerycomment" class="tsd-kind-icon">batch<wbr>Query<wbr>Comment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#closeorder" class="tsd-kind-icon">close<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="wappay.html#completeurl" class="tsd-kind-icon">completeURL</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="wappay.html#createfetchoptions" class="tsd-kind-icon">create<wbr>Fetch<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#downloadbill" class="tsd-kind-icon">download<wbr>Bill</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#downloadfundflow" class="tsd-kind-icon">download<wbr>Fund<wbr>Flow</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="wappay.html#getkey" class="tsd-kind-icon">get<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#orderquery" class="tsd-kind-icon">order<wbr>Query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#paynotify" class="tsd-kind-icon">pay<wbr>Notify</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#refund" class="tsd-kind-icon">refund</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#refundnotify" class="tsd-kind-icon">refund<wbr>Notify</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#refundquery" class="tsd-kind-icon">refund<wbr>Query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#report" class="tsd-kind-icon">report</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#setdebug" class="tsd-kind-icon">set<wbr>Debug</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wappay.html#unifiedorder" class="tsd-kind-icon">unified<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="wappay.html#unifiedorderbase" class="tsd-kind-icon">unified<wbr>Order<wbr>Base</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="wappay.html#verifysign" class="tsd-kind-icon">verify<wbr>Sign</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Wap<wbr>Pay<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/constructoroptions.html" class="tsd-signature-type">ConstructorOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wappay.html" class="tsd-signature-type">WapPay</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L37">pays/core/Base.ts:37</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/constructoroptions.html" class="tsd-signature-type">ConstructorOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="wappay.html" class="tsd-signature-type">WapPay</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="appid" class="tsd-anchor"></a>
+					<h3>app<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#appid">appId</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L17">pays/core/Base.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>公众账号ID</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="debug" class="tsd-anchor"></a>
+					<h3>debug</h3>
+					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#debug">debug</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L37">pays/core/Base.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>仿真模式开关</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="key" class="tsd-anchor"></a>
+					<h3>key</h3>
+					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#key">key</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L25">pays/core/Base.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>密钥</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="keyfordebug" class="tsd-anchor"></a>
+					<h3>key<wbr>For<wbr>Debug</h3>
+					<div class="tsd-signature tsd-kind-icon">key<wbr>For<wbr>Debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#keyfordebug">keyForDebug</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L33">pays/core/Base.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>测试用验签密钥</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="mchid" class="tsd-anchor"></a>
+					<h3>mch<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">mch<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#mchid">mchId</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L21">pays/core/Base.ts:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>商户号</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="pfx" class="tsd-anchor"></a>
+					<h3>pfx</h3>
+					<div class="tsd-signature tsd-kind-icon">pfx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#pfx">pfx</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L29">pays/core/Base.ts:29</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>证书</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="batchquerycomment" class="tsd-anchor"></a>
+					<h3>batch<wbr>Query<wbr>Comment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">batch<wbr>Query<wbr>Comment<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/batchquerycommentoptions.html" class="tsd-signature-type">BatchQueryCommentOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/batchquerycommentresponsesuccess.html" class="tsd-signature-type">BatchQueryCommentResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/batchquerycommentresponsefail.html" class="tsd-signature-type">BatchQueryCommentResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#batchquerycomment">batchQueryComment</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L140">pays/core/PayBase.ts:140</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>拉取订单评价数据</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.batchQueryComment</span>({
+  <span class="hljs-attribute">begin_time</span>: <span class="hljs-string">"20170724000000"</span>,
+  end_time: <span class="hljs-string">"20170725000000"</span>,
+  offset: <span class="hljs-number">0</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_17&index=12" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_17&amp;index=12</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/batchquerycommentoptions.html" class="tsd-signature-type">BatchQueryCommentOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/batchquerycommentresponsesuccess.html" class="tsd-signature-type">BatchQueryCommentResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/batchquerycommentresponsefail.html" class="tsd-signature-type">BatchQueryCommentResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="closeorder" class="tsd-anchor"></a>
+					<h3>close<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">close<wbr>Order<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/closeorderoptions.html" class="tsd-signature-type">CloseOrderOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/closeorderresponsesuccess.html" class="tsd-signature-type">CloseOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/closeorderresponsefail.html" class="tsd-signature-type">CloseOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybasex.html">PayBaseX</a>.<a href="paybasex.html#closeorder">closeOrder</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBaseX.ts#L23">pays/core/PayBaseX.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>关闭订单</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.closeOrder</span>({
+  <span class="hljs-attribute">out_trade_no</span>: <span class="hljs-string">'120061098828009406'</span>
+})</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3" class="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_3</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/closeorderoptions.html" class="tsd-signature-type">CloseOrderOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/closeorderresponsesuccess.html" class="tsd-signature-type">CloseOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/closeorderresponsefail.html" class="tsd-signature-type">CloseOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="completeurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> completeURL</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">completeURL<span class="tsd-signature-symbol">(</span>base<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#completeurl">completeURL</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L107">pays/core/Base.ts:107</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>拼接路径</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>base: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="createfetchoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Fetch<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Fetch<wbr>Options<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, usePfx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/fetchoptions.html" class="tsd-signature-type">FetchOptions</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#createfetchoptions">createFetchOptions</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L89">pays/core/Base.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>生成 FetchOptions 数据</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> usePfx: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/fetchoptions.html" class="tsd-signature-type">FetchOptions</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="downloadbill" class="tsd-anchor"></a>
+					<h3>download<wbr>Bill</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">download<wbr>Bill<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/downloadbilloptions.html" class="tsd-signature-type">DownloadBillOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/downloadbillreturn.html" class="tsd-signature-type">DownloadBillReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#downloadbill">downloadBill</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L98">pays/core/PayBase.ts:98</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>下载对账单</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.downloadBill</span>({
+  <span class="hljs-attribute">bill_date</span>: <span class="hljs-string">"20140603"</span>,
+  bill_type: <span class="hljs-string">"ALL"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_6" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_6</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/downloadbilloptions.html" class="tsd-signature-type">DownloadBillOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/downloadbillreturn.html" class="tsd-signature-type">DownloadBillReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="downloadfundflow" class="tsd-anchor"></a>
+					<h3>download<wbr>Fund<wbr>Flow</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">download<wbr>Fund<wbr>Flow<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/downloadfundflowoptions.html" class="tsd-signature-type">DownloadFundFlowOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/downloadfundflowreturn.html" class="tsd-signature-type">DownloadFundFlowReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#downloadfundflow">downloadFundFlow</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L119">pays/core/PayBase.ts:119</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>下载资金账单</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.downloadFundFlow</span>({
+  <span class="hljs-attribute">bill_date</span>: <span class="hljs-string">"20140603"</span>,
+  account_type: <span class="hljs-string">"Basic"</span>,
+  tar_type: <span class="hljs-string">"GZIP"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_18&index=7" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_18&amp;index=7</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/downloadfundflowoptions.html" class="tsd-signature-type">DownloadFundFlowOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/downloadfundflowreturn.html" class="tsd-signature-type">DownloadFundFlowReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getkey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#getkey">getKey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L117">pays/core/Base.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>获取私钥</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="orderquery" class="tsd-anchor"></a>
+					<h3>order<wbr>Query</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">order<wbr>Query<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/orderqueryoptions.html" class="tsd-signature-type">OrderQueryOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/orderqueryresponsesuccess.html" class="tsd-signature-type">OrderQueryResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/orderqueryresponsefail.html" class="tsd-signature-type">OrderQueryResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#orderquery">orderQuery</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L31">pays/core/PayBase.ts:31</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>查询订单</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.orderQuery</span>({
+  <span class="hljs-attribute">transaction_id</span>: <span class="hljs-string">'1009660380201506130728806387'</span>
+})
+
+<span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.orderQuery</span>({
+  <span class="hljs-attribute">out_trade_no</span>: <span class="hljs-string">'120061098828009406'</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_2" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_2</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/orderqueryoptions.html" class="tsd-signature-type">OrderQueryOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/orderqueryresponsesuccess.html" class="tsd-signature-type">OrderQueryResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/orderqueryresponsefail.html" class="tsd-signature-type">OrderQueryResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="paynotify" class="tsd-anchor"></a>
+					<h3>pay<wbr>Notify</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">pay<wbr>Notify<span class="tsd-signature-symbol">(</span>info<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">types.PayNotifySuccess</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">types.PayNotifyFail</span>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">types.PayNotifyHandler</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybasex.html">PayBaseX</a>.<a href="paybasex.html#paynotify">payNotify</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBaseX.ts#L81">pays/core/PayBaseX.ts:81</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>支付结果通知</p>
+								</div>
+								<pre><code>router.post(<span class="hljs-string">"/wechatpay/notify/refund"</span>, (req, res) =&gt; {
+  getXMLBody(req, options).<span class="hljs-keyword">then</span>(data =&gt; {
+    pay
+      .payNotify(data, async parsedData =&gt; {
+        // ...
+        <span class="hljs-keyword">return</span> {
+          return_code: <span class="hljs-string">"SUCCESS"</span>,
+          return_msg: <span class="hljs-string">"OK"</span>
+        };
+      })
+      .<span class="hljs-keyword">then</span>(returnData =&gt; {
+        res.<span class="hljs-built_in">set</span>(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"application/xml; charset=utf-8"</span>);
+        res.<span class="hljs-keyword">end</span>(returnData);
+      });
+  });
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8" class="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&amp;index=8</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>info: <span class="tsd-signature-type">types.PayNotifySuccess</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">types.PayNotifyFail</span></h5>
+								</li>
+								<li>
+									<h5>handler: <span class="tsd-signature-type">types.PayNotifyHandler</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="refund" class="tsd-anchor"></a>
+					<h3>refund</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">refund<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/refundoptions.html" class="tsd-signature-type">RefundOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/refundresponsesuccess.html" class="tsd-signature-type">RefundResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/refundresponsefail.html" class="tsd-signature-type">RefundResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#refund">refund</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L54">pays/core/PayBase.ts:54</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>申请退款</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.refund</span>({
+ <span class="hljs-attribute">out_trade_no</span>: <span class="hljs-string">'1217752501201407033233368018'</span>,
+ out_refund_no: <span class="hljs-string">'1217752501201407033233368019'</span>,
+ total_fee: <span class="hljs-number">100</span>,
+ refund_fee: <span class="hljs-number">80</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_4" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_4</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/refundoptions.html" class="tsd-signature-type">RefundOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/refundresponsesuccess.html" class="tsd-signature-type">RefundResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/refundresponsefail.html" class="tsd-signature-type">RefundResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="refundnotify" class="tsd-anchor"></a>
+					<h3>refund<wbr>Notify</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">refund<wbr>Notify<span class="tsd-signature-symbol">(</span>baseData<span class="tsd-signature-symbol">: </span><a href="../interfaces/refundnotifybase.html" class="tsd-signature-type">RefundNotifyBase</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">types.RefundNotifyHandler</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#refundnotify">refundNotify</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L179">pays/core/PayBase.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>退款结果通知处理</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">router</span><span class="hljs-selector-class">.post</span>(<span class="hljs-string">"/wechatpay/notify/refund"</span>, (req, res) =&gt; {
+  <span class="hljs-selector-tag">getXMLBody</span>(req, options)<span class="hljs-selector-class">.then</span>(data =&gt; {
+    <span class="hljs-selector-tag">pay</span>
+      <span class="hljs-selector-class">.refundNotify</span>(data, async parsedData =&gt; {
+        <span class="hljs-selector-tag">if</span> (!pay.verifySign(parsedData)) {
+          <span class="hljs-comment">// 签名校验失败</span>
+        }
+        if (parsedData.result_code === <span class="hljs-string">"FAIL"</span>) {
+          <span class="hljs-comment">// 业务逻辑失败</span>
+        }
+        <span class="hljs-comment">// ...</span>
+        return {
+          <span class="hljs-attribute">return_code</span>: <span class="hljs-string">"SUCCESS"</span>,
+          <span class="hljs-attribute">return_msg</span>: <span class="hljs-string">"OK"</span>
+        };
+      })
+      <span class="hljs-selector-class">.then</span>(returnData =&gt; {
+        <span class="hljs-selector-tag">res</span><span class="hljs-selector-class">.set</span>(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"application/xml; charset=utf-8"</span>);
+        <span class="hljs-selector-tag">res</span><span class="hljs-selector-class">.end</span>(returnData);
+      });
+  });
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_16&index=11" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_16&amp;index=11</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>baseData: <a href="../interfaces/refundnotifybase.html" class="tsd-signature-type">RefundNotifyBase</a></h5>
+								</li>
+								<li>
+									<h5>handler: <span class="tsd-signature-type">types.RefundNotifyHandler</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="refundquery" class="tsd-anchor"></a>
+					<h3>refund<wbr>Query</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">refund<wbr>Query<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/refundqueryoptions.html" class="tsd-signature-type">RefundQueryOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/refundqueryresponsesuccess.html" class="tsd-signature-type">RefundQueryResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/refundqueryresponsefail.html" class="tsd-signature-type">RefundQueryResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybase.html">PayBase</a>.<a href="paybase.html#refundquery">refundQuery</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBase.ts#L77">pays/core/PayBase.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>查询退款</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.refundQuery</span>({
+  <span class="hljs-attribute">transaction_id</span>: <span class="hljs-string">'1009660380201506130728806387'</span>
+});
+
+<span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.refundQuery</span>({
+  <span class="hljs-attribute">out_trade_no</span>: <span class="hljs-string">'120061098828009406'</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_5" class="external">https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=9_5</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/refundqueryoptions.html" class="tsd-signature-type">RefundQueryOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/refundqueryresponsesuccess.html" class="tsd-signature-type">RefundQueryResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/refundqueryresponsefail.html" class="tsd-signature-type">RefundQueryResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="report" class="tsd-anchor"></a>
+					<h3>report</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">report<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/reportoptionsgeneral.html" class="tsd-signature-type">ReportOptionsGeneral</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/reportresponsesuccess.html" class="tsd-signature-type">ReportResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/reportresponsefail.html" class="tsd-signature-type">ReportResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybasex.html">PayBaseX</a>.<a href="paybasex.html#report">report</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBaseX.ts#L48">pays/core/PayBaseX.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>交易保障</p>
+								</div>
+								<pre><code>pay.report({
+<span class="hljs-symbol">  interface_url:</span> <span class="hljs-string">"https://api.mch.weixin.qq.com/pay/unifiedorder"</span>,
+<span class="hljs-symbol">  execute_time:</span> <span class="hljs-number">1000</span>,
+<span class="hljs-symbol">  return_code:</span> <span class="hljs-string">"SUCCESS"</span>,
+<span class="hljs-symbol">  return_msg:</span> <span class="hljs-string">"OK"</span>,
+<span class="hljs-symbol">  result_code:</span> <span class="hljs-string">"SUCCESS"</span>,
+<span class="hljs-symbol">  user_ip:</span> <span class="hljs-string">"8.8.8.8"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&index=9" class="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_8&amp;index=9</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/reportoptionsgeneral.html" class="tsd-signature-type">ReportOptionsGeneral</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/reportresponsesuccess.html" class="tsd-signature-type">ReportResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/reportresponsefail.html" class="tsd-signature-type">ReportResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="setdebug" class="tsd-anchor"></a>
+					<h3>set<wbr>Debug</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Debug<span class="tsd-signature-symbol">(</span>useDebug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#setdebug">setDebug</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L51">pays/core/Base.ts:51</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>仿真模式开关</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1" class="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>useDebug: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="unifiedorder" class="tsd-anchor"></a>
+					<h3>unified<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">unified<wbr>Order<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/unifiedorderoptionswap.html" class="tsd-signature-type">UnifiedOrderOptionsWap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/unifiedorderresponsesuccess.html" class="tsd-signature-type">UnifiedOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/unifiedorderresponsefail.html" class="tsd-signature-type">UnifiedOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/WapPay.ts#L33">pays/WapPay.ts:33</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>统一下单</p>
+								</div>
+								<pre><code>pay.unifiedOrder({
+  <span class="hljs-keyword">body</span>: <span class="hljs-string">"腾讯充值中心-QQ会员充值"</span>,
+  out_trade_no: <span class="hljs-string">"1217752501201407033233368018"</span>,
+  total_fee: <span class="hljs-number">888</span>,
+  spbill_create_ip: <span class="hljs-string">"8.8.8.8"</span>,
+  notify_url: <span class="hljs-string">"https://example.com/wechatpay/notify"</span>,
+  scene_info: '{<span class="hljs-string">"h5_info"</span>: {<span class="hljs-string">"type"</span>:<span class="hljs-string">"Wap"</span>,<span class="hljs-string">"wap_url"</span>: <span class="hljs-string">"https://pay.qq.com"</span>,<span class="hljs-string">"wap_name"</span>: <span class="hljs-string">"腾讯充值"</span>}}'
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&index=1" class="external">https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=9_20&amp;index=1</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/unifiedorderoptionswap.html" class="tsd-signature-type">UnifiedOrderOptionsWap</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/unifiedorderresponsesuccess.html" class="tsd-signature-type">UnifiedOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/unifiedorderresponsefail.html" class="tsd-signature-type">UnifiedOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="unifiedorderbase" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> unified<wbr>Order<wbr>Base</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">unified<wbr>Order<wbr>Base<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/unifiedorderoptionsgeneral.html" class="tsd-signature-type">UnifiedOrderOptionsGeneral</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/unifiedorderresponsesuccess.html" class="tsd-signature-type">UnifiedOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/unifiedorderresponsefail.html" class="tsd-signature-type">UnifiedOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="paybasex.html">PayBaseX</a>.<a href="paybasex.html#unifiedorderbase">unifiedOrderBase</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/PayBaseX.ts#L98">pays/core/PayBaseX.ts:98</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>统一下单</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/unifiedorderoptionsgeneral.html" class="tsd-signature-type">UnifiedOrderOptionsGeneral</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/unifiedorderresponsesuccess.html" class="tsd-signature-type">UnifiedOrderResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/unifiedorderresponsefail.html" class="tsd-signature-type">UnifiedOrderResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="verifysign" class="tsd-anchor"></a>
+					<h3>verify<wbr>Sign</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">verify<wbr>Sign<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, signType<span class="tsd-signature-symbol">?: </span><a href="../enums/signtype.html" class="tsd-signature-type">SignType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#verifysign">verifySign</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L78">pays/core/Base.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>校验 sign</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>sign<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> signType: <a href="../enums/signtype.html" class="tsd-signature-type">SignType</a><span class="tsd-signature-symbol"> =&nbsp;types.SignType.MD5</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="wappay.html" class="tsd-kind-icon">Wap<wbr>Pay</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#appid" class="tsd-kind-icon">app<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#debug" class="tsd-kind-icon">debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#key" class="tsd-kind-icon">key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#keyfordebug" class="tsd-kind-icon">key<wbr>For<wbr>Debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#mchid" class="tsd-kind-icon">mch<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#pfx" class="tsd-kind-icon">pfx</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#batchquerycomment" class="tsd-kind-icon">batch<wbr>Query<wbr>Comment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#closeorder" class="tsd-kind-icon">close<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="wappay.html#completeurl" class="tsd-kind-icon">completeURL</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="wappay.html#createfetchoptions" class="tsd-kind-icon">create<wbr>Fetch<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#downloadbill" class="tsd-kind-icon">download<wbr>Bill</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#downloadfundflow" class="tsd-kind-icon">download<wbr>Fund<wbr>Flow</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="wappay.html#getkey" class="tsd-kind-icon">get<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#orderquery" class="tsd-kind-icon">order<wbr>Query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#paynotify" class="tsd-kind-icon">pay<wbr>Notify</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#refund" class="tsd-kind-icon">refund</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#refundnotify" class="tsd-kind-icon">refund<wbr>Notify</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#refundquery" class="tsd-kind-icon">refund<wbr>Query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#report" class="tsd-kind-icon">report</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#setdebug" class="tsd-kind-icon">set<wbr>Debug</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="wappay.html#unifiedorder" class="tsd-kind-icon">unified<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="wappay.html#unifiedorderbase" class="tsd-kind-icon">unified<wbr>Order<wbr>Base</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="wappay.html#verifysign" class="tsd-kind-icon">verify<wbr>Sign</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

@@ -1,0 +1,1154 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@sigodenjs/wechatpay</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@sigodenjs/wechatpay</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @sigodenjs/wechatpay</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="-node-js">微信支付 node.js</h1>
+				<p><a href="https://travis-ci.org/sigoden/wechatpay"><img src="https://travis-ci.org/sigoden/wechatpay.svg?branch=master" alt="Build Status"></a>
+					<a href="https://www.codacy.com/app/sigoden/wechatpay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sigoden/wechatpay&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/f019843d36f643378a26840660c10f61" alt="Codacy Badge"></a>
+					<a href="https://david-dm.org/sigoden/wechatpay"><img src="https://david-dm.org/sigoden/wechatpay/status.svg" alt="dependencies Status"></a>
+				<a href="https://snyk.io/test/github/sigoden/wechatpay?targetFile=package.json"><img src="https://snyk.io/test/github/sigoden/wechatpay/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></p>
+				<blockquote>
+					<p>微信支付 SDK，支持刷卡支付、公众号支付、扫码支付、APP 支付、H5 支付，以及优惠券，红包，企业付款，微信代扣</p>
+				</blockquote>
+				<h2 id="-">特性</h2>
+				<ul>
+					<li>使用 Typescript 编写，拥有更安全的类型和更好的代码提示</li>
+					<li>支持所有类型微信支付</li>
+					<li>支持微信代扣</li>
+					<li>提供调试模式</li>
+				</ul>
+				<h2 id="-">开始使用</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
+<span class="hljs-keyword">const</span> {
+  PubPay,
+  RequestError,
+  CommunicationError,
+  <span class="hljs-attr">utils</span>: { getXMLBody }
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@sigodenjs/wechatpay"</span>);
+
+<span class="hljs-keyword">const</span> pay = <span class="hljs-keyword">new</span> PubPay({
+  <span class="hljs-attr">appId</span>: <span class="hljs-string">"wxb80e5bddb2d804f3"</span>,
+  <span class="hljs-attr">key</span>: <span class="hljs-string">"6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7"</span>,
+  <span class="hljs-attr">mchId</span>: <span class="hljs-string">"1434712502"</span>,
+  <span class="hljs-attr">pfx</span>: fs.readFileSync(path.resolve(__dirname, <span class="hljs-string">"cert.p12"</span>))
+});
+
+<span class="hljs-comment">// 调用统一下单接口</span>
+pay
+  .unifiedOrder({
+    <span class="hljs-attr">body</span>: <span class="hljs-string">"腾讯充值中心-QQ会员充值"</span>,
+    <span class="hljs-attr">out_trade_no</span>: <span class="hljs-string">"1217752501201407033233368018"</span>,
+    <span class="hljs-attr">total_fee</span>: <span class="hljs-number">888</span>,
+    <span class="hljs-attr">spbill_create_ip</span>: <span class="hljs-string">"8.8.8.8"</span>,
+    <span class="hljs-attr">notify_url</span>: <span class="hljs-string">"https://example.com/wechatpay/notify"</span>,
+    <span class="hljs-attr">trade_type</span>: <span class="hljs-string">"JSAPI"</span>,
+    <span class="hljs-attr">openid</span>: <span class="hljs-string">"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"</span>
+  })
+  .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (!pay.verifySign(res)) {
+      <span class="hljs-comment">// 签名校验失败</span>
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"签名校验失败"</span>);
+    }
+    <span class="hljs-keyword">if</span> (res.result_code === <span class="hljs-string">"FAIL"</span>) {
+      <span class="hljs-built_in">console</span>.log(res.err_code, res.err_code_des);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-built_in">console</span>.log(res.prepay_id);
+    }
+  })
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> RequestError) {
+      <span class="hljs-comment">// 请求错误</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> CommunicationError) {
+      <span class="hljs-comment">// return_code = FAIL</span>
+    }
+  });
+
+<span class="hljs-comment">// 支付结果通知</span>
+router.post(<span class="hljs-string">"/wechatpay/notify"</span>, (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> options = {
+    <span class="hljs-attr">length</span>: req.headers[<span class="hljs-string">"content-length"</span>],
+    <span class="hljs-attr">limit</span>: <span class="hljs-string">"1mb"</span>,
+    <span class="hljs-attr">encoding</span>: <span class="hljs-string">"utf8"</span>
+  };
+  getXMLBody(req, options).then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+    pay
+      .payNotify(data, <span class="hljs-keyword">async</span> parsedData =&gt; {
+        <span class="hljs-keyword">if</span> (!pay.verifySign(parsedData)) {
+          <span class="hljs-comment">// 签名校验失败</span>
+        }
+        <span class="hljs-keyword">if</span> (parsedData.result_code === <span class="hljs-string">"FAIL"</span>) {
+          <span class="hljs-comment">// 业务逻辑失败</span>
+        }
+        <span class="hljs-comment">// ...</span>
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">return_code</span>: <span class="hljs-string">"SUCCESS"</span>,
+          <span class="hljs-attr">return_msg</span>: <span class="hljs-string">"OK"</span>
+        };
+      })
+      .then(<span class="hljs-function"><span class="hljs-params">returnData</span> =&gt;</span> {
+        res.set(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"application/xml; charset=utf-8"</span>);
+        res.end(returnData);
+      });
+  });
+});</code></pre>
+				<h2 id="-">类和接口</h2>
+				<h3 id="-">业务类</h3>
+				<ul>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/apppay">AppPay</a>: APP 支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/bank">Bank</a>: 企业付款</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/coupon">Coupon</a>: 代金券</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/litepay">LitePay</a>: 小程序支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pubpay">PubPay</a>: 公众号支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pubqrpay">PubQrPay</a>: 扫码支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pubscanpay">PubScanPay</a>: 刷卡支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/redpack">RedPack</a>: 现金红包</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/wappay">WapPay</a>: H5 支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/appentrust">AppEntrust</a>: APP 代扣</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/liteentrust">LiteEntrust</a>: 小程序代扣</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pubentrsut">PubEntrsut</a>: 公众号代扣</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/wapentrust">WapEntrust</a>: H5 代扣</li>
+				</ul>
+				<h3 id="-">综合类</h3>
+				<ul>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay">Pay</a>: 组合所有支付类，包含所有支付相关接口</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust">Entrust</a>: 组合所有代扣类，包含所有代扣相关接扣</li>
+				</ul>
+				<blockquote>
+					<p>如果你只使用了某一项支付，请使用业务类。但如果涉及多种支付，使用综合类更便捷。</p>
+				</blockquote>
+				<h3 id="-">支付相关接口</h3>
+				<ul>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#batchquerycomment">batchQueryComment</a>: 拉取订单评价数据</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#downloadbill">downloadBill</a>: 下载对账单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#downloadfundflow">downloadFundFlow</a>: 下载资金账单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#orderquery">orderQuery</a>: 查询订单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#refund">refund</a>: 申请退款</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#refundnotify">refundNotify</a>: 退款结果通知处理</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#refundquery">refundQuery</a>: 查询退款</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#report">report</a>: 交易保障</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#closeorder">closeOrder</a>: 关闭订单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#paynotify">payNotify</a>: 支付结果通知</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#unifiedorder">unifiedOrder</a>: 统一下单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#authcodetoopenid">authCodeToOpenId</a> - 授权码查询 OpenId</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#micropay">microPay</a> - 提交刷卡支付</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#reverse">reverse</a> - 撤销订单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#shorturl">shortURL</a> - 短链接转换</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#getpublickey">getPublicKey</a>: 获取 RSA 加密公钥</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#gettransferinfo">getTransferInfo</a>: 查询企业付款到零钱</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#paybank">payBank</a>: 企业付款到银行卡</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#querybank">queryBank</a>: 查询企业付款到银行卡</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#transfers">transfers</a>: 企业付款到零钱</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#querycouponstock">queryCouponStock</a>: 查询代金券批次</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#querycouponsinfo">queryCouponsInfo</a>: 查询代金券信息</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#sendcoupon">sendCoupon</a>: 发放代金券</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#gethbinfo">getHbInfo</a>: 查询红包记录</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#sendgroupgroupredpack">sendGroupGroupRedPack</a>: 发放裂变红包</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/pay#sendredpack">sendRedPack</a>: 发放普通红包</li>
+				</ul>
+				<h3 id="-">代扣相关接口</h3>
+				<ul>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#contractnotify">contractNotify</a>: 签约，解约结果通知</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#contractorder">contractOrder</a>: 支付中签约</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#deletecontract">deleteContract</a>: 申请解约</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#entrust">entrust</a>: 纯签约</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#paporderquery">papOrderQuery</a>: 查询订单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#pappayapply">papPayApply</a>: 申请扣款</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#pappaynotify">papPayNotify</a>: 扣款结果通知</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#querycontract">queryContract</a>: 查询签约关系</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#downloadbill">downloadBill</a>: 下载对账单</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#refund">refund</a>: 申请退款</li>
+					<li><a href="https://sigoden.github.io/wechatpay/classes/entrust#refundquery">refundQuery</a>: 查询退款</li>
+				</ul>
+				<h2 id="-">许可证</h2>
+				<p>Copyright (c) 2018 sigoden</p>
+				<p>Licensed under the MIT license.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/signtype.html" class="tsd-kind-icon">Sign<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/appentrust.html" class="tsd-kind-icon">App<wbr>Entrust</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/apppay.html" class="tsd-kind-icon">App<wbr>Pay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/bank.html" class="tsd-kind-icon">Bank</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/base.html" class="tsd-kind-icon">Base</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/businesserror.html" class="tsd-kind-icon">Business<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/communicationerror.html" class="tsd-kind-icon">Communication<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/coupon.html" class="tsd-kind-icon">Coupon</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/entrust.html" class="tsd-kind-icon">Entrust</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/entrustbase.html" class="tsd-kind-icon">Entrust<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/liteentrust.html" class="tsd-kind-icon">Lite<wbr>Entrust</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/litepay.html" class="tsd-kind-icon">Lite<wbr>Pay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pay.html" class="tsd-kind-icon">Pay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/paybase.html" class="tsd-kind-icon">Pay<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/paybasex.html" class="tsd-kind-icon">Pay<wbr>BaseX</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pubentrust.html" class="tsd-kind-icon">Pub<wbr>Entrust</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pubpay.html" class="tsd-kind-icon">Pub<wbr>Pay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pubqrpay.html" class="tsd-kind-icon">Pub<wbr>QrPay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pubscanpay.html" class="tsd-kind-icon">Pub<wbr>Scan<wbr>Pay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/redpack.html" class="tsd-kind-icon">Red<wbr>Pack</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/requesterror.html" class="tsd-kind-icon">Request<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/validatesignerror.html" class="tsd-kind-icon">Validate<wbr>Sign<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/wapentrust.html" class="tsd-kind-icon">Wap<wbr>Entrust</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/wappay.html" class="tsd-kind-icon">Wap<wbr>Pay</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authcodetoopenidoptions.html" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdOptions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authcodetoopenidresponsecommon.html" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdResponse<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authcodetoopenidresponsefail.html" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdResponse<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authcodetoopenidresponsesuccess.html" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdResponse<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/basereturn.html" class="tsd-kind-icon">Base<wbr>Return</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/batchquerycommentoptions.html" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/batchquerycommentresponsecommon.html" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/batchquerycommentresponsefail.html" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/batchquerycommentresponsesuccess.html" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/closeorderoptions.html" class="tsd-kind-icon">Close<wbr>Order<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/closeorderresponsecommon.html" class="tsd-kind-icon">Close<wbr>Order<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/closeorderresponsefail.html" class="tsd-kind-icon">Close<wbr>Order<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/closeorderresponsesuccess.html" class="tsd-kind-icon">Close<wbr>Order<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/constructoroptions.html" class="tsd-kind-icon">Constructor<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractnotifyoptionscommon.html" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Options<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractnotifyoptionsfail.html" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Options<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractnotifyoptionssuccess.html" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Options<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractorderoptions.html" class="tsd-kind-icon">Contract<wbr>Order<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractorderresponsecommon.html" class="tsd-kind-icon">Contract<wbr>Order<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractorderresponsefail.html" class="tsd-kind-icon">Contract<wbr>Order<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contractorderresponsesuccess.html" class="tsd-kind-icon">Contract<wbr>Order<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/deletecontractoptions.html" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/deletecontractresponsecommon.html" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/deletecontractresponsefail.html" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/deletecontractresponsesuccess.html" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/downloadbilloptions.html" class="tsd-kind-icon">Download<wbr>Bill<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/downloadbillreturn.html" class="tsd-kind-icon">Download<wbr>Bill<wbr>Return</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/downloadfundflowoptions.html" class="tsd-kind-icon">Download<wbr>Fund<wbr>Flow<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/downloadfundflowreturn.html" class="tsd-kind-icon">Download<wbr>Fund<wbr>Flow<wbr>Return</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/entrustappoptions.html" class="tsd-kind-icon">Entrust<wbr>App<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/entrustcommon.html" class="tsd-kind-icon">Entrust<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/entrustliteoptions.html" class="tsd-kind-icon">Entrust<wbr>Lite<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/entrustpuboptions.html" class="tsd-kind-icon">Entrust<wbr>Pub<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/entrustwapoptions.html" class="tsd-kind-icon">Entrust<wbr>Wap<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/failreturn.html" class="tsd-kind-icon">Fail<wbr>Return</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/fetchoptions.html" class="tsd-kind-icon">Fetch<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gethbinfooptions.html" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gethbinforesponsecommon.html" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gethbinforesponsefail.html" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gethbinforesponsesuccess.html" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getpublickeyoptions.html" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getpublickeyresponsecommon.html" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getpublickeyresponsefail.html" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getpublickeyresponsesuccess.html" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getsignkeyoptions.html" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getsignkeyresponsecommon.html" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getsignkeyresponsefail.html" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/getsignkeyresponsesuccess.html" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gettransferinfooptions.html" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gettransferinforesponsecommon.html" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gettransferinforesponsefail.html" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/gettransferinforesponsesuccess.html" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/micropayoptions.html" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/micropayresponsecommon.html" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/micropayresponsefail.html" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/micropayresponsesuccess.html" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/orderqueryoptions.html" class="tsd-kind-icon">Order<wbr>Query<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/orderqueryresponsecommon.html" class="tsd-kind-icon">Order<wbr>Query<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/orderqueryresponsefail.html" class="tsd-kind-icon">Order<wbr>Query<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/orderqueryresponsesuccess.html" class="tsd-kind-icon">Order<wbr>Query<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paporderqueryoptions.html" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paporderqueryresponsecommon.html" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paporderqueryresponsefail.html" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paporderqueryresponsesuccess.html" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappayapplyoptions.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappayapplyresponsecommon.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappayapplyresponsefail.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappayapplyresponsesuccess.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappaynotifyoptionsfail.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Notify<wbr>Options<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pappaynotifyoptionssuccess.html" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Notify<wbr>Options<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paybankoptions.html" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paybankresponsecommon.html" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paybankresponsefail.html" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paybankresponsesuccess.html" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/paynotifyoptioncommon.html" class="tsd-kind-icon">Pay<wbr>Notify<wbr>Option<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querybankoptions.html" class="tsd-kind-icon">Query<wbr>Bank<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querybankresponsecommon.html" class="tsd-kind-icon">Query<wbr>Bank<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querybankresponsefail.html" class="tsd-kind-icon">Query<wbr>Bank<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querybankresponsesuccess.html" class="tsd-kind-icon">Query<wbr>Bank<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycontractoptions.html" class="tsd-kind-icon">Query<wbr>Contract<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycontractresponsecommon.html" class="tsd-kind-icon">Query<wbr>Contract<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycontractresponsefail.html" class="tsd-kind-icon">Query<wbr>Contract<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycontractresponsesuccess.html" class="tsd-kind-icon">Query<wbr>Contract<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponstockoptions.html" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponstockresponsecommon.html" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponstockresponsefail.html" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponstockresponsesuccess.html" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponsinfooptions.html" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponsinforesponsecommon.html" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponsinforesponsefail.html" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/querycouponsinforesponsesuccess.html" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundnotifybase.html" class="tsd-kind-icon">Refund<wbr>Notify<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundnotifydecode.html" class="tsd-kind-icon">Refund<wbr>Notify<wbr>Decode</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundoptions.html" class="tsd-kind-icon">Refund<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundqueryoptions.html" class="tsd-kind-icon">Refund<wbr>Query<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundqueryresponsecommon.html" class="tsd-kind-icon">Refund<wbr>Query<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundqueryresponsefail.html" class="tsd-kind-icon">Refund<wbr>Query<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundqueryresponsesuccess.html" class="tsd-kind-icon">Refund<wbr>Query<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundresponsecommon.html" class="tsd-kind-icon">Refund<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundresponsefail.html" class="tsd-kind-icon">Refund<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/refundresponsesuccess.html" class="tsd-kind-icon">Refund<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reportoptionsgeneral.html" class="tsd-kind-icon">Report<wbr>Options<wbr>General</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reportoptionspubscan.html" class="tsd-kind-icon">Report<wbr>Options<wbr>Pub<wbr>Scan</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reportresponsecommon.html" class="tsd-kind-icon">Report<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reportresponsefail.html" class="tsd-kind-icon">Report<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reportresponsesuccess.html" class="tsd-kind-icon">Report<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reverseoptions.html" class="tsd-kind-icon">Reverse<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reverseresponsecommon.html" class="tsd-kind-icon">Reverse<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reverseresponsefail.html" class="tsd-kind-icon">Reverse<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/reverseresponsesuccess.html" class="tsd-kind-icon">Reverse<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sceneinfo.html" class="tsd-kind-icon">Scene<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendcouponoptions.html" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendcouponresponsecommon.html" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendcouponresponsefail.html" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendcouponresponsesuccess.html" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendgroupredpackoptions.html" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendgroupredpackresponsecommon.html" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendgroupredpackresponsefail.html" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendgroupredpackresponsesuccess.html" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendredpackoptions.html" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendredpackresponsecommon.html" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendredpackresponsefail.html" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sendredpackresponsesuccess.html" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/shorturloptions.html" class="tsd-kind-icon">ShortURLOptions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/shorturlresponsecommon.html" class="tsd-kind-icon">ShortURLResponse<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/shorturlresponsefail.html" class="tsd-kind-icon">ShortURLResponse<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/shorturlresponsesuccess.html" class="tsd-kind-icon">ShortURLResponse<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/successreturn.html" class="tsd-kind-icon">Success<wbr>Return</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/transfersoptions.html" class="tsd-kind-icon">Transfers<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/transfersresponsecommon.html" class="tsd-kind-icon">Transfers<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/transfersresponsefail.html" class="tsd-kind-icon">Transfers<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/transfersresponsesuccess.html" class="tsd-kind-icon">Transfers<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionsapp.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionsbase.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionsgeneral.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>General</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionslite.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>Lite</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionspub.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>Pub</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionspubqr.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>Pub<wbr>Qr</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderoptionswap.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Options<wbr>Wap</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderresponsecommon.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Response<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderresponsefail.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Response<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/unifiedorderresponsesuccess.html" class="tsd-kind-icon">Unified<wbr>Order<wbr>Response<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#authcodetoopenidfail" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdFail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#authcodetoopenidsuccess" class="tsd-kind-icon">Auth<wbr>Code<wbr>ToOpen<wbr>IdSuccess</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#batchquerycommentfail" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#batchquerycommentsuccess" class="tsd-kind-icon">Batch<wbr>Query<wbr>Comment<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#closeorderfail" class="tsd-kind-icon">Close<wbr>Order<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#closeordersuccess" class="tsd-kind-icon">Close<wbr>Order<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#contractnotifyfail" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#contractnotifyhandler" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#contractnotifysuccess" class="tsd-kind-icon">Contract<wbr>Notify<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#contractorderfail" class="tsd-kind-icon">Contract<wbr>Order<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#contractordersuccess" class="tsd-kind-icon">Contract<wbr>Order<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#deletecontractfail" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#deletecontractsuccess" class="tsd-kind-icon">Delete<wbr>Contract<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#failt" class="tsd-kind-icon">FailT</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#gethbinfofail" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#gethbinfosuccess" class="tsd-kind-icon">Get<wbr>HbInfo<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#getpublickeyfail" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#getpublickeysuccess" class="tsd-kind-icon">Get<wbr>Public<wbr>Key<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#getsignkeyfail" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#getsignkeysuccess" class="tsd-kind-icon">Get<wbr>Sign<wbr>Key<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#gettransferinfofail" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#gettransferinfosuccess" class="tsd-kind-icon">Get<wbr>Transfer<wbr>Info<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#micropayfail" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#micropaysuccess" class="tsd-kind-icon">Micro<wbr>Pay<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#orderqueryfail" class="tsd-kind-icon">Order<wbr>Query<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#orderquerysuccess" class="tsd-kind-icon">Order<wbr>Query<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paporderqueryfail" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paporderquerysuccess" class="tsd-kind-icon">Pap<wbr>Order<wbr>Query<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pappayapplyfail" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pappayapplysuccess" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Apply<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pappaynotifyfail" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Notify<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pappaynotifyhandler" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Notify<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pappaynotifysuccess" class="tsd-kind-icon">Pap<wbr>Pay<wbr>Notify<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paybankfail" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paybanksuccess" class="tsd-kind-icon">Pay<wbr>Bank<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paynotifyfail" class="tsd-kind-icon">Pay<wbr>Notify<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paynotifyhandler" class="tsd-kind-icon">Pay<wbr>Notify<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#paynotifysuccess" class="tsd-kind-icon">Pay<wbr>Notify<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querybankfail" class="tsd-kind-icon">Query<wbr>Bank<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querybanksuccess" class="tsd-kind-icon">Query<wbr>Bank<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycontractfail" class="tsd-kind-icon">Query<wbr>Contract<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycontractsuccess" class="tsd-kind-icon">Query<wbr>Contract<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycouponstockfail" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycouponstocksuccess" class="tsd-kind-icon">Query<wbr>Coupon<wbr>Stock<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycouponsinfofail" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#querycouponsinfosuccess" class="tsd-kind-icon">Query<wbr>Coupons<wbr>Info<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#refundfail" class="tsd-kind-icon">Refund<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#refundnotifyhandler" class="tsd-kind-icon">Refund<wbr>Notify<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#refundqueryfail" class="tsd-kind-icon">Refund<wbr>Query<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#refundquerysuccess" class="tsd-kind-icon">Refund<wbr>Query<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#refundsuccess" class="tsd-kind-icon">Refund<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#reportfail" class="tsd-kind-icon">Report<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#reportsuccess" class="tsd-kind-icon">Report<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#reversefail" class="tsd-kind-icon">Reverse<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#reversesuccess" class="tsd-kind-icon">Reverse<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendcouponfail" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendcouponsuccess" class="tsd-kind-icon">Send<wbr>Coupon<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendgroupredpackfail" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendgroupredpacksuccess" class="tsd-kind-icon">Send<wbr>Group<wbr>Red<wbr>Pack<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendredpackfail" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendredpacksuccess" class="tsd-kind-icon">Send<wbr>Red<wbr>Pack<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#shorturlfail" class="tsd-kind-icon">ShortURLFail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#shorturlsuccess" class="tsd-kind-icon">ShortURLSuccess</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#successt" class="tsd-kind-icon">SuccessT</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#transfersfail" class="tsd-kind-icon">Transfers<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#transferssuccess" class="tsd-kind-icon">Transfers<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#unifiedorderfail" class="tsd-kind-icon">Unified<wbr>Order<wbr>Fail</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#unifiedordersuccess" class="tsd-kind-icon">Unified<wbr>Order<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#auth_code_to_openid_base" class="tsd-kind-icon">AUTH_<wbr>CODE_<wbr>TO_<wbr>OPENID_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#batch_query_comment_base" class="tsd-kind-icon">BATCH_<wbr>QUERY_<wbr>COMMENT_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#close_order_base" class="tsd-kind-icon">CLOSE_<wbr>ORDER_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#contract_order_base" class="tsd-kind-icon">CONTRACT_<wbr>ORDER_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#delete_contract_base" class="tsd-kind-icon">DELETE_<wbr>CONTRACT_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#download_bill_base" class="tsd-kind-icon">DOWNLOAD_<wbr>BILL_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#download_fund_flow_base" class="tsd-kind-icon">DOWNLOAD_<wbr>FUND_<wbr>FLOW_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#entrust_base" class="tsd-kind-icon">ENTRUST_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#get_hb_info_base" class="tsd-kind-icon">GET_<wbr>HB_<wbr>INFO_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#get_public_url" class="tsd-kind-icon">GET_<wbr>PUBLIC_<wbr>URL</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#get_sign_key_base" class="tsd-kind-icon">GET_<wbr>SIGN_<wbr>KEY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#get_transfer_info_base" class="tsd-kind-icon">GET_<wbr>TRANSFER_<wbr>INFO_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#micro_pay_base" class="tsd-kind-icon">MICRO_<wbr>PAY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#order_query_base" class="tsd-kind-icon">ORDER_<wbr>QUERY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pap_order_query_base" class="tsd-kind-icon">PAP_<wbr>ORDER_<wbr>QUERY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pap_pay_apply_base" class="tsd-kind-icon">PAP_<wbr>PAY_<wbr>APPLY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pay_bank_base" class="tsd-kind-icon">PAY_<wbr>BANK_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#query_bank_base" class="tsd-kind-icon">QUERY_<wbr>BANK_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#query_contract_base" class="tsd-kind-icon">QUERY_<wbr>CONTRACT_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#query_coupons_info_base" class="tsd-kind-icon">QUERY_<wbr>COUPONS_<wbr>INFO_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#query_coupon_stock_base" class="tsd-kind-icon">QUERY_<wbr>COUPON_<wbr>STOCK_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#refund_base" class="tsd-kind-icon">REFUND_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#refund_query_base" class="tsd-kind-icon">REFUND_<wbr>QUERY_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#report_base" class="tsd-kind-icon">REPORT_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#reverse_base" class="tsd-kind-icon">REVERSE_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#send_coupon_base" class="tsd-kind-icon">SEND_<wbr>COUPON_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#send_group_red_pack_base" class="tsd-kind-icon">SEND_<wbr>GROUP_<wbr>RED_<wbr>PACK_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#send_red_pack_base" class="tsd-kind-icon">SEND_<wbr>RED_<wbr>PACK_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#short_url_base" class="tsd-kind-icon">SHORT_<wbr>URL_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#transfers_base" class="tsd-kind-icon">TRANSFERS_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#unified_order_base" class="tsd-kind-icon">UNIFIED_<wbr>ORDER_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#url_mch" class="tsd-kind-icon">URL_<wbr>MCH</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#url_sanbox" class="tsd-kind-icon">URL_<wbr>SANBOX</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
+						<a href="globals.html#createrequestoptions" class="tsd-kind-icon">create<wbr>Request<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#decode" class="tsd-kind-icon">decode</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#download" class="tsd-kind-icon">download</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fetch" class="tsd-kind-icon">fetch</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#fromxml" class="tsd-kind-icon">fromXML</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getsigntype" class="tsd-kind-icon">get<wbr>Sign<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getxmlbody" class="tsd-kind-icon">getXMLBody</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#hmacsha256" class="tsd-kind-icon">hmac<wbr>Sha256</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#md5" class="tsd-kind-icon">md5</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#noncestr" class="tsd-kind-icon">nonce<wbr>Str</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#rsa" class="tsd-kind-icon">rsa</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#setbodyappidandmchid" class="tsd-kind-icon">set<wbr>Body<wbr>App<wbr>IdAnd<wbr>Mch<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#sign" class="tsd-kind-icon">sign</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#toxml" class="tsd-kind-icon">toXML</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

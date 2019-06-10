@@ -1,0 +1,680 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RedPack | @sigodenjs/wechatpay</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@sigodenjs/wechatpay</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="redpack.html">RedPack</a>
+				</li>
+			</ul>
+			<h1>Class RedPack</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>现金红包</p>
+					</div>
+					<pre><code>const pay = new RedPack({
+  appId: <span class="hljs-string">"wxb80e5bddb2d804f3"</span>,
+  key: <span class="hljs-string">"6Q9VX4N3WTBM9G9XBL7H1L9PB9ANHLY7"</span>,
+  mchId: <span class="hljs-string">"1434712502"</span>,
+  pfx: fs.readFileSync(<span class="hljs-name">path</span>.resolve(<span class="hljs-name">__dirname</span>, <span class="hljs-string">"cert.p12"</span>))
+})<span class="hljs-comment">;</span></code></pre>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_1" class="external">https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_1</a></p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="base.html" class="tsd-signature-type">Base</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">RedPack</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#appid" class="tsd-kind-icon">app<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#debug" class="tsd-kind-icon">debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#key" class="tsd-kind-icon">key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#keyfordebug" class="tsd-kind-icon">key<wbr>For<wbr>Debug</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#mchid" class="tsd-kind-icon">mch<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#pfx" class="tsd-kind-icon">pfx</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="redpack.html#completeurl" class="tsd-kind-icon">completeURL</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="redpack.html#createfetchoptions" class="tsd-kind-icon">create<wbr>Fetch<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="redpack.html#gethbinfo" class="tsd-kind-icon">get<wbr>HbInfo</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="redpack.html#getkey" class="tsd-kind-icon">get<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="redpack.html#sendgroupgroupredpack" class="tsd-kind-icon">send<wbr>Group<wbr>Group<wbr>Red<wbr>Pack</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="redpack.html#sendredpack" class="tsd-kind-icon">send<wbr>Red<wbr>Pack</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#setdebug" class="tsd-kind-icon">set<wbr>Debug</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="redpack.html#verifysign" class="tsd-kind-icon">verify<wbr>Sign</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Red<wbr>Pack<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/constructoroptions.html" class="tsd-signature-type">ConstructorOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="redpack.html" class="tsd-signature-type">RedPack</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L37">pays/core/Base.ts:37</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/constructoroptions.html" class="tsd-signature-type">ConstructorOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="redpack.html" class="tsd-signature-type">RedPack</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="appid" class="tsd-anchor"></a>
+					<h3>app<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#appid">appId</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L17">pays/core/Base.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>公众账号ID</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="debug" class="tsd-anchor"></a>
+					<h3>debug</h3>
+					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#debug">debug</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L37">pays/core/Base.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>仿真模式开关</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="key" class="tsd-anchor"></a>
+					<h3>key</h3>
+					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#key">key</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L25">pays/core/Base.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>密钥</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="keyfordebug" class="tsd-anchor"></a>
+					<h3>key<wbr>For<wbr>Debug</h3>
+					<div class="tsd-signature tsd-kind-icon">key<wbr>For<wbr>Debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#keyfordebug">keyForDebug</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L33">pays/core/Base.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>测试用验签密钥</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="mchid" class="tsd-anchor"></a>
+					<h3>mch<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">mch<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#mchid">mchId</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L21">pays/core/Base.ts:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>商户号</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="pfx" class="tsd-anchor"></a>
+					<h3>pfx</h3>
+					<div class="tsd-signature tsd-kind-icon">pfx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#pfx">pfx</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L29">pays/core/Base.ts:29</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>证书</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="completeurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> completeURL</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">completeURL<span class="tsd-signature-symbol">(</span>base<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#completeurl">completeURL</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L107">pays/core/Base.ts:107</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>拼接路径</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>base: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="createfetchoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Fetch<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Fetch<wbr>Options<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, usePfx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/fetchoptions.html" class="tsd-signature-type">FetchOptions</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#createfetchoptions">createFetchOptions</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L89">pays/core/Base.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>生成 FetchOptions 数据</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> usePfx: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/fetchoptions.html" class="tsd-signature-type">FetchOptions</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gethbinfo" class="tsd-anchor"></a>
+					<h3>get<wbr>HbInfo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>HbInfo<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/gethbinfooptions.html" class="tsd-signature-type">GetHbInfoOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/gethbinforesponsesuccess.html" class="tsd-signature-type">GetHbInfoResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/gethbinforesponsefail.html" class="tsd-signature-type">GetHbInfoResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/RedPack.ts#L91">pays/RedPack.ts:91</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>查询红包记录</p>
+								</div>
+								<pre><code><span class="hljs-selector-tag">pay</span><span class="hljs-selector-class">.getHbInfo</span>({
+  <span class="hljs-attribute">mch_billno</span>: <span class="hljs-string">"10000098201411111234567890"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&index=5" class="external">https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_6&amp;index=5</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/gethbinfooptions.html" class="tsd-signature-type">GetHbInfoOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/gethbinforesponsesuccess.html" class="tsd-signature-type">GetHbInfoResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/gethbinforesponsefail.html" class="tsd-signature-type">GetHbInfoResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getkey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Key<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#getkey">getKey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L117">pays/core/Base.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>获取私钥</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sendgroupgroupredpack" class="tsd-anchor"></a>
+					<h3>send<wbr>Group<wbr>Group<wbr>Red<wbr>Pack</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Group<wbr>Group<wbr>Red<wbr>Pack<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/sendgroupredpackoptions.html" class="tsd-signature-type">SendGroupRedPackOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sendgroupredpackresponsesuccess.html" class="tsd-signature-type">SendGroupRedPackResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/sendgroupredpackresponsefail.html" class="tsd-signature-type">SendGroupRedPackResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/RedPack.ts#L69">pays/RedPack.ts:69</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>发放裂变红包</p>
+								</div>
+								<pre><code>pay.sendGroupGroupRedPack({
+<span class="hljs-symbol">  mch_billno:</span> <span class="hljs-string">"10000098201411111234567890"</span>,
+<span class="hljs-symbol">  send_name:</span> <span class="hljs-string">"天虹百货"</span>,
+<span class="hljs-symbol">  re_openid:</span> <span class="hljs-string">"oxTWIuGaIt6gTKsQRLau2M0yL16E"</span>,
+<span class="hljs-symbol">  total_amount:</span> <span class="hljs-number">1000</span>,
+<span class="hljs-symbol">  total_num:</span> <span class="hljs-number">1</span>,
+<span class="hljs-symbol">  wishing:</span> <span class="hljs-string">"红包祝福语"</span>,
+<span class="hljs-symbol">  act_name:</span> <span class="hljs-string">"猜灯谜抢红包活动"</span>,
+<span class="hljs-symbol">  remark:</span> <span class="hljs-string">"猜越多得越多，快来抢！"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&index=4" class="external">https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_5&amp;index=4</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/sendgroupredpackoptions.html" class="tsd-signature-type">SendGroupRedPackOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sendgroupredpackresponsesuccess.html" class="tsd-signature-type">SendGroupRedPackResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/sendgroupredpackresponsefail.html" class="tsd-signature-type">SendGroupRedPackResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sendredpack" class="tsd-anchor"></a>
+					<h3>send<wbr>Red<wbr>Pack</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Red<wbr>Pack<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/sendredpackoptions.html" class="tsd-signature-type">SendRedPackOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sendredpackresponsesuccess.html" class="tsd-signature-type">SendRedPackResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/sendredpackresponsefail.html" class="tsd-signature-type">SendRedPackResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/RedPack.ts#L41">pays/RedPack.ts:41</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>发放普通红包</p>
+								</div>
+								<pre><code>pay.sendRedPack({
+<span class="hljs-symbol">  mch_billno:</span> <span class="hljs-string">"10000098201411111234567890"</span>,
+<span class="hljs-symbol">  send_name:</span> <span class="hljs-string">"天虹百货"</span>,
+<span class="hljs-symbol">  re_openid:</span> <span class="hljs-string">"oxTWIuGaIt6gTKsQRLau2M0yL16E"</span>,
+<span class="hljs-symbol">  total_amount:</span> <span class="hljs-number">1000</span>,
+<span class="hljs-symbol">  total_num:</span> <span class="hljs-number">1</span>,
+<span class="hljs-symbol">  wishing:</span> <span class="hljs-string">"红包祝福语"</span>,
+<span class="hljs-symbol">  client_ip:</span> <span class="hljs-string">"192.168.0.1"</span>,
+<span class="hljs-symbol">  act_name:</span> <span class="hljs-string">"猜灯谜抢红包活动"</span>,
+<span class="hljs-symbol">  remark:</span> <span class="hljs-string">"猜越多得越多，快来抢！"</span>
+});</code></pre>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3" class="external">https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&amp;index=3</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/sendredpackoptions.html" class="tsd-signature-type">SendRedPackOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/sendredpackresponsesuccess.html" class="tsd-signature-type">SendRedPackResponseSuccess</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/successreturn.html" class="tsd-signature-type">SuccessReturn</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/sendredpackresponsefail.html" class="tsd-signature-type">SendRedPackResponseFail</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/failreturn.html" class="tsd-signature-type">FailReturn</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="setdebug" class="tsd-anchor"></a>
+					<h3>set<wbr>Debug</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Debug<span class="tsd-signature-symbol">(</span>useDebug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#setdebug">setDebug</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L51">pays/core/Base.ts:51</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>仿真模式开关</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1" class="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=23_1</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>useDebug: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="verifysign" class="tsd-anchor"></a>
+					<h3>verify<wbr>Sign</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">verify<wbr>Sign<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, signType<span class="tsd-signature-symbol">?: </span><a href="../enums/signtype.html" class="tsd-signature-type">SignType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="base.html">Base</a>.<a href="base.html#verifysign">verifySign</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/sigoden/wechatpay/blob/0dc0afe/src/pays/core/Base.ts#L78">pays/core/Base.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>校验 sign</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>sign<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> signType: <a href="../enums/signtype.html" class="tsd-signature-type">SignType</a><span class="tsd-signature-symbol"> =&nbsp;types.SignType.MD5</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="redpack.html" class="tsd-kind-icon">Red<wbr>Pack</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#appid" class="tsd-kind-icon">app<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#debug" class="tsd-kind-icon">debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#key" class="tsd-kind-icon">key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#keyfordebug" class="tsd-kind-icon">key<wbr>For<wbr>Debug</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#mchid" class="tsd-kind-icon">mch<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#pfx" class="tsd-kind-icon">pfx</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="redpack.html#completeurl" class="tsd-kind-icon">completeURL</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="redpack.html#createfetchoptions" class="tsd-kind-icon">create<wbr>Fetch<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="redpack.html#gethbinfo" class="tsd-kind-icon">get<wbr>HbInfo</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="redpack.html#getkey" class="tsd-kind-icon">get<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="redpack.html#sendgroupgroupredpack" class="tsd-kind-icon">send<wbr>Group<wbr>Group<wbr>Red<wbr>Pack</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="redpack.html#sendredpack" class="tsd-kind-icon">send<wbr>Red<wbr>Pack</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#setdebug" class="tsd-kind-icon">set<wbr>Debug</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="redpack.html#verifysign" class="tsd-kind-icon">verify<wbr>Sign</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
